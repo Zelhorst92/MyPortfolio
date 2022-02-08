@@ -39,19 +39,52 @@ Welcome to my portfolio!
   * [Afterword](#afterword)
 
 # User Experience
-## Site Owner Goal
-* 
+## Site Owner Goals
+* Inform the visitors of the experience and capabilities of the site owner. Ie. Sell oneself/an online resume.
+* Sell services, like making a landingpage etc., or give visitors the possibility to buy the site owner a coffee.
+* Have the users contact the site owner.
 
 ---
 
 ## User Goals
-* 
+* A website where you can find what the site owner does.
+* A website where I can read about the site owner.
+    * About the site owner experience and capabilities.
+    * A blog
+* A website where I can register and login to.
+* A website where you can buy services from the site owner.
+    * Products
+    * Donations
 
 ---
 
 ## User Stories
 As a user;
+* I want a website that is easy and intuitively to use.
+* I want to see what the website is about at first glance.
+* I want a website that works on all screen sizes.
+* I want to register to the website.
+* I want to login to the website.
+* I want to buy products/ donate to the site owner.
+* I want to read about the site owner.
+    * Blog/forum
+    * Past builds
+    * Experiences with;
+        * Languages
+        * Frameworks
+        * etc.
+    * Public personal information.
+
+* I want to contact the site owner.
+* I want to download a simplified resume.
+* I want to be able to traverse to relevant social media.
 * 
+
+As a site ower;
+* I want to update/add/delete experiences
+* I want to post/update/delete blog posts.
+* I want to update/add/delete examples/past builds.
+* I want to receive messages from users.
 
 [Back to top](#table-of-content)
 
