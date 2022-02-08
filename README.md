@@ -74,7 +74,6 @@ As a user;
         * Frameworks
         * etc.
     * Public personal information.
-
 * I want to contact the site owner.
 * I want to download a simplified resume.
 * I want to be able to traverse to relevant social media.
@@ -131,16 +130,27 @@ As per Bootstrap order, from small to large. To make the wireframes I have used 
 [Back to top](#table-of-content)
 
 ## Design Choices
-The goal of this site is ...
+The goal of this site is to be the site owners online resume. Therefore readability is paramount with not much other distractions.
 
 ### The structure
 For the structure of the website I will use the framework ...
 
 ### Fonts
-I will be using a font from ...
+I will be using a font from [Google Fonts](https://fonts.google.com/ "Google Fonts"), specifically the [Ubuntu Font](https://fonts.google.com/specimen/Ubuntu/ "Ubuntu Font").
+An easy to read, compact and professional looking font.
 
 ### Colours
-I have chosen for a colour scheme that ...
+I have chosen for a colour scheme that not to energetic, to goal of the site is mostly to inform. The colours should reprent the site owners personality of being calm and reserved, therefor a calm and reserved colour scheme. Plus the site owner likes the colour green.
+
+![Colour Palette Scheme](https://github.com/Zelhorst92/MyPortfolio/blob/main/wireframes/colourpalette.png?raw=true "Colour Palette Scheme")
+
+* #585C5F, Davys Grey
+* #53657D, Black Coral
+* #4D6D9A, Queen Blue
+* #86B3D1, Dark Sky Blue
+* #99CED3, Powder Blue
+* #51A37D, Shiny Shamrock
+* #097827, Ao English (green)
 
 [Back to top](#table-of-content)
 
