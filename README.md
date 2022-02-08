@@ -118,23 +118,15 @@ I have made wireframes for the sizes Mobile, Tablet and Desktop.
 As per Bootstrap order, from small to large. To make the wireframes I have used the program [Balsamig Wireframes](https://balsamiq.com/wireframes/ "Link to Balsamig Wireframes").
 
 #### Mobile Wireframes
-* [Mobile Wireframe Home](/wireframes/home-mobile.png)
-* [Mobile Wireframe User Dashboard](/wireframes/user-dashboard-mobile.png)
-* [Mobile Wireframe Own Recipe Overview](/wireframes/own-recipes-overview-mobile.png)
-* [Mobile Wireframe View Recipe](/wireframes/view-recipe-mobile.png)
+* [Mobile Landing Page Wireframe](/wireframes/mobile-landing-page.png)
+
 #### Tablet Wireframes
-* [Tablet Wireframe Home](/wireframes/home-tablet.png)
-* [Tablet Wireframe User Dashboard](/wireframes/user-dashboard-tablet.png)
-* [Tablet Wireframe Own Recipe Overview](/wireframes/own-recipes-overview-tablet.png)
-* [Tablet Wireframe View Recipe](/wireframes/view-recipe-tablet.png)
+* [Tablet Landing Page Wireframe](/wireframes/tablet-landing-page.png)
+
 #### Desktop Wireframes
-* [Desktop Wireframe Home](/wireframes/home-desktop.png)
-* [Desktop Wireframe User Dashboard](/wireframes/user-dashboard-desktop.png)
-* [Desktop Wireframe Own Recipe Overview](/wireframes/own-recipes-overview-desktop.png)
-* [Desktop Wireframe View Recipe](/wireframes/view-recipe-desktop.png)
+* [Desktop Landing Page Wireframe](/wireframes/desktop-landing-page.png)
+
 #### Other Wireframes
-* [Wireframe Register/Login](/wireframes/register-login.png)
-* [Wireframe Add or Change Recipe](/wireframes/add-change-recipe.png)
 
 [Back to top](#table-of-content)
 
