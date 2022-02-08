@@ -78,7 +78,8 @@ As a user;
 * I want to contact the site owner.
 * I want to download a simplified resume.
 * I want to be able to traverse to relevant social media.
-* 
+* I want to read the blog.
+* I want to comment on the blog.
 
 As a site ower;
 * I want to update/add/delete experiences
@@ -91,10 +92,21 @@ As a site ower;
 ---
 
 ## User Requirements
-* 
+* Easy navigation.
+* Intuitively know what the website is about.
+* The ability to register and/or login.
+* The ability to purchase services from the site owner and/or donate.
+* The ability to read the blog.
+* The ability to comment/like or dislike on the blog.
+
 
 ## User Expectation
-* 
+* See relevant information about the site owner.
+* An overview of experience.
+* An overview of past projects.
+* Contact the site owner.
+* Buy services from site owner.
+* Comment on blog.
 
 [Back to top](#table-of-content)
 
