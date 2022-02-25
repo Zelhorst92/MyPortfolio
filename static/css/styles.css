@@ -14,9 +14,13 @@ body {
 /* - - - - - Navigation - - - - - */
 
 .navbar {
+    width: 100%;
+    min-width: 100%;
     font-weight: 500 !important;
     border-bottom: 1px solid #000000;
     background-color: #191919 !important;
+    position: absolute;
+    z-index: 999;
 }
 
 .navbar-brand {
@@ -38,17 +42,26 @@ body {
 
 #heropage {
     height: 100vh;
+    min-height: 100vh;
     background-color: #191919;
     padding: 0 !important;
     max-width: 100%;
     color: #FFFFFF;
     font-size: 2rem;
+    position: relative;
+}
+
+.name-container > h4 {
+    padding-top: 1rem;
 }
 
 #infocard {
+    border: 1px solid #33435A;
+    border-radius: 1rem;
     text-align: center;
     min-height: 25rem;
-    margin: 20vh auto auto auto;
+    margin: 25vh auto auto auto;
+
 }
 
 .link-icon-container {
@@ -66,18 +79,63 @@ body {
     height: 12rem;
 }
 
+.btn-container {
+    margin-top: 5rem;
+}
+
 .pagesection {
     margin: auto;
     padding-top: 10rem;
 }
 
-
-
 .link-icon {
     color: #FFFFFF;
-    padding: 1rem;
+    padding: 0.9rem;
 }
 
 .link-icon i {
     font-size: 4rem;
+}
+
+.arrow-down-icon {
+    text-align: center;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+}
+
+.row {
+        --bs-gutter-x: 0;
+}
+
+/* - - - - - Buttons - - - - - */
+
+.btn-main {
+    font-size: 1.75rem;
+    border: 1px solid #191919;
+    border-radius: 1rem;
+    align-self: center;
+    width: 15rem;
+    height: 5rem;
+    padding: 1rem 0 0 0;
+}
+
+.btn-select {
+    background-color: #097827;
+    margin: 2rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem #FFFFFF;
+    font-weight: 500;
+}
+
+.btn-select:hover {
+    background-color: #48967C;
+    margin: 2rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem #FFFFFF;
+    transition: 0.2s;
+}
+
+.btn-select:active {
+    background-color: #48967C;
+    transform: translateY(3px);
+    transition: 0.2s;
 }
