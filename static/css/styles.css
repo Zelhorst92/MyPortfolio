@@ -5,9 +5,30 @@ html {
 }
 
 body {
-    background-color: gray;
+    font-weight: 400;
+    font-size: 1.6rem;
+    font-family: Ubuntu, Arial, serif;
+    background-color: #53657D;
+    height: 100vh;
+}
+
+/* - - - - - Navigation - - - - - */
+
+.navbar {
+    font-weight: 500 !important;
+    border-bottom: 1px solid #000000;
+    background-color: #53657D !important;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    padding-left: 1rem;
+}
+
+.navbar-nav {
+    text-align: right;
 }
 
 h1 {
-    color: blue;
+
 }
