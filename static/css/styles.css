@@ -17,9 +17,9 @@ body {
     width: 100%;
     min-width: 100%;
     font-weight: 500 !important;
+    height: 5rem;
     border-bottom: 1px solid #000000;
     background-color: #191919 !important;
-    position: absolute;
     z-index: 999;
 }
 
@@ -40,15 +40,17 @@ body {
 
 /* - - - - - Landing Page - - - - - */
 
-#heropage {
+#herosection {
     height: 100vh;
     min-height: 100vh;
+    margin-top: -5rem;
     background-color: #191919;
     padding: 0 !important;
     max-width: 100%;
     color: #FFFFFF;
     font-size: 2rem;
     position: relative;
+
 }
 
 .name-container > h4 {
