@@ -2,5 +2,50 @@
 {% load static %}
 
 {% block content %}
-    <h1>IT WORKS!</h1>
+<section id="heropage" class="pagesection container ">
+    <div class="row" >
+        <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 ">
+            <div class="row justify-content-center ">
+                <div class="col-12 col-md-4 pt-md-5 image-container">
+                    <img class="profile-image img-fluid" src="static/images/profile-picture-robert.jpg"
+                        alt="Picture of Me">
+                </div>
+                <div class="col-12 col-md-8">
+                    <h1 class="pt-md-5">Robert L. Zelhorst</h1>
+                    <h4>Full Stack Web Developer</h4>
+                    <div class="link-icon-container pt-md-4">
+                        <a href="" class="link-icon"><i class="fab fa-github-square"></i></a>
+                        <a href="" class="link-icon"><i class="fab fa-facebook-square"></i></a>
+                        <a href="" class="link-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="" class="link-icon"><i class="fab fa-twitter-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary">Buy me a coffee!</button>
+                <button type="button" class="btn btn-primary">Contact Me!</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <i class="fas fa-arrow-alt-circle-down text"></i>
+    </div>
+</section>
+<section id="aboutpage" class="pagesection container">
+    <h1>About me:</h1>
+</section>
+<section id="timelinepage" class="pagesection container">
+    <h1>My Timeline:</h1>
+</section>
+<section id="servicespage" class="pagesection container">
+    <h1>My Services:</h1>
+</section>
+<section id="gallerypage" class="pagesection container">
+    <h1>My previous projects:</h1>
+</section>
+<section id="contactpage" class="pagesection container">
+    <h1>Contact Me
+    </h1>
+</section>
 {% endblock %}

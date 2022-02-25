@@ -8,7 +8,6 @@ body {
     font-weight: 400;
     font-size: 1.6rem;
     font-family: Ubuntu, Arial, serif;
-    background-color: #53657D;
     height: 100vh;
 }
 
@@ -17,7 +16,7 @@ body {
 .navbar {
     font-weight: 500 !important;
     border-bottom: 1px solid #000000;
-    background-color: #53657D !important;
+    background-color: #191919 !important;
 }
 
 .navbar-brand {
@@ -29,6 +28,56 @@ body {
     text-align: right;
 }
 
-h1 {
+.navbar-toggler {
+    color: #ffffff;
+    border-color: #8C8C8C;
+    font-size: 3rem;
+}
 
+/* - - - - - Landing Page - - - - - */
+
+#heropage {
+    height: 100vh;
+    background-color: #191919;
+    padding: 0 !important;
+    max-width: 100%;
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+#infocard {
+    text-align: center;
+    min-height: 25rem;
+    margin: 20vh auto auto auto;
+}
+
+.link-icon-container {
+    margin: 2rem;
+}
+
+.image-container {
+    padding: 2rem;
+}
+
+.profile-image {
+    border-radius: 50%;
+    margin: 1rem;
+    width: auto;
+    height: 12rem;
+}
+
+.pagesection {
+    margin: auto;
+    padding-top: 10rem;
+}
+
+
+
+.link-icon {
+    color: #FFFFFF;
+    padding: 1rem;
+}
+
+.link-icon i {
+    font-size: 4rem;
 }
