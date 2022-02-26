@@ -1,36 +1,41 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-light">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#herosection">Home</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<i class="fas fa-bars"></i>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-						data-toggle="dropdown" aria-expanded="false">About</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#aboutsection">About Me</a>
-						<a class="dropdown-item" href="#timelinesection">Experiences</a>
-						<a class="dropdown-item" href="#servicessection">Services</a>
-						<a class="dropdown-item" href="#gallerysection">Previous Projects</a>
-						<a class="dropdown-item" href="#contactsection">Contact Me</a>
-					</div>
-				</li>
-				<!--                 <li class="nav-item">
-				<a class="nav-link" href="#">Dashboard</a>
+	  <a class="navbar-brand" href="#herosection">Home</a>
+	  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+		<span><i class="fas fa-bars"></i></span>
+	  </button>
+	  <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+		<div class="offcanvas-body">
+		  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				About
+			  </a>
+			  <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+				<li><a class="dropdown-item" href="#aboutsection">About Me</a></li>
+				<li><a class="dropdown-item" href="#timelinesection">Experience</a></li>
+				<li><a class="dropdown-item" href="#servicessection">Services</a></li>
+				<li><a class="dropdown-item" href="#gallerysection">Previous Projects</a></li>
+				<li><a class="dropdown-item" href="#contactsection">Contact</a></li>
+			  </ul>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Logout</a>
-			</li> -->
-				<li class="nav-item">
-					<a class="nav-link" href="#">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Register</a>
-				</li>
-			</ul>
+
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  User
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+					<li><a class="dropdown-item" href="#">Login</a></li>
+					<li><a class="dropdown-item" href="#">Register</a></li>
+
+					<li><a class="dropdown-item" href="#">Dashboard</a></li>
+					<li><a class="dropdown-item" href="#">Logout</a></li>
+				</ul>
+			  </li>
+			  <li class="nav-item"><a class="nav-link" href="#">Checkout</a></li>
+		  </ul>
+
 		</div>
+	  </div>
 	</div>
-</nav>
+  </nav>

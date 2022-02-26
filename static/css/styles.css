@@ -21,7 +21,8 @@ body {
     height: 5rem;
     border-bottom: 1px solid #000000;
     background-color: #191919 !important;
-    z-index: 999;
+    font-size: 2rem;
+    z-index: 99;
 }
 
 .navbar-brand {
@@ -31,12 +32,42 @@ body {
 
 .navbar-nav {
     text-align: right;
+    
 }
 
 .navbar-toggler {
     color: #ffffff;
     border-color: #8C8C8C;
     font-size: 3rem;
+}
+
+.dropdown-menu {
+    background-color: #191919;
+    
+}
+
+.dropdown-item {
+    font-size: 1.5rem;
+    text-align: end;
+    color: #FFFFFF!important;
+}
+
+.navbar-collapse, .collapse {
+    background-color: #191919;
+}
+
+.offcanvas {
+    margin-top: 5rem;
+    bottom: initial;
+    transition: transform .5s ease-in-out;
+}
+
+.offcanvas-end {
+    width: 18rem;
+}
+
+.offcanvas-body {
+    background: #191919;
 }
 
 /* - - - - - Landing Page - - - - - */
@@ -146,4 +177,12 @@ body {
     background-color: #48967C;
     transform: translateY(3px);
     transition: 0.2s;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .offcanvas {
+        margin-top: 0;
+    }
 }
