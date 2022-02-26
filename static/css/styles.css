@@ -2,6 +2,7 @@
 
 html {
     font-size: 62.5%;
+    height: 100%;
 }
 
 body {
@@ -45,6 +46,10 @@ body {
     min-height: 100vh;
     margin-top: -5rem;
     background-color: #191919;
+    background: url(../images/landing-cover.jpg);
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
     padding: 0 !important;
     max-width: 100%;
     color: #FFFFFF;
@@ -58,6 +63,7 @@ body {
 }
 
 #infocard {
+    background-color: rgba(25, 25, 25, 0.8);
     border: 1px solid #33435A;
     border-radius: 1rem;
     text-align: center;
