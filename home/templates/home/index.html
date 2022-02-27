@@ -59,30 +59,21 @@
     <h1 class="section-header">My Skills</h1>
     <div class="spacer"></div>
     <div class="row">
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" />
-        </div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-plain-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" /></div>
-        <div class="col-6 col-md-4 col-lg-3"><img class="skill-image"
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" /></div>
+        {% for skill in skills %}
+            {% if skill.image_url %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+            </div>
+            {% elif skill.image %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+            </div>
+            {% else %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+            </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </section>
 
