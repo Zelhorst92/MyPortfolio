@@ -60,19 +60,19 @@
     <div class="spacer"></div>
     <div class="row">
         {% for skill in skills %}
-            {% if skill.image_url %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-            </div>
-            {% elif skill.image %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
-            </div>
-            {% else %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-            </div>
-            {% endif %}
+        {% if skill.image_url %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+        </div>
+        {% elif skill.image %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+        </div>
+        {% else %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
 </section>
@@ -93,25 +93,39 @@
         </div>
         <div class="col-10">
             {% for project in PreviousProjects %}
-                <div class="fader gallery-slide {% if forloop.counter == 1 %}active-slide{% endif %}">
-                    <div class="numbertext">{{ forloop.counter }}.{{ project.name }}</div>
-                    <img class="gallery-image"src="{{ project.image.url }}">
-                </div>
+            <div class="fader gallery-slide {% if forloop.counter == 1 %}active-slide{% endif %}">
+                <div class="numbertext">{{ forloop.counter }}.{{ project.name }}</div>
+                <img class="gallery-image" src="{{ project.image.url }}">
+            </div>
             {% endfor %}
         </div>
         <div class="col-1">
             <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></a>
-        </div>      
+        </div>
     </div>
     <div class="dot-container">
         {% for project in PreviousProjects %}
-            <span class="dot {% if forloop.counter == 1 %}active{% endif %}" onclick="currentSlide(1)"></span>
+        <span class="dot {% if forloop.counter == 1 %}active{% endif %}" onclick="currentSlide(1)"></span>
         {% endfor %}
     </div>
 </section>
 
 <section id="contactsection" class="pagesection container">
     <h1>Contact Me</h1>
+    <div class="spacer"></div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
 </section>
+<div class="spacer"></div>
 
 {% endblock %}
