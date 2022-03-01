@@ -60,25 +60,53 @@
     <div class="spacer"></div>
     <div class="row">
         {% for skill in skills %}
-        {% if skill.image_url %}
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-        </div>
-        {% elif skill.image %}
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
-        </div>
-        {% else %}
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-        </div>
-        {% endif %}
+            {% if skill.image_url %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+            </div>
+            {% elif skill.image %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+            </div>
+            {% else %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+            </div>
+            {% endif %}
         {% endfor %}
     </div>
 </section>
 
 <section id="servicessection" class="pagesection container">
     <h1>My Services:</h1>
+
+    <div class="row">
+        {% for service in services %}
+        <div class="col-sm-6 col-md-6 col-lg-4 card-container">
+            <div class="card" style="width: 25rem;">
+                <div class="card-header">{{ service.name }}</div>
+                {% if service.image %}
+                <a href="">
+                    <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
+                </a>
+                {% else %}
+                <a href="">
+                    <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
+                </a>
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text">{{ service.description }}</p>
+                </div>
+                <div class="card-footer container">
+                    <div class="row">
+                        <p class="col-6 lead mb-0 text-left font-weight-bold">€{{ service.price }}</p>
+                        <a href="#" class="col-6 btn btn-primary">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     <h4>
         <a href="{% url 'services' %}" class="btn btn-main btn-select">Show All</a>
     </h4>
