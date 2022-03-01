@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Skill, Category
+from .models import Skill, Category, PreviousProject
 
 # Register your models here.
 
@@ -21,5 +21,17 @@ class SkillAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
+class PreviousProjectAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'description',
+        'image',
+        'image_url',
+    )
+
+    ordering = ('name',)
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Skill, SkillAdmin)
+admin.site.register(PreviousProject, PreviousProjectAdmin)

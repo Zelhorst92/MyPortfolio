@@ -86,11 +86,32 @@
 
 <section id="gallerysection" class="pagesection container">
     <h1>My previous projects:</h1>
+    <div class="spacer"></div>
+    <div class="slideshow-container row">
+        <div class="col-1">
+            <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="col-10">
+            {% for project in PreviousProjects %}
+                <div class="fader gallery-slide {% if forloop.counter == 1 %}active-slide{% endif %}">
+                    <div class="numbertext">{{ forloop.counter }}.{{ project.name }}</div>
+                    <img class="gallery-image"src="{{ project.image.url }}">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-1">
+            <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></a>
+        </div>      
+    </div>
+    <div class="dot-container">
+        {% for project in PreviousProjects %}
+            <span class="dot {% if forloop.counter == 1 %}active{% endif %}" onclick="currentSlide(1)"></span>
+        {% endfor %}
+    </div>
 </section>
 
 <section id="contactsection" class="pagesection container">
-    <h1>Contact Me
-    </h1>
+    <h1>Contact Me</h1>
 </section>
 
 {% endblock %}
