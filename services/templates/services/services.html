@@ -12,8 +12,9 @@
         <h1>My Services:</h1>
     </div>
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-lg-4">
-            {% for service in services %}
+
+        {% for service in services %}
+        <div class="col-sm-6 col-md-6 col-lg-4 card-container">
             <div class="card" style="width: 25rem;">
                 <div class="card-header">{{ service.name }}</div>
                 {% if service.image %}
@@ -26,19 +27,20 @@
                 </a>
                 {% endif %}
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <p class="card-text">{{ service.description }}</p>
                 </div>
                 <div class="card-footer container">
                     <div class="row">
-                            <p class="col-6 lead mb-0 text-left font-weight-bold">€{{ service.price }}</p>
-                            <a href="#" class="col-6 btn btn-primary">Add to cart</a>
+                        <p class="col-6 lead mb-0 text-left font-weight-bold">€{{ service.price }}</p>
+                        <a href="#" class="col-6 btn btn-primary">Add to cart</a>
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+
+
 </div>
 
 

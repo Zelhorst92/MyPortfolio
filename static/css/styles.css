@@ -158,6 +158,16 @@ body {
     padding: 3rem;
 }
 
+/* - - - - - Services - - - - - */
+.card-container {
+    padding-top: 5rem;
+}
+
+.card {
+    width: 25rem;
+    min-height: 37rem;
+}
+
 /* - - - - - Buttons - - - - - */
 .btn-container {
     margin-top: 5rem;
