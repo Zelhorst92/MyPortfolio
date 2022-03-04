@@ -1,41 +1,52 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-light">
 	<div class="container-fluid">
-	  <a class="navbar-brand" href="#herosection">Home</a>
-	  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-		<span><i class="fas fa-bars"></i></span>
-	  </button>
-	  <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-		<div class="offcanvas-body">
-		  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-			<li class="nav-item dropdown">
-			  <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				About
-			  </a>
-			  <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-				<li><a class="dropdown-item" href="{% url 'home' %}#aboutsection">About Me</a></li>
-				<li><a class="dropdown-item" href="{% url 'home' %}#skillssection">Experience</a></li>
-				<li><a class="dropdown-item" href="{% url 'home' %}#servicessection">Services</a></li>
-				<li><a class="dropdown-item" href="{% url 'home' %}#gallerysection">Previous Projects</a></li>
-				<li><a class="dropdown-item" href="{% url 'home' %}#contactsection">Contact</a></li>
-			  </ul>
-			</li>
+		<a class="navbar-brand" href="#herosection">Home</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+			aria-controls="offcanvasNavbar">
+			<span><i class="fas fa-bars"></i></span>
+		</button>
+		<div class="offcanvas offcanvas-end" tabindex="-1" data-bs-scroll="true" data-bs-backdrop="false"
+			id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas-body">
+				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							About
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+							<li><a class="dropdown-item" href="{% url 'home' %}#aboutsection">About Me</a></li>
+							<li><a class="dropdown-item" href="{% url 'home' %}#skillssection">Experience</a></li>
+							<li><a class="dropdown-item" href="{% url 'home' %}#servicessection">Services</a></li>
+							<li><a class="dropdown-item" href="{% url 'home' %}#gallerysection">Previous Projects</a>
+							</li>
+							<li><a class="dropdown-item" href="{% url 'home' %}#contactsection">Contact</a></li>
+						</ul>
+					</li>
 
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				  User
-				</a>
-				<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-					<li><a class="dropdown-item" href="#">Login</a></li>
-					<li><a class="dropdown-item" href="#">Register</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							User
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+							<li><a class="dropdown-item" href="#">Login</a></li>
+							<li><a class="dropdown-item" href="#">Register</a></li>
 
-					<li><a class="dropdown-item" href="#">Dashboard</a></li>
-					<li><a class="dropdown-item" href="#">Logout</a></li>
+							<li><a class="dropdown-item" href="#">Dashboard</a></li>
+							<li><a class="dropdown-item" href="#">Logout</a></li>
+						</ul>
+					</li>
+					<li class="nav-item shopping-cart">
+						<a href="{% url 'view_cart' %}">
+							<i class="fas fa-shopping-cart">
+								{% if item_total %}{{ item_total }}{% else %}(0){% endif %}
+							</i>
+						</a>
+					</li>
 				</ul>
-			  </li>
-			  <li class="nav-item"><a class="nav-link" href="#">Checkout</a></li>
-		  </ul>
 
+			</div>
 		</div>
-	  </div>
 	</div>
-  </nav>
+</nav>

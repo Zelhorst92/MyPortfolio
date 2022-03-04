@@ -70,6 +70,11 @@ body {
     background: #191919;
 }
 
+.shopping-cart {
+    margin: auto 0;
+    padding-left: 1rem;
+}
+
 /* - - - - - Landing Page - - - - - */
 .row {
     --bs-gutter-x: 0;
