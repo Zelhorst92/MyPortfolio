@@ -86,11 +86,11 @@
             <div class="card" style="width: 25rem;">
                 <div class="card-header">{{ service.name }}</div>
                 {% if service.image %}
-                <a href="">
+                <a href="{% url 'service_details' service.id %}">
                     <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
                 </a>
                 {% else %}
-                <a href="">
+                <a href="{% url 'service_details' service.id %}">
                     <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
                 </a>
                 {% endif %}
@@ -100,6 +100,7 @@
                 <div class="card-footer container">
                     <div class="row">
                         <p class="col-6 lead mb-0 text-left font-weight-bold">€{{ service.price }}</p>
+                        <a href="{% url 'service_details' service.id %}" class="col-6 btn btn-primary">View Details</a>
                         <a href="#" class="col-6 btn btn-primary">Add to cart</a>
                     </div>
                 </div>

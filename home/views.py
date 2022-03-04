@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from .models import Skill, PreviousProject
 from services.models import Service
+from .models import Skill, PreviousProject
+
 
 # Create your views here.
 
