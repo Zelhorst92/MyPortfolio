@@ -40,7 +40,7 @@
 					<li class="nav-item shopping-cart">
 						<a href="{% url 'view_cart' %}">
 							<i class="fas fa-shopping-cart">
-								{% if item_total %}{{ item_total }}{% else %}(0){% endif %}
+								{% if service_count %}{{ service_count }}{% else %}(0){% endif %}
 							</i>
 						</a>
 					</li>
