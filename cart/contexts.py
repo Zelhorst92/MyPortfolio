@@ -6,9 +6,9 @@ def cart_contents(request):
 
     cart_items = []
     total = 0
-    service_count = 0
+    cart_item_count = 0
 
-    if service_count > 1:
+    if cart_item_count > 1:
         net_total = total * Decimal(
             settings.COMBINATION_DISCOUNT_PERCENTAGE / 100)
     else:
@@ -17,7 +17,7 @@ def cart_contents(request):
     context = {
         'cart_items': cart_items,
         'total': total,
-        'service_count': service_count,
+        'cart_item_count': cart_item_count,
         'combination_discount_percentage': settings.COMBINATION_DISCOUNT_PERCENTAGE,
         'net_total': net_total,
     }
