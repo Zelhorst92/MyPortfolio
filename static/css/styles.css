@@ -9,7 +9,6 @@ body {
     font-weight: 400;
     font-size: 1.6rem;
     font-family: Ubuntu, Arial, serif;
-    height: 100vh;
 }
 
 /* - - - - - Navigation - - - - - */
@@ -83,6 +82,7 @@ body {
 .pagesection {
     margin: auto;
     padding: 5rem 2rem 0 2rem;
+    font-size: 2rem;
 }
 
 /* - - - Hero Section - - - */
@@ -171,6 +171,18 @@ body {
 .card {
     width: 25rem;
     min-height: 37rem;
+}
+
+.card-img-top {
+    padding: 1rem!important;
+}
+
+.page-link {
+    font-size: 2rem!important;
+}
+
+.page-links {
+    padding-top: 5rem;
 }
 
 /* - - - - - Gallery - - - - - */
@@ -272,6 +284,10 @@ body {
 }
 
 /* - - - - - Buttons - - - - - */
+.btn {
+    font-size: 1.5rem!important;
+}
+
 .btn-container {
     margin-top: 5rem;
 }

@@ -2,17 +2,15 @@
 {% load static %}
 
 {% block content %}
-<div class="container" >
+<div class="container" style="margin-top:5rem;">
     <div class="row">
-        <h4>
-            <a href="{% url 'home' %}" class="btn btn-lg rounded-0 text-uppercase py-3" style="margin-top: 5rem;">Back</a>
-        </h4>
+        <h2>{{ service.name }}</h2>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-1">
             <div class="image-container my-5">
                 {% if service.image %}
-                    <a href="">
+                    <a href="{{ service.image.url }}" target="_blank">
                         <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
                     </a>
                 {% else %}
@@ -22,12 +20,35 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="product-details-container mb-5 mt-md-5">
+        <div class="col-12 col-md-5 offset-md-1 col-lg-4 offset-lg-2">
+            <div class="mb-5 mt-md-5">
                 <p class="mb-0">{{ service.name }}</p>
                 <p class="lead mb-0 text-left font-weight-bold">${{ service.price }}</p>
                 <p class="mt-3">{{ service.description }}</p>
-                <p><a href="#" class="col-6 btn btn-primary">Add to cart</a></p>
+                <form class="form" action="{% url 'add_to_cart' service.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-12">
+                            <p class="mt-3"><strong>Quantity:</strong></p>
+                            <div class="form-group w-50">
+                                <div class="input-group">
+                                    <input class="form-control qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ service.id }}" id="id_qty_{{ service.id }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 mt-5">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Back</span>
+                            </a>
+                            <input type="submit" class="btn btn-success rounded-0 text-uppercase mt-5" value="Add to cart">
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

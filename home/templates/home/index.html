@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load pagination_tags %}
 
 {% block content %}
 <section id="herosection" class="pagesection container">
@@ -56,34 +57,35 @@
 </section>
 
 <section id="skillssection" class="pagesection container">
-    <h1 class="section-header">My Skills</h1>
     <div class="spacer"></div>
+    <h1 class="section-header">My Skills</h1>
     <div class="row">
         {% for skill in skills %}
-            {% if skill.image_url %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-            </div>
-            {% elif skill.image %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
-            </div>
-            {% else %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-            </div>
-            {% endif %}
+        {% if skill.image_url %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+        </div>
+        {% elif skill.image %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+        </div>
+        {% else %}
+        <div class="col-6 col-md-4 col-lg-3">
+            <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
 </section>
 
-<section id="servicessection" class="pagesection container">
-    <h1>My Services:</h1>
-
+<section id="servicessection" class="pagesection container-fluid justify-content-center">
+    <div class="spacer"></div>
+    <h1>My Services</h1>
+    <div class="spacer"></div>
     <div class="row">
-        {% for service in services %}
-        <div class="col-sm-6 col-md-6 col-lg-4 card-container">
-            <div class="card" style="width: 25rem;">
+        {% for service in page.object_list %}
+        <div class="col-12 col-sm-6 col-lg-4 card-container d-flex justify-content-center">
+            <div class="card">
                 <div class="card-header">{{ service.name }}</div>
                 {% if service.image %}
                 <a href="{% url 'service_details' service.id %}">
@@ -97,20 +99,50 @@
                 <div class="card-body">
                     <p class="card-text">{{ service.description }}</p>
                 </div>
-                <div class="card-footer container">
-                    <div class="row">
-                        <p class="col-6 lead mb-0 text-left font-weight-bold">€{{ service.price }}</p>
-                        <a href="{% url 'service_details' service.id %}" class="col-6 btn btn-primary">View Details</a>
-                        <a href="#" class="col-6 btn btn-primary">Add to cart</a>
+                <div class="card-footer">
+                    <div class="justify-content-end">
+                        <p>€{{ service.price }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'service_details' service.id %}" class="btn btn-success">View Details</a>
+                        <a href="#" class="btn btn-success">Add to cart</a>
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    <h4>
-        <a href="{% url 'services' %}" class="btn btn-main btn-select">Show All</a>
-    </h4>
+    <div class="page-links">
+        <ul class="pagination pagination-lg justify-content-center">
+            {% if page.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">&laquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">{{ page.previous_page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="">&laquo;</a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <div class="page-link">{{ page.number }}</div>
+            </li>
+            {% if page.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">{{ page.next_page_number }}</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">&raquo;</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="">&raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
 </section>
 
 <section id="gallerysection" class="pagesection container">
