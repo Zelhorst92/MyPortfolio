@@ -39,7 +39,13 @@ class Order(models.Model):
         self.order_total = self.lineitems.aggregate(Sum(
             'lineitem_total'))['lineitem_total__sum']
 
-        self.net_total = self.order_total
+        if self.quantity > 1:
+            self.net_total = self.order_total - (
+                self.order_total * (
+                    settings.COMBINATION_DISCOUNT_PERCENTAGE / 100))
+        else:
+            self.net_total = self.order_total
+
         self.save()
 
     def save(self, *args, **kwargs):
