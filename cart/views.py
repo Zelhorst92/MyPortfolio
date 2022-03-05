@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
 
+from services.models import Service
 # Create your views here.
 
 
@@ -12,14 +14,17 @@ def view_cart(request):
 def add_to_cart(request, item_id):
     """Add a quantity of a service to the shopping cart"""
 
+    service = Service.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
+        messages.success(request, f'Added {service.name} to the cart')
     else:
         cart[item_id] = quantity
+        messages.success(request, f'Added {service.name} to the cart')
 
     request.session['cart'] = cart
     return redirect(redirect_url)

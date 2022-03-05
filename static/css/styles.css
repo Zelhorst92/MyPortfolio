@@ -74,6 +74,19 @@ body {
     padding-left: 1rem;
 }
 
+/* - - - - - Toasts - - - - - */
+
+.message-container {
+    position:fixed;
+    top: 7rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.toast {
+    font-size: 2rem !important;
+}
+
 /* - - - - - Landing Page - - - - - */
 .row {
     --bs-gutter-x: 0;

@@ -13,9 +13,7 @@
 <body>
     {% include 'components/navigation.html' %}
 
-    {% if messages %}
-        <div class="message-container"></div>
-    {% endif %}
+    {% include 'components/messages.html' %}
 
     {% block page_header %}
     {% endblock %}
@@ -25,7 +23,12 @@
 
 
     {% block postloadjs %}
-    {% endblock %}    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.toast').toast('show');
+        });
+    </script>
+    {% endblock %}
 </body>
 
 </html>
