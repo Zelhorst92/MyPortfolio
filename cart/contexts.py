@@ -22,6 +22,9 @@ def cart_contents(request):
             'service': service,
         })
 
+    """
+    Only apply discount if multiple services are being bought
+    """
     if cart_item_count > 1:
         discount = total * Decimal(settings.COMBINATION_DISCOUNT_PERCENTAGE / 100)
     else:

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 {% block content %}
 <div class="container mb-2" style="margin-top:5rem;">
@@ -17,58 +18,83 @@
             <div class="table-responsive rounded">
                 <table class="table table-borderless">
                     <thead style="background-color: #191919;">
-                        <tr >
-                            <th class="ps-5" scope="col">Service</th>
+                        <tr>
+                            <th class="ps-sm-5" scope="col">Service</th>
                             <th scope="col">Price</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
-
                     {% for item in cart_items %}
                     <tr>
-                        <td class="py-3 ps-5">
+                        <td class="py-3 ps-sm-5">
                             <p class="my-0">{{ item.service.name }}</p>
                         </td>
                         <td class="py-3">
                             <p class="my-0">€{{ item.service.price }}</p>
                         </td>
                         <td class="py-3 w-25">
-                            <p class="my-0">{{ item.quantity }}</p>
+                            <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="decrement-qty btn btn-primary btn-sm" data-item_id="{{ item.item_id }}"
+                                                id="decrement-qty_{{ item.item_id }}">
+                                                <span>
+                                                    <i class="fas fa-minus fa-sm"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <input class="form-control form-control-sm qty_input fs-4" maxlength="1" name="quantity" value="{{ item.quantity }}"
+                                            min="1" max="9" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                        <div class="input-group-append">
+                                            <button class="increment-qty btn btn-primary btn-sm" data-item_id="{{ item.item_id }}"
+                                                id="increment-qty_{{ item.item_id }}">
+                                                <span>
+                                                    <i class="fas fa-plus fa-sm"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <a class="update-link text-info">Update</a>
+                            <a class="remove-item text-danger float-end" id="remove_{{ item.item_id}}">Remove{% if item.quantity > 1%} All{% endif %}</a>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">{{ item.service.price }}</p>
+                            <p class="my-0">{{ item.service.price | calc_subtotal:item.quantity }}</p>
                         </td>
                     </tr>
                     {% endfor %}
                     <tr>
-
                         <td colspan="5" class="text-end pt-5">
                             <hr>
-                            <h6>Total before VAT:({{ VAT }}%) € {{ price_before_vat|floatformat:2 }}</h6>
-                            <h6>Cart Total: € {{ total|floatformat:2 }}</h6>
+                            <h5>Total before VAT:({{ VAT }}%) € {{ price_before_vat|floatformat:2 }}</h5>
+                            <h5>Cart Total: € {{ total|floatformat:2 }}</h5>
                             {% if discount %}
-                            <h6>Qty Discount:({{ combination_discount_percentage }}%) € {{ discount|floatformat:2 }}</h6>
+                            <h5>Qty Discount:({{ combination_discount_percentage }}%) € {{ discount|floatformat:2 }}
+                            </h5>
                             {% else %}
-                            <h6>Qty Discount: None</h6>
+                            <h5>Qty Discount: None</h5>
                             {% endif %}
                             <hr>
-                            <h4 class="mt-4"><strong>Net total: € {{ net_total|floatformat:2 }}</strong></h4>
+                            <h3 class="mt-4"><strong>Net total: € {{ net_total|floatformat:2 }}</strong></h3>
                         </td>
                     </tr>
                 </table>
-                <span class="">
+                <span class="float-start">
                     <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 btn-lg">
-                        <span class="icon">
+                        <span>
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="text-uppercase">Back</span>
                     </a>
                 </span>
-                <span class="text-end">
+                <span class="float-end">
                     <a href="" class="btn btn-success rounded-0 btn-lg">
                         <span class="text-uppercase">Checkout</span>
-                        <span class="icon">
+                        <span>
                             <i class="fas fa-lock"></i>
                         </span>
                     </a>
@@ -85,4 +111,8 @@
             {% endif %}
         </div>
     </div>
-    {% endblock %}
+</div>
+<script src="{% static 'js/quantity_input_scripts.js' %}"></script>
+<script src="{% static 'js/update_and_remove_scripts.js' %}"></script>
+
+{% endblock %}
