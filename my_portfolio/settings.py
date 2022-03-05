@@ -168,3 +168,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
     "COMBINATION_DISCOUNT_PERCENTAGE"))
+VAT = int(os.environ.get("VAT"))

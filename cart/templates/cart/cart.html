@@ -14,72 +14,75 @@
     <div class="row">
         <div class="col">
             {% if cart_items %}
-                <div class="table-responsive rounded">
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th scope="col">Service Info</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Qty</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                        </thead>
-
-                        {% for item in cart_items %}
-                            <tr>
-                                <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.service.name }}</strong></p>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0">€{{ item.service.price }}</p>
-                                </td>
-                                <td class="py-3 w-25">
-                                    <p class="my-0">{{ item.quantity }}</p>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0">{{ item.service.price }}</p>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        <tr>
-
-                            <td colspan="4" class="text-end pt-5">
-                                <h6>Cart Total: €{{ total|floatformat:2 }}</h6>
-                                {% if discount %}
-                                <h6>Qty Discount: €{{ discount|floatformat:2 }}</h6>
-                                {% else %}
-                                <h6>Qty Discount: None</h6>
-                                {% endif %}
-                                <h4 class="mt-4"><strong>Net total: €{{ net_total|floatformat:2 }}</strong></h4>
-                            </td>
+            <div class="table-responsive rounded">
+                <table class="table table-borderless">
+                    <thead style="background-color: #191919;">
+                        <tr >
+                            <th class="ps-5" scope="col">Service</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Subtotal</th>
                         </tr>
-                        <tr>
-                            <td colspan="4" class="text-end">
-                                <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 btn-lg">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Back</span>
-                                </a>
-                                <a href="" class="btn btn-success rounded-0 btn-lg">
-                                    <span class="text-uppercase">Checkout</span>
-                                    <span class="icon">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                    </thead>
+
+                    {% for item in cart_items %}
+                    <tr>
+                        <td class="py-3 ps-5">
+                            <p class="my-0">{{ item.service.name }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">€{{ item.service.price }}</p>
+                        </td>
+                        <td class="py-3 w-25">
+                            <p class="my-0">{{ item.quantity }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">{{ item.service.price }}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+
+                        <td colspan="5" class="text-end pt-5">
+                            <hr>
+                            <h6>Total before VAT:({{ VAT }}%) € {{ price_before_vat|floatformat:2 }}</h6>
+                            <h6>Cart Total: € {{ total|floatformat:2 }}</h6>
+                            {% if discount %}
+                            <h6>Qty Discount:({{ combination_discount_percentage }}%) € {{ discount|floatformat:2 }}</h6>
+                            {% else %}
+                            <h6>Qty Discount: None</h6>
+                            {% endif %}
+                            <hr>
+                            <h4 class="mt-4"><strong>Net total: € {{ net_total|floatformat:2 }}</strong></h4>
+                        </td>
+                    </tr>
+                </table>
+                <span class="">
+                    <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back</span>
+                    </a>
+                </span>
+                <span class="text-end">
+                    <a href="" class="btn btn-success rounded-0 btn-lg">
+                        <span class="text-uppercase">Checkout</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </a>
+                </span>
+            </div>
             {% else %}
-                <p class="lead mb-5">Your bag is empty.</p>
-                <a href="{% url 'home' %}#servicessection" class="btn btn-outline-black rounded-0 btn-lg">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="text-uppercase">Keep Shopping</span>
-                </a>
+            <p class="lead mb-5">Your bag is empty.</p>
+            <a href="{% url 'home' %}#servicessection" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
             {% endif %}
         </div>
     </div>
-{% endblock %}
+    {% endblock %}

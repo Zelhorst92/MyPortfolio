@@ -32,8 +32,10 @@ def cart_contents(request):
         'total': total,
         'cart_item_count': cart_item_count,
         'combination_discount_percentage': settings.COMBINATION_DISCOUNT_PERCENTAGE,
+        'price_before_vat': total - (total * Decimal(settings.VAT) / 100),
         'discount': discount,
         'net_total': (total - discount),
+        'VAT': settings.VAT,
     }
 
     return context
