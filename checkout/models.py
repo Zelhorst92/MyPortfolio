@@ -38,10 +38,9 @@ class Order(models.Model):
         Update net total each time a line item is added
         """
         self.order_total = self.lineitems.aggregate(Sum(
-            'lineitem_total'))['lineitem_total__sum']
+            'lineitem_total'))['lineitem_total__sum'] or 0
 
-        if self.quantity > 1:
-            self.discount = self.order_total * (settings.COMBINATION_DISCOUNT_PERCENTAGE / 100)
+        if self.discount:
             self.net_total = self.order_total - self.discount
         else:
             self.discount = 0
@@ -55,7 +54,7 @@ class Order(models.Model):
         if it has not already been set
         """
         if not self.order_number:
-            self.order_number = self._generate_order_number()
+            self.order_number = self.__generate_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
