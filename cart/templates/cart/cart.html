@@ -60,7 +60,7 @@
                                 </div>
                             </form>
                             <a class="update-link text-info">Update</a>
-                            <a class="remove-item text-danger float-end" id="remove_{{ item.item_id}}">Remove{% if item.quantity > 1%} All{% endif %}</a>
+                            <a class="remove-item text-danger float-end" id="remove_{{ item.item_id}}">Remove{% if item.quantity > 1 %} All{% endif %}</a>
                         </td>
                         <td class="py-3">
                             <p class="my-0">{{ item.service.price | calc_subtotal:item.quantity }}</p>
