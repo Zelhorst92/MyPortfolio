@@ -179,6 +179,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Misc values
 COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
     "COMBINATION_DISCOUNT_PERCENTAGE"))
 VAT = int(os.environ.get("VAT"))
+
+STRIPE_CURRENCY = "eur"
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
