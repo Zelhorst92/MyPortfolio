@@ -21,6 +21,7 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    discount = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
     net_total = models.DecimalField(
@@ -40,10 +41,10 @@ class Order(models.Model):
             'lineitem_total'))['lineitem_total__sum']
 
         if self.quantity > 1:
-            self.net_total = self.order_total - (
-                self.order_total * (
-                    settings.COMBINATION_DISCOUNT_PERCENTAGE / 100))
+            self.discount = self.order_total * (settings.COMBINATION_DISCOUNT_PERCENTAGE / 100)
+            self.net_total = self.order_total - self.discount
         else:
+            self.discount = 0
             self.net_total = self.order_total
 
         self.save()

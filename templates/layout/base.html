@@ -7,10 +7,14 @@
 <head>
     {% include 'layout/head.html' %}
 
+    {% block extra_css %}
+    {% endblock %}
+
     {% include 'layout/scripts.html' %}
+
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="10">
+<body data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="0">
     {% include 'components/navigation.html' %}
 
     {% include 'components/messages.html' %}
@@ -21,13 +25,12 @@
     {% block content %}
     {% endblock %}
 
-
-    {% block postloadjs %}
     <script type="text/javascript">
         $(document).ready(function () {
             $('.toast').toast('show');
         });
     </script>
+    {% block postloadjs %}
     {% endblock %}
 </body>
 
