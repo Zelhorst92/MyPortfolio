@@ -11,7 +11,7 @@ def index(request):
     """View to return index page"""
     skills = Skill.objects.all()
     PreviousProjects = PreviousProject.objects.all()
-    services = Service.objects.all()
+    services = Service.objects.get_queryset().order_by('sku')
 
     service_paginator = Paginator(services, 3)
 
