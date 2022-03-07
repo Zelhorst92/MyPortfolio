@@ -98,6 +98,10 @@ body {
     display: none;
 }
 
+.allauth-form-inner-content li {
+    list-style: none;
+}
+
 /* - - - - - Toasts - - - - - */
 
 .message-container {
