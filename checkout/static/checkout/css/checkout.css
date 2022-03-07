@@ -16,7 +16,7 @@ select option[value=""] {
 
 select option {
 	font-size: 1.6rem!important;
-	color: #000000
+	color: #000000;
 }
 
 .StripeElement,
@@ -54,7 +54,6 @@ select option {
 #payment-form .form-control,
 #payment-form .form-select,
 #card-element {
-	color: #AAA;
 	border: 1px solid #000;
 }
 

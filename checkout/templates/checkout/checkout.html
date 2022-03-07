@@ -100,8 +100,12 @@
 
                 <fieldset class="px-3">
                     <legend class="fieldset-label small px-2 w-auto">Payment</legend>
+                    <!-- Stripe card element goes here -->
                     <div class="mb-3" id="card-element"></div>
+                    <!-- Form error goes here -->
                     <div class="mb-3 text-danger" id="card_errors" role="alert"></div>
+                    <!-- Client secret goes here, to pass it to the view to get payment intent ID -->
+                    <input type="hidden" value="{{client_secret}}" name="client_secret">
                 </fieldset>
                 <div class="submit-button text-end mt-3 mb-2">
                     <a href="{% url 'view_cart' %}" class="btn rounded-0 float-start ms-3">
