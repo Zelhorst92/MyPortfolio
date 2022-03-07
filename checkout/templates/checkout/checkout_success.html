@@ -133,14 +133,25 @@
                         </td>
                     </tr>
                 </table>
-                <span class="float-end">
-                    <a href="{% url 'home' %}" class="btn btn-success rounded-0 btn-lg">
-                        <span class="text-uppercase">Success!</span>
-                        <span>
-                            <i class="fas fa-check"></i>
-                        </span>
-                    </a>
-                </span>
+                {% if from_profile %}
+                    <span class="float-end">
+                        <a href="{% url 'profile' %}" class="btn btn-success rounded-0 btn-lg">
+                            <span class="text-uppercase">Back to Dashboard</span>
+                            <span>
+                                <i class="fas fa-columns"></i>
+                            </span>
+                        </a>
+                    </span>
+                {% else %}
+                    <span class="float-end">
+                        <a href="{% url 'home' %}" class="btn btn-success rounded-0 btn-lg">
+                            <span class="text-uppercase">Success!</span>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </a>
+                    </span>
+                {% endif %}
             </div>
         </div>
     </div>

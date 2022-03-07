@@ -15,10 +15,6 @@
     color: #aab7c4;
 }
 
-/* select option[value=""] {
-    color: #aab7c4;
-} */
-
 #id_default_country,
 #id_default_country option:not(:first-child) {
     color: #000000;
@@ -26,4 +22,9 @@
 
 #id_default_country option:first-child {
     color: #aab7c4;
+}
+
+.order-history {
+    max-height: 100vh;
+    overflow-y: scroll;
 }
