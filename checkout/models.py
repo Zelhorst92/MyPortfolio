@@ -24,6 +24,8 @@ class Order(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     discount = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
+    vat = models.DecimalField(
+        max_digits=10, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0)
     net_total = models.DecimalField(
@@ -35,22 +37,29 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()
 
-    def update_total(self):
+    def update_totals(self):
         """
-        Update net total each time a line item is added
+        Update totals each time a line item is added
+        """
+        """
+        Checks if there are more then one lineitems
+        If so, applies discount
         """
         self.order_total = self.lineitems.aggregate(Sum(
             'lineitem_total'))['lineitem_total__sum'] or 0
 
-        print(self.lineitems.count())
         if self.lineitems.count() > 1:
-            self.discount = self.order_total * (Decimal(settings.COMBINATION_DISCOUNT_PERCENTAGE / 100))
+            self.discount = self.order_total * (
+                Decimal(settings.COMBINATION_DISCOUNT_PERCENTAGE / 100))
             self.net_total = self.order_total - self.discount
         else:
             self.discount = 0
             self.net_total = self.order_total
 
+        self.vat = self.net_total * Decimal(settings.VAT_PERCENTAGE / 100)
+
         self.save()
+        
 
     def save(self, *args, **kwargs):
         """

@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container ">
     <div class="row">
-        <div class="col">
+        <div class="col-12 col-lg-8 offset-lg-2">
             <hr>
             <h2 class="logo-font mb-4">Shopping Cart</h2>
             <hr>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8 offset-lg-2">
             <div class="order-confirmation-wrapper p-2 border">
                 <section id="Order-Info">
                     <div class="row">
@@ -31,7 +31,7 @@
                             <p class="mb-0">Order Number:</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-end">
-                            <p class="mb-0">{{ order.order_number }}</p>
+                            <p class="mb-0 text-break">{{ order.order_number }}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -49,46 +49,47 @@
                             <small class="text-muted">Details:</small>
                         </div>
                     </div>
-                </section>
-                <section id="Billing Info">
                     <div class="row">
-                        <div class="col">
-                            <small class="text-muted">Billing Info:</small>
+                        <div class="col-12 col-md-4">
+                            <p class="mb-0">Name:</p>
+                        </div>
+                        <div class="col-12 col-md-8 text-md-end">
+                            <p class="mb-0">{{ order.full_name }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <p class="mb-0">Order Number:</p>
+                            <p class="mb-0">Email:</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-end">
-                            <p class="mb-0">{{ order.order_number }}</p>
+                            <p class="mb-0">{{ order.email }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <p class="mb-0">Order Number:</p>
+                            <p class="mb-0">Phonenumber:</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-end">
-                            <p class="mb-0">{{ order.order_number }}</p>
+                            <p class="mb-0">{{ order.phone_number }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <p class="mb-0">Order Number:</p>
+                            <p class="mb-0">Country:</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-end">
-                            <p class="mb-0">{{ order.order_number }}</p>
+                            <p class="mb-0">{{ order.country }}</p>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container mb-2" style="margin-top:5rem;">
-    <div class="row">
-        <div class="col-8">
+
+
+    <div class="row" style="margin-top:5rem;">
+        <div class="col-12 col-lg-8 offset-lg-2">
             <div class="table-responsive rounded">
                 <table class="table table-borderless">
                     <thead style="background-color: #191919;">
@@ -105,27 +106,28 @@
                             <p class="my-0">{{ item.service.name }}</p>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">€{{ item.service.price }}</p>
+                            <p class="my-0">€ {{ item.service.price }}</p>
                         </td>
                         <td class="py-3 w-25">
                             {{ item.quantity }}
                         </td>
                         <td class="py-3">
-                            <p class="my-0 text-end">{{ item.lineitem_total }}</p>
+                            <p class="my-0 text-end">€ {{ item.lineitem_total }}</p>
                         </td>
                     </tr>
                     {% endfor %}
                     <tr>
                         <td colspan="4" class="text-end pt-5">
                             <hr>
-                            <!-- <h5>Total before VAT:({{ VAT }}%) € {{ price_before_vat|floatformat:2 }}</h5> -->
                             <h5>Cart Total: € {{ order.order_total}}</h5>
                             {% if order.discount %}
-                            <h5>Qty Discount<small>({{ combination_discount_percentage }}%)</small>: € {{ order.discount }}
+                            <h5>Qty Discount<small>({{ combination_discount_percentage }}%)</small>: €
+                                {{ order.discount }}
                             </h5>
                             {% else %}
                             <h5>Qty Discount: None</h5>
                             {% endif %}
+                            <h5>VAT:<small>({{ vat_percentage }}%)</small> € {{ order.vat|floatformat:2 }}</h5>
                             <hr>
                             <h3 class="mt-4"><strong>Net total: € {{ order.net_total }}</strong></h3>
                         </td>
@@ -143,7 +145,5 @@
         </div>
     </div>
 </div>
-<script src="{% static 'js/quantity_input_scripts.js' %}"></script>
-<script src="{% static 'js/update_and_remove_scripts.js' %}"></script>
 
 {% endblock %}

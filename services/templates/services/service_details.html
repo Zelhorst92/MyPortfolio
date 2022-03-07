@@ -23,7 +23,7 @@
         <div class="col-12 col-md-5 offset-md-1 col-lg-4 offset-lg-2">
             <div class="mb-5 mt-md-5">
                 <p class="mb-0">{{ service.name }}</p>
-                <p class="lead mb-0 text-end font-weight-bold">${{ service.price }}</p>
+                <p class="lead mb-0 text-end font-weight-bold">€{{ service.price }}</p>
                 <p class="mt-3">{{ service.description }}</p>
                 <form class="form" action="{% url 'add_to_cart' service.id %}" method="POST">
                     {% csrf_token %}

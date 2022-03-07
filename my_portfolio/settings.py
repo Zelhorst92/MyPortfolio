@@ -182,7 +182,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Misc values
 COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
     "COMBINATION_DISCOUNT_PERCENTAGE"))
-VAT = int(os.environ.get("VAT"))
+VAT_PERCENTAGE = int(os.environ.get("VAT_PERCENTAGE"))
 
 STRIPE_CURRENCY = "eur"
 STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "")
