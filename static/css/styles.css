@@ -56,6 +56,31 @@ body {
     background-color: inherit;
 }
 
+/* - - - - - Allauth - - - - - */
+
+.authentication-container {
+    height: 100vh;
+    min-height: 100vh;
+    margin-top: -6rem;
+    background: url(../images/landing-cover.jpg);
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding: 0 !important;
+    max-width: 100%;
+    color: #FFFFFF;
+    font-size: 2rem;
+    position: relative;
+}
+
+.allauth-form-wrapper {
+    background-color: rgba(25, 25, 25, 0.8);
+    border: 1px solid #33435A;
+    border-radius: 1rem;
+    text-align: center;
+    padding: 2rem;
+}
+
 /* - - - - - Toasts - - - - - */
 
 .message-container {
@@ -88,7 +113,7 @@ body {
 #herosection {
     height: 100vh;
     min-height: 100vh;
-    margin-top: -5rem;
+    margin-top: -6rem;
     background-color: #191919;
     background: url(../images/landing-cover.jpg);
     background-attachment: fixed;
@@ -112,7 +137,6 @@ body {
     text-align: center;
     min-height: 25rem;
     margin: 25vh auto auto auto;
-
 }
 
 .link-icon-container {
@@ -331,6 +355,7 @@ body {
 	width: 80%;
 	background-image: linear-gradient(to right, transparent, #191919, transparent);
 }
+
 
 
 @media screen and (min-width: 992px) {
