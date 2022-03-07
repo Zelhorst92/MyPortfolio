@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'profile/css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/dashboard.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -10,24 +10,39 @@
     <div class="row">
         <div class="col">
             <hr>
-            <h2 class="logo-font mb-4">Welcome to your dashboard {{ profile }}</h2>
+            <h2 class="mb-4">Welcome to your dashboard {{ profile }}</h2>
             <hr>
         </div>
     </div>
 
     <div class="row">
+        <div class="col-12 col-lg-6 p-3">
+            <h4 class="text-muted">{{ profile }}'s Contact Information</h4>
+            <hr>
+            <form class="mt-3" action="{% url 'profile' %}" method="post" id="profile-update-form">
+                {% csrf_token %}
+                {{form|crispy }}
+                <button class="btn btn-primary text-uppercase">Update your Information</button>
+            </form>
+        </div>
+        <div class="col-12 col-lg-6 p-3">
+            <h4 class="text-muted">{{ profile }}'s Order History</h4>
+            <hr>
+            {{ orders }}
+        </div>
     </div>
 </div>
 
-<div id="loading-overlay">
+<!-- <div id="loading-overlay">
     <h1 class="processing-animation">
         <span class="mb-5">
             <i class="fas fa-5x fa-cog fa-spin"></i>
         </span>
     </h1>
-</div>
+</div> -->
 {% endblock %}
 
 {% block postloadjs %}
-
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
