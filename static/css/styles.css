@@ -81,6 +81,23 @@ body {
     padding: 2rem;
 }
 
+.allauth-form-inner-content input {
+	font-size: 1.6rem!important;
+}
+
+.allauth-form-inner-content input[type="checkbox"],
+.allauth-form-inner-content h4 {
+    padding-top: 1rem;
+}
+
+.allauth-form-inner-content span {
+    display: none;
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
 /* - - - - - Toasts - - - - - */
 
 .message-container {
