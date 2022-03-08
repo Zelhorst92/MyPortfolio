@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Skill, Category, PreviousProject
+from .models import Skill, Category, PreviousProject, AboutUser
 
 # Register your models here.
 
@@ -32,6 +32,15 @@ class PreviousProjectAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
+class AboutUserAdmin(admin.ModelAdmin):
+    list_display = (
+    'full_name',
+    'profession',
+    )
+
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(PreviousProject, PreviousProjectAdmin)
+admin.site.register(AboutUser, AboutUserAdmin)
