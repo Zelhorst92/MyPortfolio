@@ -13,14 +13,14 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ServiceAdmin(admin.ModelAdmin):
     list_display = (
-        'sku',
+        'id',
         'name',
         'category',
         'price',
         'image',
     )
 
-    ordering = ('sku',)
+    ordering = ('id',)
 
 
 admin.site.register(Category, CategoryAdmin)
