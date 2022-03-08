@@ -1,10 +1,9 @@
-.form-input {
+.form-input,
+.input-group-text {
     font-size: 1.6rem;
     box-sizing: border-box;
-    border: 1px solid transparent;
-    border-radius: 0px;
+    border-radius: 0px!important;
     border: 1px solid black !important;
-    background-color: #FFF !important;
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
@@ -24,9 +23,16 @@ textarea {
 
 .form-control {
     border: 1px solid #000000;
+    border-radius: 0!important;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
 }
 
 .form-check-input {
     width:1.4rem!important;
     height:1.4rem!important;
+}
+
+.text-break a {
+    color: #000000;
+    font-size: 1.6rem;
 }
