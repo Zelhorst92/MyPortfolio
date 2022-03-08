@@ -181,6 +181,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Misc values
+DEFAULT_FROM_EMAIL = 'robert.l.zelhorst.services@myportfolio.com'
+
 COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
     "COMBINATION_DISCOUNT_PERCENTAGE"))
 VAT_PERCENTAGE = int(os.environ.get("VAT_PERCENTAGE"))

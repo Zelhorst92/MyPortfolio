@@ -1,0 +1,35 @@
+This is an confirmation email for order {{ order.order_number }}, under the name of {{ order.full_name }}.
+
+Below is the order information.
+
+Order details:
+
+Order: {{ order.order_number }}
+Date: {{ order.date }}
+
+Order Total: &euro; {{ order.order_total }}
+{% if order.discount %}
+Combination Discount({{ combination_discount_percentage }}%): &euro;{{ order.discount }}
+{% else %}
+Combination Discount: None
+{% endif %}
+VAT:({{ vat_percentage }}%): &euro; {{ order.vat }}
+Net total: &euro;€ {{ order.net_total }}
+
+Contact details:
+
+Name: {{ order.full_name }}
+Email: {{ order.email }}
+Phone number: {{ order.phone_number }}
+City: {{ order.town_or_city }}
+Country: {{ order.country }}
+
+Thank you for your order.
+You will be contacted soon to make an appointment to set out the development plan of your bought product.
+
+If you have any questions, you can also contact me at {{ contact_email }} or (my phone number.)
+
+Kind regards,
+
+Robert.
+
