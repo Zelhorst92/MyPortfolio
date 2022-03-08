@@ -18,6 +18,7 @@ class ServiceAdmin(admin.ModelAdmin):
         'category',
         'price',
         'image',
+        'hidden',
     )
 
     ordering = ('id',)
