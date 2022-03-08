@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <a href="{% url 'home' %}#servicessection" class="btn btn-primary mt-5">
+                            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary mt-5">
                                 <span>
                                     <i class="fas fa-chevron-left"></i>
                                 </span>

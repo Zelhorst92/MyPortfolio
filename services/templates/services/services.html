@@ -2,46 +2,76 @@
 {% load static %}
 
 {% block content %}
-<div class="container" >
+<div class="container mb-2">
     <div class="row">
-        <h4>
-            <a href="{% url 'home' %}" class="btn btn-lg rounded-0 text-uppercase py-3" style="margin-top: 5rem;">Back</a>
-        </h4>
-    </div>
-    <div class="row">
-        <h1>My Services:</h1>
-    </div>
-    <div class="row">
-
-        {% for service in services %}
-        <div class="col-sm-6 col-md-6 col-lg-4 card-container">
-            <div class="card" style="width: 25rem;">
-                <div class="card-header">{{ service.name }}</div>
-                {% if service.image %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
-                </a>
-                {% else %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ service.name }}">
-                </a>
-                {% endif %}
-                <div class="card-body">
-                    <p class="card-text">{{ service.description }}</p>
-                </div>
-                <div class="card-footer container">
-                    <div class="row">
-                        <p class="col-6 lead mb-0 text-left font-weight-bold">€{{ service.price }}</p>
-                        <a href="#" class="col-6 btn btn-primary">Add to cart</a>
-                    </div>
-                </div>
-            </div>
+        <div class="col">
+            <hr>
+                <h2 class="logo-font mb-4">Services List</h2>
+            <hr>
         </div>
-        {% endfor %}
     </div>
-
-
+    <div class="row">
+        <div class="col-10">
+            {% if services %}
+            <div class="table-responsive rounded">
+                <table class="table table-borderless table-hover">
+                    <thead style="background-color: #191919;">
+                        <tr>
+                            <th scope="col" class="ps-sm-5">Id</th>
+                            <th scope="col">Service</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Hidden</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    {% for service in services %}
+                    <tr>
+                        <td class="py-3 ps-sm-5" scope="row">
+                            <p class="my-0">{{ service.id }}</p>
+                        </td>
+                        <td class="py-3" >
+                            <p class="my-0">{{ service.name }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">€{{ service.price }}</p>
+                        </td>
+                        <td class="py-3">
+                            {% if service.hidden %}
+                                <p>Yes</p>
+                                <!-- <i class="fas fa-sm fa-check-circle"></i> -->
+                            {% else %}
+                                <p>No</p>
+                                <!-- <i class="fas fa-sm fa-times-circle"></i> -->
+                            {% endif %}
+                        </td>
+                        <td class="py-3">
+                            <a href="{% url 'service_details' service.id %}" class="btn btn-primary">View</a>
+                            <a href="" class="btn btn-secondary">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <span class="float-start">
+                    <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 btn-lg">
+                        <span>
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back to dashboard</span>
+                    </a>
+                </span>
+            </div>
+            {% else %}
+            <p class="lead mb-5">There are no services to show.</p>
+            <a href="#" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Back to daschboard</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
 </div>
-
 
 {% endblock %}
