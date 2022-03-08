@@ -3,190 +3,191 @@
 {% load pagination_tags %}
 
 {% block content %}
-<section id="herosection" class="pagesection container">
-    <div class="row">
-        <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 ">
-            <div class="row justify-content-center ">
-                <div class="col-12 col-md-4 pt-md-5 image-container">
-                    <img class="profile-image img-fluid" src="static/images/profile-picture-robert.jpg"
-                        alt="Picture of Me">
-                </div>
-                <div class="col-12 col-md-8 name-container">
-                    <h1 class="pt-md-5">Robert L. Zelhorst</h1>
-                    <h4>Full Stack Web Developer</h4>
-                    <div class="link-icon-container pt-md-4">
-                        <a href="" class="link-icon"><i class="fab fa-github-square"></i></a>
-                        <a href="" class="link-icon"><i class="fab fa-facebook-square"></i></a>
-                        <a href="" class="link-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="" class="link-icon"><i class="fab fa-twitter-square"></i></a>
+<div id="scrollspy-container" data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="35" tabindex="0">
+    <section id="herosection" class="pagesection container">
+        <div class="row">
+            <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 ">
+                <div class="row justify-content-center ">
+                    <div class="col-12 col-md-4 pt-md-5 image-container">
+                        <img class="profile-image img-fluid" src="static/images/profile-picture-robert.jpg"
+                            alt="Picture of Me">
+                    </div>
+                    <div class="col-12 col-md-8 name-container">
+                        <h1 class="pt-md-5">Robert L. Zelhorst</h1>
+                        <h4>Full Stack Web Developer</h4>
+                        <div class="link-icon-container pt-md-4">
+                            <a href="" class="link-icon"><i class="fab fa-github-square"></i></a>
+                            <a href="" class="link-icon"><i class="fab fa-facebook-square"></i></a>
+                            <a href="" class="link-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="" class="link-icon"><i class="fab fa-twitter-square"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="btn-container">
-                <a href="#" class="btn btn-main btn-select">Hire me</a>
-                <a href="#contactsection" class="btn btn-main btn-select">Contact me</a>
-            </div>
-        </div>
-        <i class="fas fa-arrow-alt-circle-down text arrow-down-icon"></i>
-    </div>
-
-
-</section>
-
-<section id="aboutsection" class="pagesection container">
-    <h1>About me</h1>
-    <div class="spacer"></div>
-    <div class="row">
-        <div class="col-12 col-md-8">
-            <p>I am Robert Zelhorst, living in the Netherlands, Overijsel. Currently I am working a delivery driver for
-                a
-                supplychain that supplies restaurants.</p>
-            <p>As of February 2021 I am studying Full Stack Web Development at the Code Institute. Here I learned an
-                introduction is several programming languages and frameworks. I quite enjoy thinking about and creating
-                a
-                good functioning webapplication. And I am ready to learn a lot more.</p>
-            <p>I am quite the DIYer, I really enjoy discovering how something works. I like the occasional game, book or
-                movie.</p>
-        </div>
-        <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div class="image-container">
-                <img class="img-fluid about-image" src="static/images/profile-picture-robert.jpg" alt="">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="skillssection" class="pagesection container">
-    <div class="spacer"></div>
-    <h1 class="section-header">My Skills</h1>
-    <div class="row">
-        {% for skill in skills %}
-        {% if skill.image_url %}
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-        </div>
-        {% elif skill.image %}
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
-        </div>
-        {% else %}
-        <div class="col-6 col-md-4 col-lg-3">
-            <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-        </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-</section>
-
-<section id="servicessection" class="pagesection container-fluid justify-content-center">
-    <div class="spacer"></div>
-    <h1>My Services</h1>
-    <div class="spacer"></div>
-    <div class="row">
-        {% for service in page.object_list %}
-        <div class="col-12 col-sm-6 col-lg-4 card-container d-flex justify-content-center">
-            <div class="card">
-                <div class="card-header">{{ service.name }}</div>
-                {% if service.image %}
-                <a href="{% url 'service_details' service.id %}">
-                    <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
-                </a>
-                {% else %}
-                <a href="{% url 'service_details' service.id %}">
-                    <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
-                </a>
-                {% endif %}
-                <div class="card-body">
-                    <p class="card-text">{{ service.description }}</p>
+                <div class="btn-container">
+                    <a href="#" class="btn btn-main btn-select">Hire me</a>
+                    <a href="#contactsection" class="btn btn-main btn-select">Contact me</a>
                 </div>
-                <div class="card-footer">
-                    <div class="justify-content-end">
-                        <p>€{{ service.price }}</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <a href="{% url 'service_details' service.id %}" class="btn btn-success">View Details</a>
-                        <!-- <a href="#" class="btn btn-success">Add to cart</a> -->
-                    </div>
+            </div>
+            <i class="fas fa-arrow-alt-circle-down text arrow-down-icon"></i>
+        </div>
+
+
+    </section>
+
+    <section id="aboutsection" class="pagesection container">
+        <div class="spacer"></div>
+        <h1>About me</h1>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <p>I am Robert Zelhorst, living in the Netherlands, Overijsel. Currently I am working a delivery driver for
+                    a
+                    supplychain that supplies restaurants.</p>
+                <p>As of February 2021 I am studying Full Stack Web Development at the Code Institute. Here I learned an
+                    introduction is several programming languages and frameworks. I quite enjoy thinking about and creating
+                    a
+                    good functioning webapplication. And I am ready to learn a lot more.</p>
+                <p>I am quite the DIYer, I really enjoy discovering how something works. I like the occasional game, book or
+                    movie.</p>
+            </div>
+            <div class="col-12 col-md-4 d-flex justify-content-center">
+                <div class="image-container">
+                    <img class="img-fluid about-image" src="static/images/profile-picture-robert.jpg" alt="">
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
-    <div class="page-links">
-        <ul class="pagination pagination-lg justify-content-center">
-            {% if page.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">&laquo;</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">{{ page.previous_page_number }}</a>
-            </li>
+    </section>
+
+    <section id="skillssection" class="pagesection container">
+        <div class="spacer"></div>
+        <h1 class="section-header">My Skills</h1>
+        <div class="row">
+            {% for skill in skills %}
+            {% if skill.image_url %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+            </div>
+            {% elif skill.image %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+            </div>
             {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="">&laquo;</a>
-            </li>
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+            </div>
             {% endif %}
-            <li class="page-item active">
-                <div class="page-link">{{ page.number }}</div>
-            </li>
-            {% if page.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">{{ page.next_page_number }}</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">&raquo;</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="">&raquo;</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</section>
-
-<section id="gallerysection" class="pagesection container">
-    <h1>My previous projects:</h1>
-    <div class="spacer"></div>
-    <div class="slideshow-container row">
-        <div class="col-1">
-            <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-arrow-left"></i></a>
+            {% endfor %}
         </div>
-        <div class="col-10">
-            {% for project in PreviousProjects %}
-            <div class="fader gallery-slide {% if forloop.counter == 1 %}active-slide{% endif %}">
-                <div class="numbertext">{{ forloop.counter }}.{{ project.name }}</div>
-                <img class="gallery-image" src="{{ project.image.url }}">
+    </section>
+
+    <section id="servicessection" class="pagesection container-fluid justify-content-center">
+        <div class="spacer"></div>
+        <h1>My Services</h1>
+        <div class="spacer"></div>
+        <div class="row">
+            {% for service in page.object_list %}
+            <div class="col-12 col-sm-6 col-lg-4 card-container d-flex justify-content-center">
+                <div class="card">
+                    <div class="card-header">{{ service.name }}</div>
+                    {% if service.image %}
+                    <a href="{% url 'service_details' service.id %}">
+                        <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'service_details' service.id %}">
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
+                    </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="justify-content-end">
+                            <p>€{{ service.price }}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'service_details' service.id %}" class="btn btn-success">View Details</a>
+                            <!-- <a href="#" class="btn btn-success">Add to cart</a> -->
+                        </div>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
-        <div class="col-1">
-            <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></a>
+        <div class="page-links">
+            <ul class="pagination pagination-lg justify-content-center">
+                {% if page.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">&laquo;</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">{{ page.previous_page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="">&laquo;</a>
+                </li>
+                {% endif %}
+                <li class="page-item active">
+                    <div class="page-link">{{ page.number }}</div>
+                </li>
+                {% if page.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">{{ page.next_page_number }}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">&raquo;</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="">&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
-    </div>
-    <div class="dot-container">
-        {% for project in PreviousProjects %}
-        <span class="dot {% if forloop.counter == 1 %}active{% endif %}" onclick="currentSlide(1)"></span>
-        {% endfor %}
-    </div>
-</section>
+    </section>
 
-<section id="contactsection" class="pagesection container">
-    <h1>Contact Me</h1>
+    <section id="gallerysection" class="pagesection container">
+        <div class="spacer"></div>
+        <h1>My previous projects:</h1>
+        <div class="slideshow-container row">
+            <div class="col-1">
+                <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <div class="col-10">
+                {% for project in PreviousProjects %}
+                <div class="fader gallery-slide {% if forloop.counter == 1 %}active-slide{% endif %}">
+                    <div class="numbertext">{{ forloop.counter }}.{{ project.name }}</div>
+                    <img class="gallery-image" src="{{ project.image.url }}">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-1">
+                <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="dot-container">
+            {% for project in PreviousProjects %}
+            <span class="dot {% if forloop.counter == 1 %}active{% endif %}" onclick="currentSlide(1)"></span>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="contactsection" class="pagesection container">
+        <div class="spacer"></div>
+        <h1>Contact Me</h1>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+    </section>
     <div class="spacer"></div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-</section>
-<div class="spacer"></div>
-
+</div>
 {% endblock %}
