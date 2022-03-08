@@ -1,0 +1,31 @@
+.form-input {
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-color: #FFF !important;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.form-input:not(textarea) {
+    height: 4rem;
+}
+
+textarea {
+    height:10rem;
+}
+
+.form-select {
+    padding: 0 0 0 1rem;
+}
+
+.form-control {
+    border: 1px solid #000000;
+}
+
+.form-check-input {
+    width:1.4rem!important;
+    height:1.4rem!important;
+}

@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container mb-2">
     <div class="row">
         <div class="col">
             <hr>
-                <h2 class="logo-font mb-4">Services List</h2>
+                <h2 class="mb-4">Services List</h2>
             <hr>
         </div>
     </div>
     <div class="row">
-        <div class="col-10">
+        <div class="col">
             {% if services %}
             <div class="table-responsive rounded">
                 <table class="table table-borderless table-hover">
@@ -52,7 +56,7 @@
                     </tr>
                     {% endfor %}
                 </table>
-                <span class="float-start">
+                <span class="float-start mt-3">
                     <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 btn-lg">
                         <span>
                             <i class="fas fa-chevron-left"></i>
@@ -60,7 +64,7 @@
                         <span class="text-uppercase">Back to dashboard</span>
                     </a>
                 </span>
-                <span class="float-end">
+                <span class="float-end mt-3">
                     <a href="{% url 'add_service' %}" class="btn btn-success rounded-0 btn-lg">
                         <span class="text-uppercase">Add Service</span>
                         <span>
