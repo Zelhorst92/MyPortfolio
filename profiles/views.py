@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -49,3 +49,13 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def site_manager(request):
+    """Display the site management dashboard"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You have no permission to view this.')
+        return redirect(reverse('home'))
+
+    return render(request, 'profiles/sitemanager.html')

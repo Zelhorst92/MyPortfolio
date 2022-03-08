@@ -57,11 +57,11 @@
                     {% endfor %}
                 </table>
                 <span class="float-start mt-3">
-                    <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0 btn-lg">
+                    <a href="{% url 'site_manager' %}" class="btn btn-primary rounded-0 btn-lg">
                         <span>
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="text-uppercase">Back to dashboard</span>
+                        <span class="text-uppercase">Back to Admin Panel</span>
                     </a>
                 </span>
                 <span class="float-end mt-3">
@@ -75,11 +75,11 @@
             </div>
             {% else %}
             <p class="lead mb-5">There are no services to show.</p>
-            <a href="#" class="btn btn-outline-black rounded-0 btn-lg">
+            <a href="{% url 'site_manager' %}" class="btn btn-outline-black rounded-0 btn-lg">
                 <span class="icon">
                     <i class="fas fa-chevron-left"></i>
                 </span>
-                <span class="text-uppercase">Back to daschboard</span>
+                <span class="text-uppercase">Back to Admin Panel</span>
             </a>
             {% endif %}
         </div>
