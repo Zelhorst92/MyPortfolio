@@ -36,15 +36,41 @@ def add_service(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Service succesfully added!')
-            return redirect(reverse('add_service'))
+            return redirect(reverse('services'))
         else:
-            messages.error(request, 'Failed to add service. Are all required fields filled in correctly?')
+            messages.error(request, 'Failed to add service. \
+                Are all fields filled in correctly?')
     else:
         form = ServiceForm()
 
     template = 'services/add_service.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_service(request, service_id):
+    """Edit a service"""
+    service = get_object_or_404(Service, pk=service_id)
+    if request.method == 'POST':
+        form = ServiceForm(request.POST, request.FILES, instance=service)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Service successfully edited!')
+            return redirect(reverse('services'))
+        else:
+            messages.error(request, 'Failed to edit service. \
+                Are all fields filled in correctly?')
+    else:
+        form = ServiceForm(instance=service)
+        messages.info(request, f'You are editing service {service.name}')
+
+    template = 'services/edit_service.html'
+    context = {
+        'form': form,
+        'service': service,
     }
 
     return render(request, template, context)

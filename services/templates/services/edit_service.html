@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="mb-4">Site Management</h2>
+            <hr>
+            <h4 class="logo-font mb-4">Edit service</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 order-lg-last mb-5">
+            <p>You can submit a service without an image and image URL. It will default to no-image.</p>
+        </div>
+
+        <div class="col-12 col-lg-6 gx-5">
+            <form method="POST" action="{% url 'edit_service' service.id %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="submit-button text-end mt-3 mb-2">
+                    <a href="{% url 'services' %}" class="btn btn-primary rounded-0 float-start mt-3">
+                        <span>
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="font-weight-bold">Back</span>
+                    </a>
+                    <button id="submit-button" class="btn btn-success rounded-0 mt-3">
+                        <span class="font-weight-bold">Update Service</span>
+                        <span>
+                            <i class="fas fa-share-square"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <div id="loading-overlay">
+    <h1 class="processing-animation">
+        <span class="mb-5">
+            <i class="fas fa-5x fa-cog fa-spin"></i>
+        </span>
+    </h1>
+</div> -->
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}
