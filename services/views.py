@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 from .models import Service
 from .forms import ServiceForm
 
@@ -30,7 +31,17 @@ def service_details(request, service_id):
 
 def add_service(request):
     """Add a service"""
-    form = ServiceForm()
+    if request.method == 'POST':
+        form = ServiceForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Service succesfully added!')
+            return redirect(reverse('add_service'))
+        else:
+            messages.error(request, 'Failed to add service. Are all required fields filled in correctly?')
+    else:
+        form = ServiceForm()
+
     template = 'services/add_service.html'
     context = {
         'form': form,
