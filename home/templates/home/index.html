@@ -10,8 +10,11 @@
             <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 ">
                 <div class="row justify-content-center ">
                     <div class="col-12 col-md-4 pt-md-5 image-container">
-                        <img class="profile-image img-fluid" src="static/images/profile-picture-robert.jpg"
-                            alt="Picture of Me">
+                        {% if item.hero_image %}
+                        <img class="img-fluid profile-image" src="{{ item.hero_image.url }}" alt="Picture of {{ item.full_name }}">
+                        {% else %}
+                        <img class="img-fluid profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
+                        {% endif %}
                     </div>
                     <div class="col-12 col-md-8 name-container">
                         <h1 class="pt-md-5">{{ item.full_name }}</h1>
@@ -37,16 +40,20 @@
         <div class="spacer"></div>
         <h1>About me</h1>
         <div class="row">
-            
             <div class="col-12 col-md-8">
-                <p>{{ item.about_entry_one }}</p>
-                <p>{{ item.about_entry_two }}</p>
-                <p>{{ item.about_entry_three }}</p>
+                {% if item.about_entry_one or item.about_entry_two or item.about_entry_three %}
+                    <p>{{ item.about_entry_one }}</p>
+                    <p>{{ item.about_entry_two }}</p>
+                    <p>{{ item.about_entry_three }}</p>
+                {% else %}
+                    <p>User has not entered any bio.</p>
+                {% endif %}
             </div>
+            
             <div class="col-12 col-md-4 d-flex justify-content-center">
                 <div class="image-container">
                     {% if item.about_image %}
-                        <img class="img-fluid about-image" src="{{ item.about_image.url }}" alt="{{ item.full_name }}">
+                        <img class="img-fluid about-image" src="{{ item.about_image.url }}" alt="Picture of {{ item.full_name }}">
                     {% else %}
                         <img class="img-fluid about-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                     {% endif %}
