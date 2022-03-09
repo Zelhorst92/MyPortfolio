@@ -24,7 +24,7 @@ class AboutUser(models.Model):
     facebook_link = models.URLField(max_length=254, null=True, blank=True)
     linkedin_link = models.URLField(max_length=254, null=True, blank=True)
     twitter_link = models.URLField(max_length=254, null=True, blank=True)
-    about_entry_one = models.TextField(max_length=254, null=True, blank=True)
+    about_entry_one = models.TextField(max_length=254)
     about_entry_two = models.TextField(max_length=254, null=True, blank=True)
     about_entry_three = models.TextField(max_length=254, null=True, blank=True)
     hero_image_url = models.URLField(max_length=1024, null=True, blank=True)
