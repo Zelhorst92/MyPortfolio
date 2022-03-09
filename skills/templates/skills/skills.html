@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mb-2">
+    <div class="row" style="margin-top:6rem;">
+        <div class="col">
+            <hr>
+                <h2 class="mb-4">Skills List</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if skills %}
+            <div class="table-responsive rounded">
+                <table class="table table-borderless table-hover">
+                    <thead style="background-color: #191919;">
+                        <tr>
+                            <th scope="col" class="ps-sm-5">Id</th>
+                            <th scope="col">Skill Name</th>
+                            <th scope="col">Image/Image URL</th>
+                            <th scope="col">Hidden</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    {% for skill in skills %}
+                    <tr>
+                        <td class="py-3 ps-sm-5" scope="row">
+                            <p class="my-0">{{ skill.id }}</p>
+                        </td>
+                        <td class="py-3" >
+                            <p class="my-0">{{ skill.name }}</p>
+                        </td>
+                        <td class="py-3">
+                            {% if skill.image %}
+                                <p>Image</p>
+                                <!-- <i class="fas fa-sm fa-check-circle"></i> -->
+                            {% elif skill.image_url %}
+                                <p>Image URL</p>
+                            {% else %}
+                                <p>None</p>
+                                <!-- <i class="fas fa-sm fa-times-circle"></i> -->
+                            {% endif %}
+                        </td>
+                        <td class="py-3">
+                            {% if skill.hidden %}
+                                <p>Yes</p>
+                                <!-- <i class="fas fa-sm fa-check-circle"></i> -->
+                            {% else %}
+                                <p>No</p>
+                                <!-- <i class="fas fa-sm fa-times-circle"></i> -->
+                            {% endif %}
+                        </td>
+                        <td class="py-3">
+                            <a href="{% url 'edit_skill' skill.id %}" class="btn btn-secondary">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <span class="float-start mt-3">
+                    <a href="{% url 'site_manager' %}" class="btn btn-primary rounded-0 btn-lg">
+                        <span>
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back to Admin Panel</span>
+                    </a>
+                </span>
+                <span class="float-end mt-3">
+                    <a href="{% url 'add_skill'%}" class="btn btn-success rounded-0 btn-lg">
+                        <span class="text-uppercase">Add Skill</span>
+                        <span>
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </a>
+                </span>
+            </div>
+            {% else %}
+            <p class="lead mb-5">There are no skills to show.</p>
+            <a href="{% url 'site_manager' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Back to Admin Panel</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
