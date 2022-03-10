@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mx-4">
+        <div class="col">
+            <hr>
+            <h2 class="mb-4">Site Management</h2>
+            <hr>
+            <h4 class="mb-4">Add a service</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6 order-lg-last mb-5 mx-4">
+            <p>You can submit a service without an image and image URL. It will default to no-image.</p>
+        </div>
+
+        <div class="col-12 col-lg-6 gx-5">
+            <form method="POST" action="{% url 'add_service' %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-end mt-3 mb-2">
+                    <a href="{% url 'services' %}" class="btn btn-primary rounded-0 float-start mt-3">
+                        <span>
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="font-weight-bold">Back</span>
+                    </a>
+                    <button id="submit-button" class="btn btn-success rounded-0 mt-3">
+                        <span class="font-weight-bold">Add Service</span>
+                        <span>
+                            <i class="fas fa-share-square"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

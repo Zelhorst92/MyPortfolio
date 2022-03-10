@@ -5,7 +5,8 @@ from django.core.paginator import Paginator
 
 from services.models import Service
 from skills.models import Skill
-from .models import AboutUser, PreviousProject
+from projects.models import PreviousProject
+from .models import AboutUser
 from .forms import AboutForm, ContactForm
 
 from django.core.mail import send_mail, BadHeaderError
