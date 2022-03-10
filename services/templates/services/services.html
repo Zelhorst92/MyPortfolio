@@ -51,9 +51,11 @@
                         <td class="py-3">
                             <a href="{% url 'service_details' service.id %}" class="btn btn-primary">View</a>
                             <a href="{% url 'edit_service' service.id %}" class="btn btn-secondary">Edit</a>
-                            <a href="{% url 'delete_service' service.id %}" class="btn btn-danger">Delete</a>
+                            <a href="#ConfirmModal{{service.id}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal">Delete</a>
                         </td>
                     </tr>
+                    <!-- Include Confirmation Modal -->
+                    {% include 'services/includes/modal.html' %}
                     {% endfor %}
                 </table>
                 <span class="float-start mt-3">

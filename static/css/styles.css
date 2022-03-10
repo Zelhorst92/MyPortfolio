@@ -126,6 +126,16 @@ body {
     font-size: 1.5rem;
 }
 
+/* - - - - - Confirm Modal - - - - - */
+
+.modal-dialog {
+    margin-top: 5rem;
+}
+
+.modal-footer {
+    display: block!important;
+}
+
 /* - - - - - Landing Page - - - - - */
 .row {
     --bs-gutter-x: 0;

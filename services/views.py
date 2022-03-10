@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from .models import Service
 from .forms import ServiceForm
 
@@ -98,7 +99,11 @@ def delete_service(request, service_id):
     if not request.user.is_superuser:
         messages.error(request, 'You have no permission to do that.')
         return redirect(reverse('home'))
-
-    service = get_object_or_404(Service, pk=service_id)
-    service.delete()
-    messages.success(request, 'Service successfully deleted!')
+    try:
+        service = get_object_or_404(Service, pk=service_id)
+        service.delete()
+        messages.success(request, 'Service successfully deleted!')
+        return redirect(reverse('services'))
+    except Exception as e:
+        messages.error(request, f'Something went terribly wrong; {e}')
+        return HttpResponse(content=e, status=400)
