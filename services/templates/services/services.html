@@ -77,12 +77,22 @@
             </div>
             {% else %}
             <p class="lead mb-5">There are no services to show.</p>
-            <a href="{% url 'site_manager' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
-                <span class="text-uppercase">Back to Admin Panel</span>
-            </a>
+            <span class="float-start mt-3">
+                <a href="{% url 'site_manager' %}" class="btn btn-primary rounded-0">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Back to Admin Panel</span>
+                </a>
+            </span>
+            <span class="float-end mt-3">
+                <a href="{% url 'add_service' %}" class="btn btn-success rounded-0">
+                    <span class="text-uppercase">Add Service</span>
+                    <span>
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                </a>
+            </span>
             {% endif %}
         </div>
     </div>
