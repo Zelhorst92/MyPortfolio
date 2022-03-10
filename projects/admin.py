@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import PreviousProject
+from .models import Project
 
 # Register your models here.
 
 
-class PreviousProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'description',
@@ -17,4 +17,4 @@ class PreviousProjectAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
-admin.site.register(PreviousProject, PreviousProjectAdmin)
+admin.site.register(Project, ProjectAdmin)

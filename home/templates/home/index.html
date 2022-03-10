@@ -188,7 +188,7 @@
             </div>
             <div class="col-10">
                 <div class="carousel-inner">
-                    {% for project in PreviousProjects %}
+                    {% for project in projects %}
                     <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
                         <h3 class="project-title">{{ project.id }}. {{ project.name }}</h3>
                             <div class="project-img-container">
@@ -201,7 +201,7 @@
                     {% endfor %}
                 </div>
                 <div class="carousel-indicators">
-                    {% for project in PreviousProjects %}
+                    {% for project in projects %}
                     <button type="button" data-bs-target="#carouselCaptions"
                         data-bs-slide-to="{{ forloop.counter0 }}"
                         class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true"

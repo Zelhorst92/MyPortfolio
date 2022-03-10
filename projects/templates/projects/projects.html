@@ -7,40 +7,48 @@
 
 {% block content %}
 <div class="container mb-2">
-    <div class="row">
+    <div class="row" style="margin-top:6rem;">
         <div class="col">
             <hr>
-                <h2 class="mb-4">Services List</h2>
+                <h2 class="mb-4">Project's List</h2>
             <hr>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            {% if services %}
+            {% if projects %}
             <div class="table-responsive rounded">
                 <table class="table table-borderless table-hover">
                     <thead style="background-color: #191919;">
                         <tr>
                             <th scope="col" class="ps-sm-5">Id</th>
-                            <th scope="col">Service</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Image/Image URL</th>
                             <th scope="col">Hidden</th>
                             <th scope="col">Edit</th>
                         </tr>
                     </thead>
-                    {% for service in services %}
+                    {% for project in projects %}
                     <tr>
                         <td class="py-3 ps-sm-5" scope="row">
-                            <p class="my-0">{{ service.id }}</p>
+                            <p class="my-0">{{ project.id }}</p>
                         </td>
                         <td class="py-3" >
-                            <p class="my-0">{{ service.name }}</p>
+                            <p class="my-0">{{ project.name }}</p>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">€{{ service.price }}</p>
+                            {% if project.image %}
+                                <p>Image</p>
+                                <!-- <i class="fas fa-sm fa-check-circle"></i> -->
+                            {% elif project.image_url %}
+                                <p>Image URL</p>
+                            {% else %}
+                                <p>None</p>
+                                <!-- <i class="fas fa-sm fa-times-circle"></i> -->
+                            {% endif %}
                         </td>
                         <td class="py-3">
-                            {% if service.hidden %}
+                            {% if project.hidden %}
                                 <p>Yes</p>
                                 <!-- <i class="fas fa-sm fa-check-circle"></i> -->
                             {% else %}
@@ -49,9 +57,8 @@
                             {% endif %}
                         </td>
                         <td class="py-3">
-                            <a href="{% url 'service_details' service.id %}" class="btn btn-primary">View</a>
-                            <a href="{% url 'edit_service' service.id %}" class="btn btn-secondary">Edit</a>
-                            <a href="{% url 'delete_service' service.id %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'edit_project' project.id %}" class="btn btn-secondary">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -65,8 +72,8 @@
                     </a>
                 </span>
                 <span class="float-end mt-3">
-                    <a href="{% url 'add_service' %}" class="btn btn-success rounded-0 btn-lg">
-                        <span class="text-uppercase">Add Service</span>
+                    <a href="{% url 'add_project'%}" class="btn btn-success rounded-0 btn-lg">
+                        <span class="text-uppercase">Add Project</span>
                         <span>
                             <i class="fas fa-chevron-right"></i>
                         </span>
@@ -74,7 +81,7 @@
                 </span>
             </div>
             {% else %}
-            <p class="lead mb-5">There are no services to show.</p>
+            <p class="lead mb-5">There are no projects to show.</p>
             <a href="{% url 'site_manager' %}" class="btn btn-outline-black rounded-0 btn-lg">
                 <span class="icon">
                     <i class="fas fa-chevron-left"></i>

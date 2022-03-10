@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 
 from services.models import Service
 from skills.models import Skill
-from projects.models import PreviousProject
+from projects.models import Project
 from .models import AboutUser
 from .forms import AboutForm, ContactForm
 
@@ -19,8 +19,8 @@ from django.http import HttpResponse
 def index(request):
     """View to return index page"""
     about_user = AboutUser.objects.all()
-    skills = skills = Skill.objects.all()
-    PreviousProjects = PreviousProject.objects.all()
+    skills = Skill.objects.all()
+    projects = Project.objects.all()
     services = Service.objects.get_queryset().order_by('id')
     service_paginator = Paginator(services, 3)
     page_number = request.GET.get('page')
@@ -28,7 +28,7 @@ def index(request):
 
     context = {
         'about_user': about_user,
-        'PreviousProjects': PreviousProjects,
+        'projects': projects,
         'services': services,
         'skills': skills,
         'service_paginator': service_paginator,
