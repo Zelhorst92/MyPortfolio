@@ -2,9 +2,14 @@
 {% load static %}
 {% load pagination_tags %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
+{% endblock %}
+
 {% block extra_js %}
 {{ block.super }}
-    <script src="{% static 'home/js/gallery.js' %}"></script>
+<script src="{% static 'home/js/gallery.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -16,7 +21,8 @@
                 <div class="row justify-content-center ">
                     <div class="col-12 col-md-4 pt-md-5 image-container">
                         {% if item.hero_image %}
-                        <img class="img-fluid profile-image" src="{{ item.hero_image.url }}" alt="Picture of {{ item.full_name }}">
+                        <img class="img-fluid profile-image" src="{{ item.hero_image.url }}"
+                            alt="Picture of {{ item.full_name }}">
                         {% else %}
                         <img class="img-fluid profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                         {% endif %}
@@ -25,10 +31,14 @@
                         <h1 class="pt-md-5">{{ item.full_name }}</h1>
                         <h4>{{ item.profession }}</h4>
                         <div class="link-icon-container pt-md-4">
-                            <a href="{{ item.github_link }}" target="_blank" class="link-icon"><i class="fab fa-github-square"></i></a>
-                            <a href="{{ item.facebook_link }}" target="_blank" class="link-icon"><i class="fab fa-facebook-square"></i></a>
-                            <a href="{{ item.linkedin_link }}" target="_blank" class="link-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="{{ item.twitter_link }}" target="_blank" class="link-icon"><i class="fab fa-twitter-square"></i></a>
+                            <a href="{{ item.github_link }}" target="_blank" class="link-icon"><i
+                                    class="fab fa-github-square"></i></a>
+                            <a href="{{ item.facebook_link }}" target="_blank" class="link-icon"><i
+                                    class="fab fa-facebook-square"></i></a>
+                            <a href="{{ item.linkedin_link }}" target="_blank" class="link-icon"><i
+                                    class="fab fa-linkedin"></i></a>
+                            <a href="{{ item.twitter_link }}" target="_blank" class="link-icon"><i
+                                    class="fab fa-twitter-square"></i></a>
                         </div>
                     </div>
                 </div>
@@ -47,46 +57,47 @@
         <div class="row">
             <div class="col-12 col-md-8">
                 {% if item.about_entry_one or item.about_entry_two or item.about_entry_three %}
-                    <p>{{ item.about_entry_one }}</p>
-                    <p>{{ item.about_entry_two }}</p>
-                    <p>{{ item.about_entry_three }}</p>
+                <p>{{ item.about_entry_one }}</p>
+                <p>{{ item.about_entry_two }}</p>
+                <p>{{ item.about_entry_three }}</p>
                 {% else %}
-                    <p>User has not entered any bio.</p>
+                <p>User has not entered any bio.</p>
                 {% endif %}
             </div>
-            
+
             <div class="col-12 col-md-4 d-flex justify-content-center">
                 <div class="image-container">
                     {% if item.about_image %}
-                        <img class="img-fluid about-image" src="{{ item.about_image.url }}" alt="Picture of {{ item.full_name }}">
+                    <img class="img-fluid about-image" src="{{ item.about_image.url }}"
+                        alt="Picture of {{ item.full_name }}">
                     {% else %}
-                        <img class="img-fluid about-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
+                    <img class="img-fluid about-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                     {% endif %}
                 </div>
             </div>
         </div>
     </section>
-{% endfor %}
+    {% endfor %}
     <section id="skillssection" class="pagesection container">
         <div class="spacer"></div>
         <h1 class="section-header">My Skills</h1>
         <div class="row">
             {% for skill in skills %}
-                {% if not skill.hidden %}
-                    {% if skill.image_url %}
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-                    </div>
-                    {% elif skill.image %}
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
-                    </div>
-                    {% else %}
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-                    </div>
-                    {% endif %}
-                {% endif %}
+            {% if not skill.hidden %}
+            {% if skill.image_url %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+            </div>
+            {% elif skill.image %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+            </div>
+            {% else %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+            </div>
+            {% endif %}
+            {% endif %}
             {% endfor %}
         </div>
     </section>
@@ -97,44 +108,46 @@
         <div class="spacer"></div>
         <div class="row">
             {% for service in page.object_list %}
-                {% if not service.hidden %}
-                    <div class="col-12 col-sm-6 col-lg-4 card-container d-flex justify-content-center">
-                        <div class="card">
-                            <div class="card-header">{{ service.name }}</div>
-                                {% if service.image %}
-                                    <a href="{% url 'service_details' service.id %}">
-                                        <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
-                                    </a>
-                                {% else %}
-                                    <a href="{% url 'service_details' service.id %}">
-                                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
-                                    </a>
-                                {% endif %}
-                            <div class="card-body">
-                                <p class="card-text">{{ service.description }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="justify-content-end">
-                                    <p>€{{ service.price }}</p>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <a href="{% url 'service_details' service.id %}" class="btn btn-success">View Details</a>
-                                    <!-- <a href="#" class="btn btn-success">Add to cart</a> -->
-                                </div>
-                            </div>
+            {% if not service.hidden %}
+            <div class="col-12 col-sm-6 col-lg-4 card-container d-flex justify-content-center">
+                <div class="card">
+                    <div class="card-header">{{ service.name }}</div>
+                    {% if service.image %}
+                    <a href="{% url 'service_details' service.id %}">
+                        <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'service_details' service.id %}">
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
+                    </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="justify-content-end">
+                            <p>€{{ service.price }}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'service_details' service.id %}" class="btn btn-success">View Details</a>
+                            <!-- <a href="#" class="btn btn-success">Add to cart</a> -->
                         </div>
                     </div>
-                {% endif %}
+                </div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
         <div class="page-links">
             <ul class="pagination pagination-lg justify-content-center">
                 {% if page.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">&laquo;</a>
+                    <a class="page-link"
+                        href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">&laquo;</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">{{ page.previous_page_number }}</a>
+                    <a class="page-link"
+                        href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">{{ page.previous_page_number }}</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
@@ -146,10 +159,12 @@
                 </li>
                 {% if page.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">{{ page.next_page_number }}</a>
+                    <a class="page-link"
+                        href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">{{ page.next_page_number }}</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">&raquo;</a>
+                    <a class="page-link"
+                        href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">&raquo;</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
@@ -160,29 +175,47 @@
         </div>
     </section>
 
-    <section id="gallerysection" class="pagesection container">
-        <div class="spacer"></div>
+    <section id="gallery" class="pagesection container-fluid">
+
         <h1>My previous projects:</h1>
-        <div class="slideshow-container row">
+
+        <div id="carouselCaptions" class="carousel slide row" data-bs-ride="carousel">
             <div class="col-1">
-                <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-arrow-left"></i></a>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions"
+                    data-bs-slide="prev">
+                    <span class="control-icon" aria-hidden="true" aria-label="previous"><i class="fas fa-angle-left"></i></span>
+                </button>
             </div>
             <div class="col-10">
-                {% for project in PreviousProjects %}
-                <div class="fader gallery-slide {% if forloop.counter == 1 %}active-slide{% endif %}">
-                    <div class="numbertext">{{ forloop.counter }}.{{ project.name }}</div>
-                    <img class="gallery-image" src="{{ project.image.url }}">
+                <div class="carousel-inner">
+                    {% for project in PreviousProjects %}
+                    <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                        <h3 class="project-title">{{ project.id }}. {{ project.name }}</h3>
+                            <div class="project-img-container">
+                                <img src=" {{ project.image.url }}" class="d-block project-img"
+                                    alt="{{ project.name }}">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <div class="carousel-indicators">
+                    {% for project in PreviousProjects %}
+                    <button type="button" data-bs-target="#carouselCaptions"
+                        data-bs-slide-to="{{ forloop.counter0 }}"
+                        class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true"
+                        aria-label="Slide {{ forloop.counter }}">
+                    </button>
+                    {% endfor %}
+                </div>
             </div>
             <div class="col-1">
-                <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></a>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions"
+                    data-bs-slide="next">
+                    <span class="control-icon" aria-hidden="true" aria-label="next"><i class="fas fa-angle-right"></i></span>
+                </button>
             </div>
-        </div>
-        <div class="dot-container">
-            {% for project in PreviousProjects %}
-            <span class="dot {% if forloop.counter == 1 %}active{% endif %}" onclick="currentSlide(1)"></span>
-            {% endfor %}
         </div>
     </section>
 
@@ -204,4 +237,8 @@
     </section>
     <div class="spacer"></div>
 </div>
+
+
+
+
 {% endblock %}
