@@ -2,6 +2,11 @@
 {% load static %}
 {% load pagination_tags %}
 
+{% block extra_js %}
+{{ block.super }}
+    <script src="{% static 'home/js/gallery.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div id="scrollspy-container" data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="0" tabindex="0">
     {% for item in about_user %}
