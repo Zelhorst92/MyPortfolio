@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from .models import Skill
 from .forms import SkillForm
 
@@ -77,3 +78,19 @@ def edit_skill(request, skill_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_skill(request, skill_id):
+    """Delete a skill"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You have no permission to do that.')
+        return redirect(reverse('home'))
+    try:
+        skill = get_object_or_404(Skill, pk=skill_id)
+        skill.delete()
+        messages.success(request, 'Skill successfully deleted!')
+        return redirect(reverse('skills'))
+    except Exception as e:
+        messages.error(request, f'Something went terribly wrong; {e}')
+        return HttpResponse(content=e, status=400)

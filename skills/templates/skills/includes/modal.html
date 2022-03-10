@@ -1,0 +1,19 @@
+
+<div class="modal fade" id="ConfirmModal" tabindex="-1" aria-labelledby="ConfirmModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="ConfirmModalLabel">Delete Skill?</h2>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>Do you really want to delete {{ skill.name }}?</p>
+				<p>This can not be undone!</p>
+			</div>
+			<div class="modal-footer" style="display: block">
+				<a type="button" class="btn btn-secondary float-start rounded-0" data-bs-dismiss="modal">Back</a>
+				<a href="{% url 'delete_skill' skill.id %}" class="btn btn-danger float-end rounded-0">Delete</a>
+			</div>
+		</div>
+	</div>
+</div>
