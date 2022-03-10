@@ -2,10 +2,14 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+
 from services.models import Service
 from skills.models import Skill
 from .models import AboutUser, PreviousProject
-from .forms import AboutForm
+from .forms import AboutForm, ContactForm
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -32,6 +36,28 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
+
+def contact(request):
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			subject = "Website Inquiry" 
+			body = {
+			'first_name': form.cleaned_data['first_name'], 
+			'email': form.cleaned_data['email_address'], 
+			'message':form.cleaned_data['message'], 
+			}
+			message = "\n".join(body.values())
+
+			try:
+				send_mail(subject, message, 'admin@example.com', ['admin@example.com']) 
+			except BadHeaderError:
+				return HttpResponse('Invalid header found.')
+			return redirect ("main:homepage")
+      
+	form = ContactForm()
+	return render(request, "main/contact.html", {'form':form})
 
 
 @login_required
