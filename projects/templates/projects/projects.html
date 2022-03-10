@@ -58,9 +58,11 @@
                         </td>
                         <td class="py-3">
                             <a href="{% url 'edit_project' project.id %}" class="btn btn-secondary">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="#ConfirmModal" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal">Delete</a>
                         </td>
                     </tr>
+                    <!-- Include Confirmation Modal -->
+                    {% include 'projects/includes/modal.html' %}
                     {% endfor %}
                 </table>
                 <span class="float-start mt-3">

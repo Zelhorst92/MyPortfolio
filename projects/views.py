@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from .models import Project
 from .forms import ProjectForm
 
@@ -77,3 +78,19 @@ def edit_project(request, project_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_project(request, project_id):
+    """Delete a project"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You have no permission to do that.')
+        return redirect(reverse('home'))
+    try:
+        project = get_object_or_404(Project, pk=project_id)
+        project.delete()
+        messages.success(request, 'Project successfully deleted!')
+        return redirect(reverse('projects'))
+    except Exception as e:
+        messages.error(request, f'Something went terribly wrong; {e}')
+        return HttpResponse(content=e, status=400)
