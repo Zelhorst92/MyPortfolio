@@ -25,7 +25,28 @@ def index(request):
     service_paginator = Paginator(services, 3)
     page_number = request.GET.get('page')
     page = service_paginator.get_page(page_number)
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = "Website Inquiry"
+            body = {
+                'name': form.cleaned_data['name'],
+                'email': form.cleaned_data['email'],
+                'phone_number': form.cleaned_data['phone_number'],
+                'subject': form.cleaned_data['subject'],
+                'message': form.cleaned_data['message'],
+            }
+            message = "\n".join(body.values())
 
+        try:
+            send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return redirect('home')
+    else:
+        form = ContactForm()
+
+    template = 'home/index.html'
     context = {
         'about_user': about_user,
         'projects': projects,
@@ -34,31 +55,10 @@ def index(request):
         'service_paginator': service_paginator,
         'page': page,
         'page_number': page_number,
+        'form': form,
     }
 
-    return render(request, 'home/index.html', context)
-
-
-def contact(request):
-	if request.method == 'POST':
-		form = ContactForm(request.POST)
-		if form.is_valid():
-			subject = "Website Inquiry" 
-			body = {
-			'first_name': form.cleaned_data['first_name'], 
-			'email': form.cleaned_data['email_address'], 
-			'message':form.cleaned_data['message'], 
-			}
-			message = "\n".join(body.values())
-
-			try:
-				send_mail(subject, message, 'admin@example.com', ['admin@example.com']) 
-			except BadHeaderError:
-				return HttpResponse('Invalid header found.')
-			return redirect ("main:homepage")
-      
-	form = ContactForm()
-	return render(request, "main/contact.html", {'form':form})
+    return render(request, template, context)
 
 
 @login_required

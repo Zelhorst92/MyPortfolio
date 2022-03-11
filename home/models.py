@@ -24,3 +24,14 @@ class AboutUser(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=150)
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
+    subject = models.CharField(max_length=50)
+    message = models.TextField(max_length=2000)
+
+    def __str__(self):
+        return self.name
