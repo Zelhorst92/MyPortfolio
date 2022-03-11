@@ -37,12 +37,17 @@ def index(request):
                 'message': form.cleaned_data['message'],
             }
             message = "\n".join(body.values())
-
-        try:
-            send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
-        except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return redirect('home')
+            try:
+                send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
+                messages.success(request, 'The message is successfully send! \
+                    You will receive a reply soon!')
+                return redirect(reverse('home'))
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+        else:
+            messages.error(request, 'Failed to send the message. \
+                Are all fields filled in correctly?')
+            return redirect(reverse('home'))
     else:
         form = ContactForm()
 
