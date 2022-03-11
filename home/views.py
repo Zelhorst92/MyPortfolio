@@ -19,32 +19,24 @@ from django.http import HttpResponse
 
 def index(request):
     """View to return index page"""
-    about_user = AboutUser.objects.all()
-    skills = Skill.objects.all()
-    projects = Project.objects.all()
-    services = Service.objects.get_queryset().order_by('id')
-    service_paginator = Paginator(services, 3)
-    page_number = request.GET.get('page')
-    page = service_paginator.get_page(page_number)
-    allows_message = settings.CONTACT_FORM_ENABLED
     if request.method == 'POST':
         if allows_message:
             form = ContactForm(request.POST)
             if form.is_valid():
                 subject = form.cleaned_data['subject'],
-                from_email = form.cleaned_data['email'],
                 body = {
                     'name': form.cleaned_data['name'],
                     'email': form.cleaned_data['email'],
                     'phone_number': form.cleaned_data['phone_number'],
+                    'subject': form.cleaned_data['subject'],
                     'message': form.cleaned_data['message'],
                 }
                 full_message = "\n".join(body.values())
                 try:
-                    send_mail(subject, full_message, from_email, [settings.DEFAULT_FROM_EMAIL])
+                    send_mail(subject, full_message, settings.EMAIL_HOST_USER, [settings.DEFAULT_FROM_EMAIL], fail_silently=False)
                     messages.success(request, 'The message is successfully send! \
-                        You will receive a reply soon!')
-                    return redirect(reverse('home'))
+                        Thank you for your message, you will receive a reply soon!')
+                    return redirect('home')
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
             else:
@@ -57,6 +49,14 @@ def index(request):
     else:
         form = ContactForm()
 
+    about_user = AboutUser.objects.all()
+    skills = Skill.objects.all()
+    projects = Project.objects.all()
+    services = Service.objects.get_queryset().order_by('id')
+    service_paginator = Paginator(services, 3)
+    page_number = request.GET.get('page')
+    page = service_paginator.get_page(page_number)
+    allows_message = settings.CONTACT_FORM_ENABLED
     template = 'home/index.html'
     context = {
         'about_user': about_user,
