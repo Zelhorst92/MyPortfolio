@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 
+from home.models import AboutUser
 from checkout.models import Order
 # Create your views here.
 
@@ -40,7 +41,7 @@ def order_history(request, order_number):
 
     messages.info(request, (
         f'This is a past confirmation for order number { order_number }. '
-        'A confirmation email was sent on the order date.' 
+        'A confirmation email was sent on the order date.'
     ))
     template = 'checkout/checkout_success.html'
     context = {
@@ -58,4 +59,9 @@ def site_manager(request):
         messages.error(request, 'You have no permission to view this.')
         return redirect(reverse('home'))
 
-    return render(request, 'profiles/sitemanager.html')
+    about_user = AboutUser.objects.all()
+    template = 'profiles/sitemanager.html'
+    context = {
+        'about_user': about_user
+        }
+    return render(request, template, context)

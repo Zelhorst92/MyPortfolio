@@ -73,6 +73,33 @@ def index(request):
 
 
 @login_required
+def add_about(request):
+    """Add the about information"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You have no permission to do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = AboutForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'About information succesfully added!')
+            return redirect(reverse('site_manager'))
+        else:
+            messages.error(request, 'Failed to add about information. \
+                Are all fields filled in correctly?')
+    else:
+        form = AboutForm()
+
+    template = 'home/add_about.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
 def edit_about(request):
     """Edit the about information"""
     if not request.user.is_superuser:
