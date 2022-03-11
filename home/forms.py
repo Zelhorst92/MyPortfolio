@@ -35,7 +35,6 @@ class ContactForm(forms.ModelForm):
             'message': 'Type your message here',
         }
 
-        self.fields['name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'

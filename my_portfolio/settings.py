@@ -214,7 +214,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Misc values
 CONTACT_FORM_ENABLED = os.environ.get(
     "CONTACT_FORM_ENABLED")  # Empty defealts to Enabled.
-DEFAULT_FROM_EMAIL = 'robert.l.zelhorst.services@myportfolio.com'
 COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
     "COMBINATION_DISCOUNT_PERCENTAGE"))
 VAT_PERCENTAGE = int(os.environ.get("VAT_PERCENTAGE"))
@@ -226,9 +225,12 @@ STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
 
 STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET", "")
 
-if 'DEVELOPMENT' in os.environ:
+if 'DEBUG' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FORM_EMAIL = 'myportfolio@example.com'
+    if os.environ.get('EMAIL_HOST_USER'):
+        DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+    else:
+        DEFAULT_FROM_EMAIL = 'robert.l.zelhorst.services@myportfolio.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True

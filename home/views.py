@@ -31,21 +31,17 @@ def index(request):
         if allows_message:
             form = ContactForm(request.POST)
             if form.is_valid():
-                subject = "Website Inquiry"
+                subject = form.cleaned_data['subject'],
+                from_email = form.cleaned_data['email'],
                 body = {
                     'name': form.cleaned_data['name'],
                     'email': form.cleaned_data['email'],
                     'phone_number': form.cleaned_data['phone_number'],
-                    'subject': form.cleaned_data['subject'],
                     'message': form.cleaned_data['message'],
                 }
-                message = "\n".join(body.values())
+                full_message = "\n".join(body.values())
                 try:
-                    send_mail(
-                        subject,
-                        message,
-                        settings.DEFAULT_FROM_EMAIL,
-                        [settings.DEFAULT_FROM_EMAIL])
+                    send_mail(subject, full_message, from_email, [settings.DEFAULT_FROM_EMAIL])
                     messages.success(request, 'The message is successfully send! \
                         You will receive a reply soon!')
                     return redirect(reverse('home'))
