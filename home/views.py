@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.conf import settings
 
 from services.models import Service
 from skills.models import Skill
@@ -25,28 +26,33 @@ def index(request):
     service_paginator = Paginator(services, 3)
     page_number = request.GET.get('page')
     page = service_paginator.get_page(page_number)
+    allows_message = settings.CONTACT_FORM_ENABLED
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            subject = "Website Inquiry"
-            body = {
-                'name': form.cleaned_data['name'],
-                'email': form.cleaned_data['email'],
-                'phone_number': form.cleaned_data['phone_number'],
-                'subject': form.cleaned_data['subject'],
-                'message': form.cleaned_data['message'],
-            }
-            message = "\n".join(body.values())
-            try:
-                send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
-                messages.success(request, 'The message is successfully send! \
-                    You will receive a reply soon!')
+        if allows_message:
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                subject = "Website Inquiry"
+                body = {
+                    'name': form.cleaned_data['name'],
+                    'email': form.cleaned_data['email'],
+                    'phone_number': form.cleaned_data['phone_number'],
+                    'subject': form.cleaned_data['subject'],
+                    'message': form.cleaned_data['message'],
+                }
+                message = "\n".join(body.values())
+                try:
+                    send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
+                    messages.success(request, 'The message is successfully send! \
+                        You will receive a reply soon!')
+                    return redirect(reverse('home'))
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
+            else:
+                messages.error(request, 'Failed to send the message. \
+                    Are all fields filled in correctly?')
                 return redirect(reverse('home'))
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
         else:
-            messages.error(request, 'Failed to send the message. \
-                Are all fields filled in correctly?')
+            messages.error(request, 'The siteowner does not allow messages to be sent at this time')
             return redirect(reverse('home'))
     else:
         form = ContactForm()
