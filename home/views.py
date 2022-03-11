@@ -19,6 +19,7 @@ from django.http import HttpResponse
 
 def index(request):
     """View to return index page"""
+    allows_message = settings.CONTACT_FORM_ENABLED
     if request.method == 'POST':
         if allows_message:
             form = ContactForm(request.POST)
@@ -56,7 +57,7 @@ def index(request):
     service_paginator = Paginator(services, 3)
     page_number = request.GET.get('page')
     page = service_paginator.get_page(page_number)
-    allows_message = settings.CONTACT_FORM_ENABLED
+    
     template = 'home/index.html'
     context = {
         'about_user': about_user,
