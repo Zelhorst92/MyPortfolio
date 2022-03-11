@@ -41,7 +41,11 @@ def index(request):
                 }
                 message = "\n".join(body.values())
                 try:
-                    send_mail(subject, message, 'admin@example.com', ['admin@example.com'])
+                    send_mail(
+                        subject,
+                        message,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [settings.DEFAULT_FROM_EMAIL])
                     messages.success(request, 'The message is successfully send! \
                         You will receive a reply soon!')
                     return redirect(reverse('home'))
