@@ -32,6 +32,10 @@ thead {
     font-size: 3.75rem;
 }
 
+.content-header h2 {
+    font-size: 3rem;
+}
+
 .content-container {
     background: #c8c8c8;
     color: #000000;

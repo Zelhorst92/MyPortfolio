@@ -6,13 +6,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <div class="row" style="margin-top:6rem;">
-        <div class="col">
-            <hr>
-                <h2 class="mb-4">Skills List</h2>
-            <hr>
-        </div>
+<div class="container mb-2 pad-nav-comp">
+    <div class="row content-header">
+        <h2 class="mb-4">Skills List</h2>
     </div>
     <div class="row">
         <div class="col">
@@ -25,7 +21,7 @@
                             <th scope="col">Skill Name</th>
                             <th scope="col">Image/Image URL</th>
                             <th scope="col">Hidden</th>
-                            <th scope="col">Edit</th>
+                            <th class="text-end" scope="col">Edit</th>
                         </tr>
                     </thead>
                     {% for skill in skills %}
@@ -56,7 +52,7 @@
                                 <!-- <i class="fas fa-sm fa-times-circle"></i> -->
                             {% endif %}
                         </td>
-                        <td class="py-3">
+                        <td class="py-3 text-end">
                             <a href="{% url 'edit_skill' skill.id %}" class="btn btn-secondary">Edit</a>
                             <a href="#ConfirmModal" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal">Delete</a>
                         </td>
@@ -83,7 +79,7 @@
                 </span>
             </div>
             {% else %}
-            <p class="lead mb-5">There are no skills to show.</p>
+            <p class="mb-5">There are no skills to show.</p>
             <span class="float-start mt-3">
                 <a href="{% url 'site_manager' %}" class="btn btn-primary rounded-0">
                     <span class="icon">
