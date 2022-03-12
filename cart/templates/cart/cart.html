@@ -2,14 +2,14 @@
 {% load static %}
 {% load cart_tools %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+{% endblock %}
+
 {% block content %}
 <div id="cart-nav" class="container mb-2" data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="10" tabindex="0">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Shopping Cart</h2>
-            <hr>
-        </div>
+    <div class="row cart-header">
+        <h2 class="mb-4">Shopping Cart</h2>
     </div>
 
     <div class="row">
@@ -22,7 +22,7 @@
                             <th class="ps-sm-5" scope="col">Service</th>
                             <th scope="col">Price</th>
                             <th scope="col">Qty</th>
-                            <th scope="col">Subtotal</th>
+                            <th class="text-end" scope="col">Subtotal</th>
                         </tr>
                     </thead>
                     {% for item in cart_items %}
@@ -31,7 +31,7 @@
                             <p class="my-0">{{ item.service.name }}</p>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">€{{ item.service.price }}</p>
+                            <p class="my-0">&euro; {{ item.service.price }}</p>
                         </td>
                         <td class="py-3 w-25">
                             <form class="form update-form" method="POST" action="{% url 'update_cart' item.item_id %}">
@@ -47,7 +47,7 @@
                                             </button>
                                         </div>
                                         <input class="form-control form-control-sm qty_input fs-4" maxlength="1" name="quantity" value="{{ item.quantity }}"
-                                            min="1" max="9" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                            min="0" max="9" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                                         <div class="input-group-append">
                                             <button class="increment-qty btn btn-primary btn-sm" data-item_id="{{ item.item_id }}"
                                                 id="increment-qty_{{ item.item_id }}">
@@ -62,24 +62,24 @@
                             <a class="update-link text-info">Update</a>
                             <a class="remove-item text-danger float-end" id="remove_{{ item.item_id}}">Remove{% if item.quantity > 1 %} All{% endif %}</a>
                         </td>
-                        <td class="py-3">
-                            <p class="my-0">{{ item.service.price | calc_subtotal:item.quantity }}</p>
+                        <td class="py-3 text-end">
+                            <p class="my-0">&euro; {{ item.service.price | calc_subtotal:item.quantity }}</p>
                         </td>
                     </tr>
                     {% endfor %}
                     <tr>
                         <td colspan="5" class="text-end pt-5">
                             <hr>
-                            <h5>Cart Total: € {{ total|floatformat:2 }}</h5>
+                            <h5>Cart Total: &euro; {{ total|floatformat:2 }}</h5>
                             {% if discount %}
-                            <h5>Qty Discount:({{ combination_discount_percentage }}%) € {{ discount|floatformat:2 }}
+                            <h5>Qty Discount:({{ combination_discount_percentage }}%) &euro; {{ discount|floatformat:2 }}
                             </h5>
                             {% else %}
                             <h5>Qty Discount: None</h5>
                             {% endif %}
-                            <h5>VAT:({{ vat_percentage }}%) € {{ vat|floatformat:2 }}</h5>
+                            <h5>VAT:({{ vat_percentage }}%) &euro; {{ vat|floatformat:2 }}</h5>
                             <hr>
-                            <h3 class="mt-4"><strong>Net total: € {{ net_total|floatformat:2 }}</strong></h3>
+                            <h3 class="mt-4"><strong>Net total: &euro; {{ net_total|floatformat:2 }}</strong></h3>
                         </td>
                     </tr>
                 </table>
@@ -116,6 +116,6 @@
 
 {% block postloadjs %}
 {{ block.super }}
-    <script src="{% static 'cart/js/quantity_input_scripts.js' %}"></script>
-    <script src="{% static 'cart/js/update_and_remove_scripts.js' %}"></script>
+    <script src="{% static 'js/quantity_input_scripts.js' %}"></script>
+    <script src="{% static 'js/update_and_remove_scripts.js' %}"></script>
 {% endblock %}
