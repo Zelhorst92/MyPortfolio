@@ -8,10 +8,9 @@
 
 {% block content %}
 <div class="container ">
-    <div class="row">
+    <div class="row checkout-success-header">
         <div class="col-12 col-lg-8 offset-lg-2">
-            <hr>
-            <h2 class="logo-font mb-4">Shopping Cart</h2>
+            <h2 class="logo-font mb-4">Order details</h2>
             <hr>
             <p>Your order information is below. This information will also be sent to {{ order.email }}</p>
         </div>
@@ -133,18 +132,16 @@
                         </td>
                     </tr>
                 </table>
-                {% if from_profile %}
-                    <span class="float-end">
-                        <a href="{% url 'profile' %}" class="btn btn-success rounded-0 btn-lg">
+                    <span class="float-end mt-3">
+                        {% if from_profile %}
+                        <a href="{% url 'profile' %}" class="btn btn-primary rounded-0">
                             <span class="text-uppercase">Back to Dashboard</span>
                             <span>
                                 <i class="fas fa-columns"></i>
                             </span>
                         </a>
-                    </span>
-                {% else %}
-                    <span class="float-end">
-                        <a href="{% url 'home' %}" class="btn btn-success rounded-0 btn-lg">
+                        {% else %}
+                        <a href="{% url 'home' %}" class="btn btn-success rounded-0">
                             <span class="text-uppercase">Success!</span>
                             <span>
                                 <i class="fas fa-check"></i>
