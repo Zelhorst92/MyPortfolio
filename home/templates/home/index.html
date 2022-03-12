@@ -61,11 +61,11 @@
             </a>
         </div>
     </section>
-
     <section id="about" class="pagesection container">
-        <div class="spacer"></div>
-        <h1>About me</h1>
-        <div class="row">
+        <div class="row section-header">
+            <h1>About me</h1>
+        </div>
+        <div class="row content-container">
             <div class="col-12 col-md-8">
                 {% if item.about_entry_one or item.about_entry_two or item.about_entry_three %}
                 <p>{{ item.about_entry_one }}</p>
@@ -89,10 +89,11 @@
         </div>
     </section>
     {% endfor %}
-    <section id="skillssection" class="pagesection container">
-        <div class="spacer"></div>
-        <h1 class="section-header">My Skills</h1>
-        <div class="row">
+    <section id="skills" class="pagesection container">
+        <div class="row section-header">
+            <h1>My Skills</h1>
+        </div>
+        <div class="row content-container">
             {% if skills %}
             {% for skill in skills %}
             {% if not skill.hidden %}
@@ -115,15 +116,15 @@
         </div>
     </section>
 
-    <section id="services" class="pagesection container-fluid justify-content-center">
-        <div class="spacer"></div>
-        <h1>My Services</h1>
-        <div class="spacer"></div>
+    <section id="services" class="pagesection container justify-content-center">
+        <div class="row section-header">
+            <h1>My Services</h1>
+        </div>
         {% if services %}
-        <div class="row">
+        <div class="row content-container">
             {% for service in page.object_list %}
             {% if not service.hidden %}
-            <div class="col-12 col-sm-6 col-lg-4 card-container d-flex justify-content-center">
+            <div class="col-12 col-sm-6 card-container d-flex justify-content-center">
                 <div class="card">
                     <div class="card-header">{{ service.name }}</div>
                     {% if service.image %}
@@ -140,11 +141,10 @@
                     </div>
                     <div class="card-footer">
                         <div class="justify-content-end">
-                            <p>€{{ service.price }}</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <a href="{% url 'service_details' service.id %}" class="btn btn-success">View Details</a>
-                            <!-- <a href="#" class="btn btn-success">Add to cart</a> -->
+                            <span class="float-start">€{{ service.price }}</span>
+                            <a href="{% url 'service_details' service.id %}" class="btn btn-success float-end">
+                                <span>View Details</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -194,8 +194,9 @@
     </section>
 
     <section id="gallery" class="pagesection container-fluid">
-
-        <h1>My previous projects:</h1>
+        <div class="row section-header">
+            <h1>My previous projects:</h1>
+        </div>
         {% if projects %}
         <div id="carouselCaptions" class="carousel slide row" data-bs-ride="carousel">
             <div class="col-1">
@@ -248,9 +249,9 @@
 
 
     <section id="contact" class="pagesection container">
-        <div class="spacer"></div>
-        <h1>Contact Me</h1>
-
+        <div class="row section-header">
+            <h1>Contact Me</h1>
+        </div>
         <form method="POST" action="{% url 'home' %}" class="form mb-2">
             {% csrf_token %}
             {{ form | crispy }}
@@ -264,7 +265,6 @@
             </div>
         </form>
     </section>
-    <div class="spacer"></div>
 </div>
 
 

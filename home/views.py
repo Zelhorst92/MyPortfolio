@@ -54,10 +54,10 @@ def index(request):
     skills = Skill.objects.all()
     projects = Project.objects.all()
     services = Service.objects.get_queryset().order_by('id')
-    service_paginator = Paginator(services, 3)
+    service_paginator = Paginator(services, 2)
     page_number = request.GET.get('page')
     page = service_paginator.get_page(page_number)
-    
+
     template = 'home/index.html'
     context = {
         'about_user': about_user,

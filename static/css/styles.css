@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Shippori+Antique&display=swap');
 
 html {
     font-size: 62.5%;
@@ -8,7 +8,7 @@ html {
 body {
     font-weight: 400;
     font-size: 1.6rem;
-    font-family: Ubuntu, Arial, serif;
+    font-family: Rubik, Arial, serif;
 }
 
 /* - - - - - Navigation - - - - - */
@@ -156,42 +156,11 @@ body {
 }
 
 /* - - - - - Buttons - - - - - */
-/* .btn {
-    font-size: 1.5rem!important;
-} */
-
-
-
-.btn-select {
-    margin: 2rem;
-    box-shadow: 0.2rem 0.2rem 0.5rem #FFFFFF;
-    font-weight: 500;
+.btn {
+    font-size: 2rem!important;
 }
 
-.btn-select:hover {
-    background-color: #48967C;
-    margin: 2rem;
-    box-shadow: 0.2rem 0.2rem 0.5rem #FFFFFF;
-    transition: 0.2s;
-}
-
-.btn-select:active {
-    background-color: #48967C;
-    transform: translateY(3px);
-    transition: 0.2s;
-}
-
-/* - - - - - Spacer - - - - - */
-.spacer {
-	position: relative;
-	margin-top: 4rem;
-    margin-bottom: 4rem;
-	height: 1px;
-	left: 10%;
-	width: 80%;
-	background-image: linear-gradient(to right, transparent, #191919, transparent);
-}
-
+/* - - - - - Media Queries - - - */
 
 @media screen and (min-width: 992px) {
     .navbar-brand {
