@@ -184,8 +184,29 @@
     padding-top: 5rem;
 }
 
+/* - - - Contact - - - */
+#contact {
+    margin-bottom: 5rem;
+}
+
+.stamp {
+    height: 12rem;
+    width: auto;
+}
+
 @media screen and (min-width: 576px) {
     .row {
         --bs-gutter-x: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .section-header {
+        margin-left: 10%;
+    }
+
+    .content-container{
+        max-width: 80%;
+        margin-left: 10%;
     }
 }

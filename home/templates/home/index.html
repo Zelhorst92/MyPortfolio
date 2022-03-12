@@ -124,7 +124,7 @@
         <div class="row content-container">
             {% for service in page.object_list %}
             {% if not service.hidden %}
-            <div class="col-12 col-sm-6 card-container d-flex justify-content-center">
+            <div class="col-12 col-md-6 card-container d-flex justify-content-center">
                 <div class="card">
                     <div class="card-header">{{ service.name }}</div>
                     {% if service.image %}
@@ -252,18 +252,26 @@
         <div class="row section-header">
             <h1>Contact Me</h1>
         </div>
-        <form method="POST" action="{% url 'home' %}" class="form mb-2">
-            {% csrf_token %}
-            {{ form | crispy }}
-            <div class="text-end mt-3 mb-2">
-                <button id="submit-button" class="btn btn-success rounded-0 mt-3">
-                    <span class="font-weight-bold">Send Message</span>
-                    <span>
-                        <i class="fas fa-share-square"></i>
-                    </span>
-                </button>
+        <div class="row content-container">
+            <div class="col-12 col-md-4">
+                <img class="d-none d-md-block stamp" src="static/home/images/stamp-png.png" alt="Postage stamp">
             </div>
-        </form>
+            <div class="col-12 col-md-8">
+                <form method="POST" action="{% url 'home' %}" class="form mb-2">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-end mt-3 mb-2">
+                        <button id="submit-button" class="btn btn-success rounded-0 mt-3">
+                            <span class="font-weight-bold">Send Message</span>
+                            <span>
+                                <i class="fas fa-share-square"></i>
+                            </span>
+                        </button>
+                    </div>
+            </div>
+
+            </form>
+        </div>
     </section>
 </div>
 

@@ -9,6 +9,7 @@ body {
     font-weight: 400;
     font-size: 1.6rem;
     font-family: Rubik, Arial, serif;
+    height: 100vh;
 }
 
 /* - - - - - Navigation - - - - - */
@@ -143,6 +144,47 @@ body {
 
 .toast-body {
     font-size: 1.5rem;
+}
+
+/* - - - Forms - - - */
+
+.form-input,
+.input-group-text {
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    border-radius: 0px!important;
+    border: 1px solid black !important;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.form-input:not(textarea) {
+    height: 4rem;
+}
+
+textarea {
+    height:10rem;
+}
+
+.form-select {
+    padding: 0 0 0 1rem;
+}
+
+.form-control {
+    border: 1px solid #000000;
+    border-radius: 0!important;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+}
+
+.form-check-input {
+    width:1.4rem!important;
+    height:1.4rem!important;
+}
+
+.text-break a {
+    color: #000000;
+    font-size: 1.6rem;
 }
 
 /* - - - - - Confirm Modal - - - - - */
