@@ -12,6 +12,10 @@ body {
     height: 100vh;
 }
 
+thead { 
+    background-color: #191919;
+}
+
 .row {
     --bs-gutter-x: 0;
 }
