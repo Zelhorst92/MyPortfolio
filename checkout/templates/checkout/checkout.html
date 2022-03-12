@@ -8,60 +8,58 @@
 
 {% block content %}
 <div class="container">
-    <div class="row checkout-header ms-3">
+    <div class="row checkout-header pad-nav-comp ms-3">
         <h2 class="mb-4">Checkout</h2>
     </div>
-    <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
-            <p class="text-muted">Order Summary ({{ cart_item_count }})</p>
-            <div class="row">
-                <div class="col-6 offset-3 gx-5">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
-                </div>
-                <div class="col-3 text-end">
-                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
-                </div>
-            </div>
-            {% for item in cart_items %}
-            <div class="row">
-                <div class="col-3 mb-1">
-                    <a href="{% url 'service_details' item.service.id %}">
-                        {% if item.service.image %}
-                        <img class="w-100 p-1" src="{{ item.service.image.url }}" alt="{{ service.name }}">
-                        {% else %}
-                        <img class="w-100 p-1" src="{{ MEDIA_URL }}noimage.png" alt="{{ service.name }}">
-                        {% endif %}
-                    </a>
-                </div>
-                <div class="col-6 gx-5">
-                    <p class="my-0"><strong>{{ item.service.name }}</strong></p>
-                    <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                </div>
-                <div class="col-3 text-end">
-                    <p class="my-0 small text-muted">€{{ item.service.price | calc_subtotal:item.quantity }}</p>
-                </div>
-            </div>
-            {% endfor %}
-            <hr class="my-0">
-            <div class="row text-end">
-                <div class="col-8 col-sm-5 offset-sm-4 col-md-4 offset-md-6 col-lg-5 offset-lg-4">
-                    <p class="my-0">Order Total:</p>
-                    <p class="my-0">Discount<small>({{ combination_discount_percentage }}%)</small>:</p>
-                    <p class="my-0">VAT<small>({{ vat_percentage }}%):</small></p>
-                    <hr class="my-0">
-                    <p class="my-0">Net Total:</p>
-                </div>
-                <div class="col-4 col-sm-3 col-md-2 col-lg-3">
-                    <p class="my-0">€{{ total | floatformat:2 }}</p>
-                    <p class="my-0">€{{ discount | floatformat:2 }}</p>
-                    <p class="my-0">€{{ vat|floatformat:2 }}</p>
-                    <hr class="my-0">
-                    <p class="my-0"><strong>€{{ net_total | floatformat:2 }}</strong></p>
-                </div>
+    <div class="row pb-5">
+        <div class="col-12 col-lg-6 order-lg-last pb-5">
+            {% if cart_items %}
+            <div class="table-responsive rounded">
+                <table class="table table-borderless table-hover">
+                    <thead>
+                        <tr>
+                            <th class="ps-sm-5" scope="col">Order Summary ({{ cart_item_count }})</th>
+                            <th class="w-25" scope="col">Price</th>
+                            <th scope="col">Qty</th>
+                            <th class="text-end w-25" scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td class="py-3 ps-sm-5">
+                            <p class="my-0">{{ item.service.name }}</p>
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">&euro; {{ item.service.price }}</p>
+                        </td>
+                        <td class="py-3 w-25">
+                            {{ item.quantity }}
+                        </td>
+                        <td class="py-3 text-end">
+                            <p class="my-0">&euro; {{ item.service.price | calc_subtotal:item.quantity }}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr style="border-top: 1px solid #191919">
+                        <td colspan="3" class="text-end pt-5">
+                            <h5>Order Total:</h5>
+                            <h5>Discount<small>({{ combination_discount_percentage }}%)</small>:</h5>
+                            <h5>VAT({{ vat_percentage }}%):</h5>
+                            <h3 class="mt-5"><strong>Net total:</strong></h3>
+                        </td>
+                        <td colspan="1" class="text-end pt-5">
+                            <h5>&euro; {{ total|floatformat:2 }}</h5>
+                            <h5>&euro; {{ discount|floatformat:2 }}</h5>
+                            <h5>&euro; {{ vat|floatformat:2 }}</h5>
+                            <hr>
+                            <h3 class="mt-4 pt-2">&euro; {{ net_total|floatformat:2 }}</strong></h3>
+                        </td>
+                    </tr>
+                </table>
+                {% endif %}
             </div>
         </div>
-
-        <div class="col-12 col-lg-6 gx-5">
+        <div class="col-12 col-lg-6 pb-5">
             <p class="ms-3">Please fill out the form below to complete your order.</p>
             <form action="{% url 'checkout' %}" method="post" id="payment-form">
                 {% csrf_token %}
@@ -119,7 +117,7 @@
                         <span>
                             <i class="fas fa-exclamation-circle"></i>
                         </span>
-                        <span>Your card will be charged <strong>€{{ net_total|floatformat:2 }}</strong></span>
+                        <span>Your card will be charged <strong>&euro; {{ net_total|floatformat:2 }}</strong></span>
                     </p>
                 </div>
             </form>

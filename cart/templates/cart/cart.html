@@ -8,7 +8,7 @@
 
 {% block content %}
 <div id="cart-nav" class="container mb-2" data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="10" tabindex="0">
-    <div class="row cart-header">
+    <div class="row cart-header pad-nav-comp">
         <h2 class="mb-4">Shopping Cart</h2>
     </div>
 
@@ -71,12 +71,9 @@
                         <td colspan="5" class="text-end pt-5">
                             <hr>
                             <h5>Cart Total: &euro; {{ total|floatformat:2 }}</h5>
-                            {% if discount %}
-                            <h5>Qty Discount:({{ combination_discount_percentage }}%) &euro; {{ discount|floatformat:2 }}
+                            <h5>
+                                Combination Discount({{ combination_discount_percentage }}%):{% if discount %} &euro; {{ discount|floatformat:2 }}{% else %} None{% endif %}
                             </h5>
-                            {% else %}
-                            <h5>Qty Discount: None</h5>
-                            {% endif %}
                             <h5>VAT:({{ vat_percentage }}%) &euro; {{ vat|floatformat:2 }}</h5>
                             <hr>
                             <h3 class="mt-4"><strong>Net total: &euro; {{ net_total|floatformat:2 }}</strong></h3>

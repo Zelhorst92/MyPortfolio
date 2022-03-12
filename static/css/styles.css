@@ -20,9 +20,9 @@ thead {
 
 footer {
     position: absolute;
-    bottom: 0;
     height: 2.5rem;
     width: 100%;
+    background-color: #272b30;
 }
 
 .row {
