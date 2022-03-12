@@ -160,6 +160,12 @@
     padding-top: 5rem;
 }
 
+/* - - - Gallery - - - */
+.project-img {
+    border: 1px solid #191919;
+    box-shadow: 1rem 1rem 0.75rem #191919;
+}
+
 /* - - - Contact - - - */
 #contact {
     margin-bottom: 5rem;
