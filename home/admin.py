@@ -4,10 +4,7 @@ from .models import AboutUser
 
 
 class AboutUserAdmin(admin.ModelAdmin):
-    list_display = (
-    'full_name',
-    'profession',
-    )
+    list_display = ('full_name', 'profession',)
 
 
 admin.site.register(AboutUser, AboutUserAdmin)

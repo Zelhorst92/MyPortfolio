@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Project
 from .forms import ProjectForm
-
 # Create your views here.
 
 
@@ -22,6 +21,7 @@ def all_projects(request):
     }
 
     return (render(request, 'projects/projects.html', context))
+
 
 @login_required
 def add_project(request):

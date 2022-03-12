@@ -34,9 +34,15 @@ def index(request):
                 }
                 full_message = "\n".join(body.values())
                 try:
-                    send_mail(subject, full_message, settings.EMAIL_HOST_USER, [settings.DEFAULT_FROM_EMAIL], fail_silently=False)
+                    send_mail(
+                        subject,
+                        full_message,
+                        settings.EMAIL_HOST_USER,
+                        [settings.DEFAULT_FROM_EMAIL],
+                        fail_silently=False)
                     messages.success(request, 'The message is successfully send! \
-                        Thank you for your message, you will receive a reply soon!')
+                        Thank you for your message,\
+                             you will receive a reply soon!')
                     return redirect('home')
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
@@ -113,7 +119,8 @@ def edit_about(request):
         form = AboutForm(request.POST, request.FILES, instance=about)
         if form.is_valid():
             form.save()
-            messages.success(request, 'The about information is successfully edited!')
+            messages.success(
+                request, 'The about information is successfully edited!')
             return redirect(reverse('site_manager'))
         else:
             messages.error(request, 'Failed to edit the about information. \

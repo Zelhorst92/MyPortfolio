@@ -23,6 +23,7 @@ def all_skills(request):
 
     return (render(request, 'skills/skills.html', context))
 
+
 @login_required
 def add_skill(request):
     """Add a skill"""

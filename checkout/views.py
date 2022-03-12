@@ -14,11 +14,8 @@ from services.models import Service
 from cart.contexts import cart_contents
 from .models import Order, OrderLineItem
 from .forms import OrderForm
-
-
-
-
 # Create your views here.
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -73,14 +70,16 @@ def checkout(request):
                     order_line_item.save()
                 except Service.DoesNotExist:
                     messages.error(request, (
-                        "One of the items in your cart wasn't found in our database. "
+                        "One of the items in your cart \
+                            wasn't found in our database."
                         "Please contact site administrator for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please check your information.')
@@ -139,7 +138,6 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        
         order.user_profile = profile
         order.save()
 

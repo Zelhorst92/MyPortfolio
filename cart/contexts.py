@@ -40,7 +40,8 @@ def cart_contents(request):
         'cart_items': cart_items,
         'total': total,
         'cart_item_count': cart_item_count,
-        'combination_discount_percentage': settings.COMBINATION_DISCOUNT_PERCENTAGE,
+        'combination_discount_percentage':
+            settings.COMBINATION_DISCOUNT_PERCENTAGE,
         'vat': vat,
         'net_total': net_total,
         'discount': discount,
