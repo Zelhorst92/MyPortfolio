@@ -16,13 +16,13 @@
                 <div class="row">
                     <div class="col-12 col-md-4 pt-md-5 image-container">
                         {% if item.hero_image %}
-                        <img class="img-fluid profile-image" src="{{ item.hero_image.url }}"
-                            alt="Picture of {{ item.full_name }}">
+                            <img class="img-fluid profile-image" src="{{ item.hero_image.url }}"
+                                alt="Picture of {{ item.full_name }}">
                         {% elif item.hero_image %}
-                        <img class="img-fluid profile-image" src="{{ item.hero_image_url }}"
-                            alt="Picture of {{ item.full_name }}">
+                            <img class="img-fluid profile-image" src="{{ item.hero_image_url }}"
+                                alt="Picture of {{ item.full_name }}">
                         {% else %}
-                        <img class="img-fluid profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
+                            <img class="img-fluid profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                         {% endif %}
                     </div>
                     <div class="col-12 col-md-8 name-container">
@@ -75,14 +75,13 @@
                 <p>User has not entered any bio.</p>
                 {% endif %}
             </div>
-
             <div class="col-12 col-md-4 d-flex justify-content-center">
                 <div class="image-container">
                     {% if item.about_image %}
-                    <img class="img-fluid about-image" src="{{ item.about_image.url }}"
-                        alt="Picture of {{ item.full_name }}">
+                        <img class="img-fluid about-image" src="{{ item.about_image.url }}"
+                            alt="Picture of {{ item.full_name }}">
                     {% else %}
-                    <img class="img-fluid about-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
+                        <img class="img-fluid about-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                     {% endif %}
                 </div>
             </div>
@@ -115,7 +114,6 @@
             {% endif %}
         </div>
     </section>
-
     <section id="services" class="pagesection container justify-content-center">
         <div class="row content-header">
             <h1>My Services</h1>
@@ -192,7 +190,6 @@
         </div>
         {% endif %}
     </section>
-
     <section id="gallery" class="pagesection container-fluid">
         <div class="row content-header">
             <h1>My previous projects</h1>
@@ -202,13 +199,13 @@
             <div class="col-1">
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions"
                     data-bs-slide="prev">
-                    <span class="control-icon" aria-hidden="true" aria-label="previous"><i
-                            class="fas fa-angle-left"></i></span>
+                    <span class="control-icon" aria-hidden="true" aria-label="previous">
+                        <i class="fas fa-angle-left"></i>
+                    </span>
                 </button>
             </div>
             <div class="col-10">
                 <div class="carousel-inner">
-
                     {% for project in projects %}
                     <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
                         <h3 class="project-title">{{ forloop.counter }}. {{ project.name }}</h3>
@@ -216,7 +213,8 @@
                             {% if project.image %}
                             <img src=" {{ project.image.url }}" class="d-block project-img" alt="{{ project.name }}">
                             {% else %}
-                            <img src=" {{ project.image_url.url }}" class="d-block project-img" alt="{{ project.name }}">
+                            <img src=" {{ project.image_url.url }}" class="d-block project-img"
+                                alt="{{ project.name }}">
                             {% endif %}
                         </div>
                         <div class="carousel-caption d-none d-md-block">

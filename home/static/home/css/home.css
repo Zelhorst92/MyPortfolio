@@ -1,5 +1,3 @@
-/* - - - - - Landing Page - - - - - */
-
 .pagesection {
     margin: auto;
     padding-top: 7rem;
@@ -119,8 +117,6 @@
 
 /* - - - Skills Section - - - */
 
-
-
 .skill-image {
     height: 15rem;
     width: auto;
@@ -160,6 +156,47 @@
 }
 
 /* - - - Gallery - - - */
+#gallery {
+    padding: 5rem 0 0 0;
+}
+
+.carousel {
+    height: 25rem;
+}
+.project-title {
+    text-align: center;
+}
+
+.carousel-inner {
+    height:inherit;
+    width: 75vw;
+    margin: auto;
+}
+
+.carousel-item {
+    background-color: #272b30;
+}
+
+.project-img {
+    height: 20rem;
+    margin: auto auto auto -5rem;
+    object-fit: contain;
+}
+
+.carousel-indicators {
+    position: static;
+    padding-top: 2rem;
+}
+
+.control-icon {
+    font-size: 5rem;
+    padding: 0 2rem;
+}
+
+.control-icon:hover {
+    background-color: rgba
+}
+
 .project-img {
     border: 1px solid #191919;
     box-shadow: 1rem 1rem 0.75rem #191919;
@@ -173,4 +210,52 @@
 .stamp {
     height: 12rem;
     width: auto;
+}
+
+@media (min-width: 576px) {
+/* - - - Gallery - - - */
+    .carousel {
+        height: 33rem;
+    }
+
+    .carousel-inner {
+        height: 28rem!important;
+        width: 75vw;
+        margin: auto;
+    }
+
+    .project-img-container {
+        height: inherit;
+    }
+    .project-img {
+        height: 23rem;
+        margin: auto;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 768px) {
+/* - - - Gallery - - - */
+    #gallery {
+        padding: 5rem 2rem 0 2rem;
+    }
+
+    .carousel {
+        height: 52rem;
+    }
+
+    .carousel-inner {
+        height: 45rem!important;
+        width: 75vw;
+        margin: auto;
+    }
+
+    .project-img-container {
+        height: inherit;
+    }
+    .project-img {
+        height: 38rem;
+        margin: auto;
+        object-fit: contain;
+    }
 }
