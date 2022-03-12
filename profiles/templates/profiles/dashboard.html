@@ -11,7 +11,6 @@
         <h2 class="mb-4">Welcome to your dashboard, {{ user.first_name }}</h2>
         <hr>
     </div>
-
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 p-3">
             <h4 class="text-muted">{{ user.first_name }}'s Order History</h4>
@@ -70,14 +69,6 @@
         </div>
     </div>
 </div>
-
-<!-- <div id="loading-overlay">
-    <h1 class="processing-animation">
-        <span class="mb-5">
-            <i class="fas fa-5x fa-cog fa-spin"></i>
-        </span>
-    </h1>
-</div> -->
 {% endblock %}
 
 {% block postloadjs %}

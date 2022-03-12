@@ -1,25 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
-{% endblock %}
-
 {% block content %}
-<div class="container">
-    <div class="row mx-4">
+<div class="container pad-nav-comp">
+    <div class="row mx-1">
         <div class="col">
-            <hr>
             <h2 class="mb-4">Site Management</h2>
-            <hr>
             <h4 class="mb-4">Add the about information</h4>
             <hr>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5 mx-4">
-            <p>Here you can add the general information of the site owner; such as the name, profession, relevant.</p>
+        <div class="col-12 col-lg-5 mb-5 mx-4">
+            <p>Here you can add the general information of the site owner; such as the name, profession, relevant information and profile pictures. The hero image will be visible in the here landing and the about image next the the about information.</p>
         </div>
 
         <div class="col-12 col-lg-6 gx-5">
