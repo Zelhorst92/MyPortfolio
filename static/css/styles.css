@@ -54,7 +54,7 @@ footer {
 }
 
 .content-container {
-    background: #c8c8c8;
+    background: #C8C8C8;
     color: #000000;
     padding: 2rem;
     width: 100%;
@@ -98,7 +98,7 @@ footer {
 }
 
 .navbar-toggler {
-    color: #ffffff;
+    color: #FFFFFF;
     border-color: #8C8C8C;
     font-size: 3rem;
     margin-right: 1rem;
@@ -157,7 +157,7 @@ footer {
 
 .allauth-form-wrapper {
     background-color: rgba(25, 25, 25, 0.8);
-    border: 1px solid #33435A;
+    border: 1px solid #191919;
     border-radius: 1rem;
     text-align: center;
     padding: 2rem;
@@ -208,8 +208,8 @@ footer {
     font-size: 1.6rem;
     box-sizing: border-box;
     border-radius: 0px!important;
-    border: 1px solid black !important;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
+    border: 1px solid #000000 !important;
+    box-shadow: 0 1px 3px 0 #e9ecef;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
 }
@@ -229,7 +229,7 @@ textarea {
 .form-control {
     border: 1px solid #000000;
     border-radius: 0!important;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
+    box-shadow: 0 1px 3px 0 #e9ecef;
 }
 
 .form-check-input {
