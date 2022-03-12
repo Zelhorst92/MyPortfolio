@@ -94,6 +94,7 @@ footer {
     font-size: 3rem;
     padding: 0 0 0 5rem!important;
     margin:auto;
+    border: 0;
 }
 
 .navbar-toggler {
