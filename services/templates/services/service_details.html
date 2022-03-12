@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="container" style="margin-top:5rem;">
-    <div class="row">
-        <h2>{{ service.name }}</h2>
+<div class="container" style="padding-top:7rem;">
+    <div class="row content-header">
+        <h1>{{ service.name }}</h1>
     </div>
-    <div class="row">
+    <div class="row content-container">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-1">
             <div class="image-container my-5">
                 {% if service.image %}
@@ -26,45 +26,47 @@
         </div>
         <div class="col-12 col-md-5 offset-md-1 col-lg-4 offset-lg-2">
             <div class="mb-5 mt-md-5">
-                <p class="mb-0">{{ service.name }}</p>
-                <p class="lead mb-0 text-end font-weight-bold">€{{ service.price }}</p>
-                <p class="mt-3">{{ service.description }}</p>
+                <div class="mb-0 details-header">
+                    <span>{{ service.name }}</span>
+                    <span class="float-end font-weight-bold">&euro;{{ service.price }}</span>
+                </div>
+                <p class="mt-2">{{ service.description }}</p>
                 <form class="form" action="{% url 'add_to_cart' service.id %}" method="POST">
                     {% csrf_token %}
-                    <div class="form-row">
-                        <div class="col-12">
-                            <p class="mt-3"><strong>Quantity:</strong></p>
-                            <div class="form-group w-50">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-primary" data-item_id="{{ service.id }}"
-                                            id="decrement-qty_{{ service.id }}">
-                                            <span>
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <input class="form-control qty_input fs-4" maxlength="1" name="quantity" value="1"
-                                        min="1" max="9" data-item_id="{{ service.id }}" id="id_qty_{{ service.id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty btn btn-primary" data-item_id="{{ service.id }}"
-                                            id="increment-qty_{{ service.id }}">
-                                            <span>
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
+                    <div class="form-row row">
+                        <div class="col-12 mt-3">
+                            <span class="pt-3"><strong>Quantity:</strong></span>
+                            <div class="input-group w-50 float-end">
+                                <div class="input-group-prepend">
+                                    <button class="decrement-qty btn btn-primary" data-item_id="{{ service.id }}"
+                                        id="decrement-qty_{{ service.id }}">
+                                        <span>
+                                            <i class="fas fa-minus"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <input class="form-control qty_input fs-4" maxlength="1" name="quantity" value="1"
+                                    min="1" max="9" data-item_id="{{ service.id }}" id="id_qty_{{ service.id }}">
+                                <div class="input-group-append">
+                                    <button class="increment-qty btn btn-primary" data-item_id="{{ service.id }}"
+                                        id="increment-qty_{{ service.id }}">
+                                        <span>
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary mt-5">
+                        <div class="col-12 mt-5">
+                            <a href="{% if request.user.is_superuser%}{% url 'services' %}{% else %}{% url 'home' %}#services{% endif %}"
+                                class="btn btn-primary float-start">
                                 <span>
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Back</span>
                             </a>
-                            <input type="submit" class="btn btn-success text-uppercase mt-5" value="Add to cart">
+                            <input type="submit" class="btn btn-success text-uppercase float-end"
+                                value="Add to cart">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>

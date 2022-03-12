@@ -12,6 +12,31 @@ body {
     height: 100vh;
 }
 
+.row {
+    --bs-gutter-x: 0;
+}
+
+.content-header {
+    margin-bottom: 2rem;
+    border-bottom-style:solid;
+    border-width: 2px;
+	border-image: linear-gradient(to right, transparent, #191919, transparent);
+    border-image-slice: 1;
+}
+
+.content-header h1 {
+    font-size: 3.75rem;
+}
+
+.content-container {
+    background: #c8c8c8;
+    color: #000000;
+    padding: 2rem;
+    width: 100%;
+    border: 1px solid #191919;
+    box-shadow: 1rem 1rem 0.75rem #191919;
+}
+
 /* - - - - - Navigation - - - - - */
 
 #scrollspy-container {
@@ -204,6 +229,12 @@ textarea {
 
 /* - - - - - Media Queries - - - */
 
+@media screen and (min-width: 576px) {
+    .row {
+        --bs-gutter-x: 1.5rem;
+    }
+}
+
 @media screen and (min-width: 992px) {
     .navbar-brand {
         font-size: 3rem;
@@ -237,6 +268,15 @@ textarea {
     .fa-shopping-cart {
         font-size: 3rem;
         padding-top: 1rem;
+    }
+
+    .content-header {
+        margin-left: 10%;
+    }
+
+    .content-container{
+        max-width: 80%;
+        margin-left: 10%;
     }
 
 }
