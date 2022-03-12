@@ -8,14 +8,9 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Shopping Cart</h2>
-            <hr>
-        </div>
+    <div class="row checkout-header ms-3">
+        <h2 class="mb-4">Checkout</h2>
     </div>
-
     <div class="row">
         <div class="col-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ cart_item_count }})</p>
@@ -108,7 +103,7 @@
                     <input type="hidden" value="{{client_secret}}" name="client_secret">
                 </fieldset>
                 <div class="submit-button text-end mt-3 mb-2">
-                    <a href="{% url 'view_cart' %}" class="btn rounded-0 float-start ms-3">
+                    <a href="{% url 'view_cart' %}" class="btn btn-primary rounded-0 float-start ms-3">
                         <span>
                             <i class="fas fa-chevron-left"></i>
                         </span>
