@@ -12,41 +12,57 @@
     {% for item in about_user %}
     <section id="landing" class="pagesection container">
         <div class="row">
-            <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4 ">
-                <div class="row justify-content-center ">
+            <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-4 ">
+                <div class="row">
                     <div class="col-12 col-md-4 pt-md-5 image-container">
                         {% if item.hero_image %}
                         <img class="img-fluid profile-image" src="{{ item.hero_image.url }}"
+                            alt="Picture of {{ item.full_name }}">
+                        {% elif item.hero_image %}
+                        <img class="img-fluid profile-image" src="{{ item.hero_image_url }}"
                             alt="Picture of {{ item.full_name }}">
                         {% else %}
                         <img class="img-fluid profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                         {% endif %}
                     </div>
                     <div class="col-12 col-md-8 name-container">
-                        <h1 class="pt-md-5">{% if item.full_name %}{{ item.full_name }}{% else %}No name entered{% endif %}</h1>
+                        <h1 class="pt-md-5">{% if item.full_name %}{{ item.full_name }}{% else %}No name
+                            entered{% endif %}</h1>
                         <h4>{% if item.profession %}{{ item.profession }}{% else %}No profession entered{% endif %}</h4>
                         <div class="link-icon-container pt-md-4">
-                            <a href="{% if item.github_link %}{{ item.github_link }}{% else %}https://github.com/{% endif %}" target="_blank" class="link-icon"><i
-                                    class="fab fa-github-square"></i></a>
-                            <a href="{% if item.facebook_link %}{{ item.facebook_link }}{% else %}https://www.facebook.com/{% endif %}" target="_blank" class="link-icon"><i
-                                    class="fab fa-facebook-square"></i></a>
-                            <a href="{% if item.linkedin_link %}{{ item.linkedin_link }}{% else %}https://www.linkedin.com/{% endif %}" target="_blank" class="link-icon"><i
-                                    class="fab fa-linkedin"></i></a>
-                            <a href="{% if twitter_link %}{{ item.twitter_link }}{% else %}https://twitter.com/{% endif %}" target="_blank" class="link-icon"><i
-                                    class="fab fa-twitter-square"></i></a>
+                            <a href="{% if item.github_link %}{{ item.github_link }}{% else %}https://github.com/{% endif %}"
+                                target="_blank" class="link-icon"><i class="fab fa-github-square"></i></a>
+                            <a href="{% if item.facebook_link %}{{ item.facebook_link }}{% else %}https://www.facebook.com/{% endif %}"
+                                target="_blank" class="link-icon"><i class="fab fa-facebook-square"></i></a>
+                            <a href="{% if item.linkedin_link %}{{ item.linkedin_link }}{% else %}https://www.linkedin.com/{% endif %}"
+                                target="_blank" class="link-icon"><i class="fab fa-linkedin"></i></a>
+                            <a href="{% if twitter_link %}{{ item.twitter_link }}{% else %}https://twitter.com/{% endif %}"
+                                target="_blank" class="link-icon"><i class="fab fa-twitter-square"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="btn-container">
-                    <a href="#" class="btn btn-main btn-select">Hire me</a>
-                    <a href="#contactsection" class="btn btn-main btn-select">Contact me</a>
+                    <a href="#contact" class="btn btn-primary btn-main rounded-0">
+                        <span class="text-uppercase">Hire me</span>
+                        <span class="icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </span>
+                    </a>
+                    <a href="#contact" class="btn btn-primary btn-main rounded-0">
+                        <span class="text-uppercase">Contact me</span>
+                        <span class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </a>
                 </div>
             </div>
-            <i class="fas fa-arrow-alt-circle-down text arrow-down-icon"></i>
+            <a href="#about" class="arrow-down-link">
+                <i class="fas fa-arrow-alt-circle-down arrow-down-icon"></i>
+            </a>
         </div>
     </section>
 
-    <section id="aboutsection" class="pagesection container">
+    <section id="about" class="pagesection container">
         <div class="spacer"></div>
         <h1>About me</h1>
         <div class="row">
@@ -78,28 +94,28 @@
         <h1 class="section-header">My Skills</h1>
         <div class="row">
             {% if skills %}
-                {% for skill in skills %}
-                    {% if not skill.hidden %}
-                        {% if  skill.image%}
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
-                        </div>
-                        {% elif skill.image_url %}
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-                        </div>
-                        {% else %}
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-                        </div>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
+            {% for skill in skills %}
+            {% if not skill.hidden %}
+            {% if  skill.image%}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image }}" alt="{{ skill.name }}" />
+            </div>
+            {% elif skill.image_url %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+            </div>
+            {% else %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
             {% endif %}
         </div>
     </section>
 
-    <section id="servicessection" class="pagesection container-fluid justify-content-center">
+    <section id="services" class="pagesection container-fluid justify-content-center">
         <div class="spacer"></div>
         <h1>My Services</h1>
         <div class="spacer"></div>
@@ -141,11 +157,11 @@
                 {% if page.has_previous %}
                 <li class="page-item">
                     <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">&laquo;</a>
+                        href="{% url 'home' %}?page={{ page.previous_page_number }}#services">&laquo;</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.previous_page_number }}#servicessection">{{ page.previous_page_number }}</a>
+                        href="{% url 'home' %}?page={{ page.previous_page_number }}#services">{{ page.previous_page_number }}</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
@@ -158,11 +174,10 @@
                 {% if page.has_next %}
                 <li class="page-item">
                     <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">{{ page.next_page_number }}</a>
+                        href="{% url 'home' %}?page={{ page.next_page_number }}#services">{{ page.next_page_number }}</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.next_page_number }}#servicessection">&raquo;</a>
+                    <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#services">&raquo;</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
@@ -177,7 +192,7 @@
         </div>
         {% endif %}
     </section>
-    
+
     <section id="gallery" class="pagesection container-fluid">
 
         <h1>My previous projects:</h1>
@@ -186,41 +201,41 @@
             <div class="col-1">
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions"
                     data-bs-slide="prev">
-                    <span class="control-icon" aria-hidden="true" aria-label="previous"><i class="fas fa-angle-left"></i></span>
+                    <span class="control-icon" aria-hidden="true" aria-label="previous"><i
+                            class="fas fa-angle-left"></i></span>
                 </button>
             </div>
             <div class="col-10">
                 <div class="carousel-inner">
-                    
+
                     {% for project in projects %}
                     <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
                         <h3 class="project-title">{{ project.id }}. {{ project.name }}</h3>
-                            <div class="project-img-container">
-                                
-                                <img src=" {{ project.image }}" class="d-block project-img"
-                                    alt="{{ project.name }}">
-                                
-                            </div>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
+                        <div class="project-img-container">
+
+                            <img src=" {{ project.image }}" class="d-block project-img" alt="{{ project.name }}">
+
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
                 <div class="carousel-indicators">
                     {% for project in projects %}
-                    <button type="button" data-bs-target="#carouselCaptions"
-                        data-bs-slide-to="{{ forloop.counter0 }}"
+                    <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="{{ forloop.counter0 }}"
                         class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true"
                         aria-label="Slide {{ forloop.counter }}">
                     </button>
                     {% endfor %}
-                    
+
                 </div>
             </div>
             <div class="col-1">
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions"
                     data-bs-slide="next">
-                    <span class="control-icon" aria-hidden="true" aria-label="next"><i class="fas fa-angle-right"></i></span>
+                    <span class="control-icon" aria-hidden="true" aria-label="next"><i
+                            class="fas fa-angle-right"></i></span>
                 </button>
             </div>
         </div>
@@ -232,7 +247,7 @@
     </section>
 
 
-    <section id="contactsection" class="pagesection container">
+    <section id="contact" class="pagesection container">
         <div class="spacer"></div>
         <h1>Contact Me</h1>
 
