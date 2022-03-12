@@ -41,6 +41,11 @@ thead {
     box-shadow: 1rem 1rem 0.75rem #191919;
 }
 
+/* padding for compensating for the navbar */
+.pad-nav-comp {
+    padding-top: 7rem;
+}
+
 /* - - - - - Navigation - - - - - */
 
 #scrollspy-container {
