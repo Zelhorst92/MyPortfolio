@@ -10,10 +10,19 @@ body {
     font-size: 1.6rem;
     font-family: Rubik, Arial, serif;
     height: 100vh;
+    min-height: 100vh;
+    position: relative;
 }
 
 thead { 
     background-color: #191919;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 2.5rem;
+    width: 100%;
 }
 
 .row {
