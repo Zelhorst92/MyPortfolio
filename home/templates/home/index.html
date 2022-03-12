@@ -211,11 +211,9 @@
 
                     {% for project in projects %}
                     <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
-                        <h3 class="project-title">{{ project.id }}. {{ project.name }}</h3>
+                        <h3 class="project-title">{{ forloop.counter }}. {{ project.name }}</h3>
                         <div class="project-img-container">
-
                             <img src=" {{ project.image }}" class="d-block project-img" alt="{{ project.name }}">
-
                         </div>
                         <div class="carousel-caption d-none d-md-block">
                         </div>
@@ -254,7 +252,7 @@
         </div>
         <div class="row content-container">
             <div class="col-12 col-md-4">
-                <img class="d-none d-md-block stamp" src="url(../images/stamp-png.png)" alt="Postage stamp">
+                <img class="d-none d-md-block stamp" src="{{ MEDIA_URL }}stamp-png.png" alt="Postage stamp">
             </div>
             <div class="col-12 col-md-8">
                 <form method="POST" action="{% url 'home' %}" class="form mb-2">
