@@ -10,7 +10,7 @@
 #landing {
     height: 100vh;
     min-height: 100vh;
-    background-color: #191919;
+    background-color: #272b30;
     background: url(../images/landing-cover.jpg);
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -34,7 +34,6 @@
 #infocard {
     background-color: rgba(25, 25, 25, 0.8);
     border: 1px solid #191919;
-    border-radius: 1rem;
     box-shadow: 0.5rem 0.5rem 0.5rem #191919;
     text-align: center;
     min-height: 25rem;

@@ -109,7 +109,7 @@ footer {
 }
 
 .dropdown-menu[data-bs-popper] {
-    margin-top: .75rem !important;
+    margin-top: .6rem !important;
     left: -6.4rem;
     background-color: #272b30;
     border: none;
@@ -143,8 +143,7 @@ footer {
 .authentication-container {
     height: 100vh;
     min-height: 100vh;
-    margin-top: -6rem;
-    background: url(../images/landing-cover.jpg);
+    background: url(/static/home/images/landing-cover.jpg);
     background-attachment: fixed;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -164,7 +163,7 @@ footer {
 }
 
 .allauth-form-inner-content input {
-	font-size: 1.6rem!important;
+	font-size: 1.6rem;
 }
 
 .allauth-form-inner-content input[type="checkbox"],
