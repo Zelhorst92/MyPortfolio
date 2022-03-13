@@ -16,13 +16,13 @@
                 <div class="row">
                     <div class="col-12 col-md-4 pt-md-5 image-container">
                         {% if item.hero_image %}
-                            <img class="img-fluid profile-image" src="{{ item.hero_image.url }}"
+                            <img class="profile-image" src="{{ item.hero_image.url }}"
                                 alt="Picture of {{ item.full_name }}">
                         {% elif item.hero_image_url %}
-                            <img class="img-fluid profile-image" src="{{ item.hero_image_url }}"
+                            <img class="profile-image" src="{{ item.hero_image_url }}"
                                 alt="Picture of {{ item.full_name }}">
                         {% else %}
-                            <img class="img-fluid profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
+                            <img class="profile-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">
                         {% endif %}
                     </div>
                     <div class="col-12 col-md-8 name-container">
@@ -130,7 +130,9 @@
                     {% if not service.hidden %}
                         <div class="col-12 col-md-6 card-container d-flex justify-content-center">
                             <div class="card">
-                                <div class="card-header">{{ service.name }}</div>
+                                <div class="card-header">
+                                    {{ service.name }}
+                                </div>
                                 {% if service.image %}
                                     <a href="{% url 'service_details' service.id %}">
                                         <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
@@ -173,7 +175,9 @@
                         </li>
                     {% endif %}
                         <li class="page-item active">
-                            <div class="page-link">{{ page.number }}</div>
+                            <div class="page-link">
+                                {{ page.number }}
+                            </div>
                         </li>
                     {% if page.has_next %}
                         <li class="page-item">
