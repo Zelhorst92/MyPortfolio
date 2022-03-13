@@ -41,7 +41,7 @@ Welcome to my portfolio!
 # User Experience
 ## Site Owner Goals
 * Inform the visitors of the experience and capabilities of the site owner. Ie. Sell oneself/an online resume.
-* Sell services, like making a landingpage etc., or give visitors the possibility to buy the site owner a coffee.
+* Sell services, like making a landingpage etc., ~~or give visitors the possibility to buy the site owner a coffee.~~
 * Have the users contact the site owner.
 
 ---
@@ -50,11 +50,11 @@ Welcome to my portfolio!
 * A website where you can find what the site owner does.
 * A website where I can read about the site owner.
     * About the site owner experience and capabilities.
-    * A blog
+    * ~~A blog~~
 * A website where I can register and login to.
 * A website where you can buy services from the site owner.
     * Products
-    * Donations
+    * ~~Donations~~
 
 ---
 
@@ -67,7 +67,7 @@ As a user;
 * I want to login to the website.
 * I want to buy products/ donate to the site owner.
 * I want to read about the site owner.
-    * Blog/forum
+    * ~~Blog/forum~~
     * Past builds
     * Experiences with;
         * Languages
@@ -75,16 +75,19 @@ As a user;
         * etc.
     * Public personal information.
 * I want to contact the site owner.
-* I want to download a simplified resume.
 * I want to be able to traverse to relevant social media.
-* I want to read the blog.
-* I want to comment on the blog.
+* ~~I want to read the blog.~~
+* ~~I want to comment on the blog.~~
 
 As a site ower;
-* I want to update/add/delete experiences
-* I want to post/update/delete blog posts.
+* I want to see all the relevant information on the site.
+* I want to login as an administrator.
+* I want to update/add/delete the services offered.
+* I want to update/add/delete experiences/skills.
+* ~~I want to post/update/delete blog posts.~~
 * I want to update/add/delete examples/past builds.
 * I want to receive messages from users.
+
 
 [Back to top](#table-of-content)
 
@@ -95,8 +98,8 @@ As a site ower;
 * Intuitively know what the website is about.
 * The ability to register and/or login.
 * The ability to purchase services from the site owner and/or donate.
-* The ability to read the blog.
-* The ability to comment/like or dislike on the blog.
+* ~~The ability to read the blog.~~
+* ~~The ability to comment/like or dislike on the blog.~~
 
 
 ## User Expectation
@@ -105,7 +108,7 @@ As a site ower;
 * An overview of past projects.
 * Contact the site owner.
 * Buy services from site owner.
-* Comment on blog.
+* ~~Comment on blog.~~
 
 [Back to top](#table-of-content)
 
@@ -117,13 +120,13 @@ I have made wireframes for the sizes Mobile, Tablet and Desktop.
 As per Bootstrap order, from small to large. To make the wireframes I have used the program [Balsamig Wireframes](https://balsamiq.com/wireframes/ "Link to Balsamig Wireframes").
 
 #### Mobile Wireframes
-* [Mobile Landing Page Wireframe](/wireframes/mobile-landing-page.png)
+* [Mobile Landing Page Wireframe](/readme-images/wireframes/mobile-landing-page.png)
 
 #### Tablet Wireframes
-* [Tablet Landing Page Wireframe](/wireframes/tablet-landing-page.png)
+* [Tablet Landing Page Wireframe](/readme-images/wireframes/tablet-landing-page.png)
 
 #### Desktop Wireframes
-* [Desktop Landing Page Wireframe](/wireframes/desktop-landing-page.png)
+* [Desktop Landing Page Wireframe](/readme-images/wireframes/desktop-landing-page.png)
 
 #### Other Wireframes
 
@@ -133,24 +136,29 @@ As per Bootstrap order, from small to large. To make the wireframes I have used 
 The goal of this site is to be the site owners online resume. Therefore readability is paramount with not much other distractions.
 
 ### The structure
-For the structure of the website I will use the framework ...
+For the structure of the website I will use the framework [Bootstrap 5.1](https://getbootstrap.com/docs/5.1/getting-started/introduction/ "Link to bootstrap 5.1").
+This framework allows for a proper responsive website which is build up from a mobile-first perspective.
+The grid-system that Bootstrap provides is very usefull to have a well working responsive website.
+Furthermore Bootstrap has a wide browser compatibility, is quite easy to use and is very customizable.
 
 ### Fonts
-I will be using a font from [Google Fonts](https://fonts.google.com/ "Google Fonts"), specifically the [Ubuntu Font](https://fonts.google.com/specimen/Ubuntu/ "Ubuntu Font").
+I will be using a font from [Google Fonts](https://fonts.google.com/ "Google Fonts"), specifically the [Rubik Font](https://fonts.google.com/specimen/Rubik "Rubik Font").
 An easy to read, compact and professional looking font.
 
 ### Colours
-I have chosen for a colour scheme that not to energetic, to goal of the site is mostly to inform. The colours should reprent the site owners personality of being calm and reserved, therefor a calm and reserved colour scheme. Plus the site owner likes the colour green.
+I have chosen for a colour scheme that not to energetic, to goal of the site is mostly to inform. The colours should reprent the site owners personality of being calm and reserved, therefor a calm and reserved colour scheme.
 
-![Colour Palette Scheme](https://github.com/Zelhorst92/MyPortfolio/blob/main/wireframes/colourpalette.png?raw=true "Colour Palette Scheme")
+I will use [Bootswatch Slate](https://bootswatch.com/slate/ "Bootswatch Slate") as a base.
 
-* #585C5F, Davys Grey
-* #53657D, Black Coral
-* #4D6D9A, Queen Blue
-* #86B3D1, Dark Sky Blue
-* #99CED3, Powder Blue
-* #51A37D, Shiny Shamrock
-* #097827, Ao English (green)
+![Colour Palette Scheme](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette.png?raw=true "Colour Palette Scheme")
+
+* #191919, Eerie Black
+* #272B30, Gunmetal
+* #7A8288, Grayweb
+* #C8C8C8, Silver, From the clouds of the landing-page image.
+* #E9ECEF, Cultured
+
+Suplemented with black and white where necessary.
 
 [Back to top](#table-of-content)
 
