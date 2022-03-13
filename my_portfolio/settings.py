@@ -212,12 +212,22 @@ if 'USE_AWS' in os.environ:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Misc values
+# Contact form enabler, empty defaults to disabled.
 CONTACT_FORM_ENABLED = os.environ.get(
-    "CONTACT_FORM_ENABLED")  # Empty defealts to Enabled.
-COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
-    "COMBINATION_DISCOUNT_PERCENTAGE"))
-VAT_PERCENTAGE = int(os.environ.get("VAT_PERCENTAGE"))
+    "CONTACT_FORM_ENABLED")
+
+# Discount percentage, empty defaults to 0.
+if os.environ.get("COMBINATION_DISCOUNT_PERCENTAGE"):
+    COMBINATION_DISCOUNT_PERCENTAGE = int(os.environ.get(
+        "COMBINATION_DISCOUNT_PERCENTAGE"))
+else:
+    COMBINATION_DISCOUNT_PERCENTAGE = 0
+
+# VAT percentage, empty defaults to 0.
+if os.environ.get("VAT_PERCENTAGE"):
+    VAT_PERCENTAGE = int(os.environ.get("VAT_PERCENTAGE"))
+else:
+    VAT_PERCENTAGE = 0
 
 # Stripe
 STRIPE_CURRENCY = "eur"

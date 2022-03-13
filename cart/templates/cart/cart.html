@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
 {% endblock %}
 
+<!-- 
+    The shopping cart. Shows an overview of all services in the cart; name, price and quantity.
+    It also shows the calculated subtotal, discount, included VAT and the nettotal.
+-->
 {% block content %}
 <div id="cart-nav" class="container mb-2" data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="10" tabindex="0">
     <div class="row cart-header pad-nav-comp">
         <h2 class="mb-4">Shopping Cart</h2>
     </div>
-
     <div class="row">
         <div class="col">
             {% if cart_items %}
@@ -72,7 +75,7 @@
                             <hr>
                             <h5>Cart Total: &euro; {{ total|floatformat:2 }}</h5>
                             <h5>
-                                Combination Discount({{ combination_discount_percentage }}%):{% if discount %} &euro; {{ discount|floatformat:2 }}{% else %} None{% endif %}
+                                Combination Discount({{ combination_discount_percentage }}%): &euro; {{ discount|floatformat:2 }}
                             </h5>
                             <h5>VAT:({{ vat_percentage }}%) &euro; {{ vat|floatformat:2 }}</h5>
                             <hr>
@@ -97,8 +100,9 @@
                     </a>
                 </span>
             </div>
+            <!-- If there are no services in the cart it show that your bag is empty -->
             {% else %}
-            <p class="mb-5">Your bag is empty.</p>
+            <p class="mb-5">Your cart is empty.</p>
             <a href="{% url 'home' %}#servicessection" class="btn btn-primary rounded-0">
                 <span class="icon">
                     <i class="fas fa-chevron-left"></i>

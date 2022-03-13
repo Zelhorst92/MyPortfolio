@@ -7,14 +7,14 @@ Order details:
 Order: {{ order.order_number }}
 Date: {{ order.date }}
 
-Order Total: &euro; {{ order.order_total }}
+Order Total: € {{ order.order_total }}
 {% if order.discount %}
-Combination Discount({{ combination_discount_percentage }}%): &euro;{{ order.discount }}
+Combination Discount({{ combination_discount_percentage }}%): € {{ order.discount }}
 {% else %}
 Combination Discount: None
 {% endif %}
-VAT:({{ vat_percentage }}%): &euro; {{ order.vat }}
-Net total: &euro;€ {{ order.net_total }}
+VAT:({{ vat_percentage }}%): € {{ order.vat }}
+Net total: € {{ order.net_total }}
 
 Contact details:
 
