@@ -2,10 +2,12 @@
 
 * [Testing](#testing)
     * [Navigation](#navigation)
-    * [2](#2)
+    * [Information](#information)
+    * [Authentication](#authentication)
+    * [Purchase](#purchase)
 
 * [Bugreports](#bugreports)
-    * [1](#1)
+    * [ConfirmationEmail](#confirmationemail)
 
 
 https://robert-l-zelhorst-portfolio.herokuapp.com/
@@ -81,7 +83,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 [Back to top](#testing-and-bugreports)
 
-##  Registration & Login
+##  Authentication
 ### User Expectation
 * As a user, I want to register to the website.
 * As a user, I want to login to the website.
@@ -97,7 +99,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### Result
 *   All worked as intented. See pdf for screens.
 
-[Register and Login Test](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/register-and-login-test.pdf)
+[Authentication](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/authentication-test.pdf)
 
 ### Conclusion
 *   All tests passed.
@@ -108,7 +110,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 [Back to top](#testing-and-bugreports)
 
-##  2
+##  Purchase
 ### User Expectation
 * As a user, I want to buy products from the site owner.
     * View the product details
@@ -117,17 +119,21 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
     * View a successfull order summary. (checkout success)
 * As a user, I want to look back at older orders.
 ### Intention
-*   
+*   The user wants to buy a service from the site owner. The user will take the path of purchasing a service.
 ### Tests
-*   
+*   Complete a path of purchase.
 ### Result
-*   
+*   Purchase was successful. See the document below.
+
+[Authentication](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/purchase-path-test.pdf)
+
+*   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
 ### Conclusion
-*  
+*   Test successful.
 ### Bugs
-*   
+*   Confirmation email has a problem with showing the order. 
 ### Comments
-*   
+*   None.
 
 [Back to top](#testing-and-bugreports)
 
@@ -153,31 +159,12 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 ##  2
 ### User Expectation
-*   As a user, I want to contact the site owner.
-*   As a site ower, I want to receive messages from users.
-
-### Intention
-*   
-### Tests
-*   
-### Result
-*   
-### Bugs
-*   
-### Comments
-*   
-
-[Back to top](#testing-and-bugreports)
-
-##  2
-### User Expectation
 *   As a site ower, I want to login as an administrator.
 *   As a site ower, I want to change all the relevant information on the site
     *   About information, Name/profession etc.
     *   Skills, Add/change/delete/hide
     *   Services, Add/change/delete/hide
     *   Previous projects, Add/change/delete/hide
-
 
 ### Intention
 
@@ -195,7 +182,19 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 # Bugreports
 
-## 1
+## ConfirmationEmail
+### Bug
+*   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
+### Fix
+*   
+### Conclusion/Result
+*   
+### Status
+*   Unresolved.
+
+[Back to top](#testing-and-bugreports)
+
+##
 ### Bug
 *   
 ### Fix
