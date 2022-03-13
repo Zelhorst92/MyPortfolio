@@ -18,7 +18,7 @@
                         {% if item.hero_image %}
                             <img class="img-fluid profile-image" src="{{ item.hero_image.url }}"
                                 alt="Picture of {{ item.full_name }}">
-                        {% elif item.hero_image %}
+                        {% elif item.hero_image_url %}
                             <img class="img-fluid profile-image" src="{{ item.hero_image_url }}"
                                 alt="Picture of {{ item.full_name }}">
                         {% else %}
@@ -80,6 +80,9 @@
                 <div class="image-container">
                     {% if item.about_image %}
                         <img class="img-fluid about-image" src="{{ item.about_image.url }}"
+                            alt="Picture of {{ item.full_name }}">
+                    {% elif item.about_image_url %}
+                        <img class="img-fluid profile-image" src="{{ item.about_image_url }}"
                             alt="Picture of {{ item.full_name }}">
                     {% else %}
                         <img class="img-fluid about-image" src="{{ MEDIA_URL }}noimage.png" alt="No image">

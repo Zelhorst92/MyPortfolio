@@ -97,9 +97,6 @@ As a site ower, I want;
 * to receive messages from users.
 * ~~I want to post/update/delete blog posts.~~
 
-
-
-
 [Back to top](#table-of-content)
 
 ---
@@ -112,13 +109,14 @@ As a site ower, I want;
 * ~~The ability to read the blog.~~
 * ~~The ability to comment/like or dislike on the blog.~~
 
-
 ## User Expectation
 * See relevant information about the site owner.
 * An overview of experience.
 * An overview of past projects.
 * Contact the site owner.
 * Buy services from site owner.
+* Get confirmation on buying a product.
+* View past buyorders.
 * ~~Comment on blog.~~
 
 [Back to top](#table-of-content)
@@ -188,10 +186,17 @@ Below the database schema used in this project.
 
 # Features
 ## Existing Features
-...
+### Informing
+On page load the user will see the site owners name, profesion, relevant social media links
 
 ### CRUD
-...
+The site owner and those who are flagged as a super_user can modify almost all information that is present on the main page.
+If the user is a super_user, then a navigation link to the admin-panel/Manage Site is present in the navigation.
+From here the user can access the create/update/deletion area of the website.
+#### About
+The about area is only meant to have one entry, therefore the user will be directly navigated to editing this information. Unless the database is empty, then there is the option to add the initial information.
+Here the user can enter the full name, profesion, various social media links, several entries for a short sumary of the site owner.
+Aswell as the option to upload two pictures. One that will be shown on the herosection in the info card and one for next to the short summary. These can either be pictures uploaded to the database or urls to pictures hosted somewhere else.
 
 ### Superuser
 ...
@@ -394,6 +399,10 @@ To run the application on for example Heroku, you need an up to date requirement
 [Back to top](#table-of-content)
 
 # Credits
+
+## Aditional Sources
+
+Stamp picture = https://www.pngfind.com/mpng/iohTbwb_mail-stamp-template-postmark-png-image-postage-stamp/
 ...
 
 ## Thanks
