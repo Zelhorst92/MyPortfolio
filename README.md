@@ -58,15 +58,13 @@ Welcome to my portfolio!
 
 ---
 
-## User Stories
-As a user;
-* I want a website that is easy and intuitively to use.
-* I want to see what the website is about at first glance.
-* I want a website that works on all screen sizes.
-* I want to register to the website.
-* I want to login to the website.
-* I want to buy products/ donate to the site owner.
-* I want to read about the site owner.
+## User/Siteowner Stories
+As a user, I want;
+* a website that is easy and intuitively to use.
+* to see what the website is about at first glance.
+* a website that works on all screen sizes.
+* to be able to traverse to relevant social media.
+* to read about the site owner.
     * ~~Blog/forum~~
     * Past builds
     * Experiences with;
@@ -74,19 +72,32 @@ As a user;
         * Frameworks
         * etc.
     * Public personal information.
-* I want to contact the site owner.
-* I want to be able to traverse to relevant social media.
+* to contact the site owner.
+
+* to register to the website.
+* to login to the website.
+* to buy products ~~/donate to~~ from the site owner.
+    * View the product details
+    * View all the products I want to buy and change quantity if necessary. (cart)
+    * View a summary before proceeding to buy any product. (checkout)
+    * View a successfull order summary. (checkout success)
+* to look back at older orders.
+
 * ~~I want to read the blog.~~
 * ~~I want to comment on the blog.~~
 
-As a site ower;
-* I want to see all the relevant information on the site.
-* I want to login as an administrator.
-* I want to update/add/delete the services offered.
-* I want to update/add/delete experiences/skills.
+As a site ower, I want;
+* to see all the relevant information on the site.
+* to login as an administrator.
+* to change all the relevant information on the site
+    * About information, Name/profession etc.
+    * Skills, Add/change/delete/hide
+    * Services, Add/change/delete/hide
+    * Previous projects, Add/change/delete/hide
+* to receive messages from users.
 * ~~I want to post/update/delete blog posts.~~
-* I want to update/add/delete examples/past builds.
-* I want to receive messages from users.
+
+
 
 
 [Back to top](#table-of-content)
@@ -166,15 +177,10 @@ Suplemented with black and white where necessary.
 
 ## Database Structure
 
-...
+Below the database schema used in this project.
+9 Models + 2 models from allauth with their relations shown.
 
-[Back to top](#table-of-content)
-
----
-
-## Logic Flowchart
-
-...
+![Database schema](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette.png?raw=true "Database schema")
 
 [Back to top](#table-of-content)
 

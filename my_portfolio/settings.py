@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',  # Perhaps not necessary, consider later
+    'allauth.socialaccount',
     'django_pagination_bootstrap',
     'storages',
     'crispy_forms',
@@ -247,3 +247,17 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+  "app_labels": [
+        "cart",
+        "checkout",
+        "home",
+        "profiles",
+        "projects",
+        "services",
+        "skills",
+    ],
+}
