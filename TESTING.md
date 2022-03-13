@@ -99,7 +99,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### Result
 *   All worked as intented. See pdf for screens.
 
-[Authentication](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/authentication-test.pdf)
+[Authentication Test Pdf](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/authentication-test.pdf)
 
 ### Conclusion
 *   All tests passed.
@@ -125,7 +125,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### Result
 *   Purchase was successful. See the document below.
 
-[Authentication](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/purchase-path-test.pdf)
+[Purchase Path Test Pdf](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/purchase-path-test.pdf)
 
 *   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
 ### Conclusion
