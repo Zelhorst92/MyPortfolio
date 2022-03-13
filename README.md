@@ -178,33 +178,72 @@ Suplemented with black and white where necessary.
 Below the database schema used in this project.
 9 Models + 2 models from allauth with their relations shown.
 
-![Database schema](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette.png?raw=true "Database schema")
-
+![Database schema](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette%20.png?raw=true "Database schema")
 [Back to top](#table-of-content)
 
 ---
 
 # Features
 ## Existing Features
-### Informing
-On page load the user will see the site owners name, profesion, relevant social media links
+### Navigation
+At the top op the page there is a persistion navigation bar. It is present on all pages and has a scroll spy which will follow the user when the user is scrolling along the home page aswell as view the shopping cart.
+On smaller devices the navigation bar will collapse into a hamburger menu which will have a dropdown menu on the right side.
 
-### CRUD
-The site owner and those who are flagged as a super_user can modify almost all information that is present on the main page.
-If the user is a super_user, then a navigation link to the admin-panel/Manage Site is present in the navigation.
-From here the user can access the create/update/deletion area of the website.
-#### About
-The about area is only meant to have one entry, therefore the user will be directly navigated to editing this information. Unless the database is empty, then there is the option to add the initial information.
-Here the user can enter the full name, profesion, various social media links, several entries for a short sumary of the site owner.
-Aswell as the option to upload two pictures. One that will be shown on the herosection in the info card and one for next to the short summary. These can either be pictures uploaded to the database or urls to pictures hosted somewhere else.
+### Home page
+As this is an online resume the user will on page load see the site owners name, profesion, relevant social media links, aswell as a beautiful image of a misty mountain. Further down the page the user will see a short description of who the site owner is and another picture of the siteowner. Below this the user can see a quick overview of the skillset the site owner.
 
-### Superuser
+Below the skills multiple servcies are being shown which can be bought. The user can view the details of these services. 
+
+Even further down there is a gallery of the previos projects done by the site owner. Its a contineous slideshow.
+
+At the bottom the user can see the contact form to get in touch with the site owner. Their message will be directed to the site owners emailaddress. The contact form functionality can be shut down with the variable CONTACT_FORM_ENABLED.
+
+### Service details
+Here the user can find the details about the service the user possibly wants to purchase and can also add them to their shopping cart from here. There is also a quantity selector present so that the user can add multiple of the same service into the shopping cart at the same time.
+
+### Shopping cart
+In the shopping cart the user can find a summary of services that the user has put in the cart; the individual price per service, the quantity of each service and the subtotals. Aswell the cart total cost, the discount if this applies, the included VAT and the net total. In here the user can also change the quantity of services in the cart. From here the user can proceed to the checkout.
+The discount only applies if more then one different services are being bought. The discount and the VAT values can be set with the COMBINATION_DISCOUNT_PERCENTAGE and VAT_PERCENTAGE respectively.
+
+### Checkout
+In the checkout the user can see the exactly the same as in the shopping cart but without the ability to change the quantity. This is so the user can view the order one more time to be sure it is all correct. If so the user can fill in the payment form and their credit card information which will be checked by Stripe. If the user is registered, the user can also opt to save its credentials. Else it will be shown a link to register instead. If all information is filled in correctly, the payment intent will be processed by stripe and if successfull the user will be redirected to the checkout success page and receive a confirmation email.
+
+### Checkout Success
+When the user has successfully finished a payment the order form will be shown. Here the user can find the order number and the orderdate aswell their basic information; Their full name, email, phone number and country. Below this, are the services bought, price per service, quantities and totals are shown once again. This for that the user is absolutely sure that it has bought the correct service(s) the user wanted to buy. The user also receives the same order info via the mail.
+
+### Register/Login
+The user can opt to register to the site. Here is the allauth package used from Django. This functionality includes a registration, email confirmation, login, logout and forgot password.
+
+### Dashboard
+If the user is registered it can find a form there to update its contact information which then can be used at the checkout. It also works vice versa, at the checkout the user can opt to choose to save the date to it dashboard. The user can also find its orderhistory here, with the most recent order on the top.
+
+### Order history
+From the dashboard the user can select a past order and view this. It is the same template as the checkout success.
+
+### Super_user & CRUD
+The site owner and those who are flagged as a super_user can modify almost all information that is present on the main page. If the user is a super_user, then a link to the admin-panel/Manage Site is present in the navigation. From here the user can add/edit/delete the about information, the skills, the services for sale and previous projects.
+
+### 
 ...
 
 [Back to top](#table-of-content)
 
 ## Future Features
-...
+### Gallery links
+It would be nice to have a direction button to the previous projects websites and/or github links directly from the gallery, so that the users can have a more detailed look of these websites.
+
+### Coffee
+It would be nice to have a cup of coffee as a buyable item aswell. This is not a service and in current form it would apply for the discount. A cup of coffee of 2 euro and a website of 1500 euros would come to a discount of 150,20. That means the current programming would have to be revised as in a discount exempt or an attribute for purely discount of services. Possibly the cup of coffee could be donated via different means, bypassing the discount completely.
+
+### Database; Categories for previous projects
+At the moment the previous projects dont have an attribute categories. They could share the same category list as the services have as it is in principle the same.
+
+### CRUD; Add/Edit/Delete Categories
+At the moment it is not possible to add, edit or delete categories for services.
+This would be the first thing I would add in the future. The principle would be the same as adding/editing or deleting any other models that currently exist.
+
+### Register/Login addition
+In the dashboard there is need for a change password option. At the moment users can only change passwords via the Forgot Password functionality.
 
 [Back to top](#table-of-content)
 
