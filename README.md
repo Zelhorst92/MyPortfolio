@@ -159,7 +159,7 @@ I have chosen for a colour scheme that not to energetic, to goal of the site is 
 
 I will use [Bootswatch Slate](https://bootswatch.com/slate/ "Bootswatch Slate") as a base.
 
-![Colour Palette Scheme](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette.png?raw=true "Colour Palette Scheme")
+![Colour Palette Scheme](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette%20.png?raw=true "Colour Palette Scheme")
 
 * #191919, Eerie Black
 * #272B30, Gunmetal
@@ -178,7 +178,7 @@ Suplemented with black and white where necessary.
 Below the database schema used in this project.
 9 Models + 2 models from allauth with their relations shown.
 
-![Database schema](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/newcolourpalette%20.png?raw=true "Database schema")
+![Database schema](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/my_portfolio_data_schema.png?raw=true "Database schema")
 [Back to top](#table-of-content)
 
 ---
@@ -260,28 +260,34 @@ In the dashboard there is need for a change password option. At the moment users
 ## Libraries and Tools
 ### Libraries & Frameworks
 *   [Bootstrap](https://getbootstrap.com/ "Link to bootstrap")
+*   [Bootswatch](https://bootswatch.com/ "Link to bootswatch")
 *   [Fontawsome](https://fontawesome.com/ "Link to fontawesome")
 *   [Googlefonts](https://fonts.google.com/ "Link to googlefonts") 
-*   ~~[jQuery](https://jquery.com/)~~
+*   [jQuery](https://jquery.com/ "Link to JQuery")
+*   [Stripe](http://stripe.com/ "Link to stripe")
+*   [Django](https://www.djangoproject.com/ "Link to django")
+
+### Validators
+*   [W3C Css-validator](https://jigsaw.w3.org/css-validator/ "Link to the w3 css validator")
+*   [W3C Markup-validator](https://validator.w3.org/ "Link to w3c markup validator")
+*   [Python Validator](https://infoheap.com/python-lint-online/ "Link to pyhton lint validator")
 
 ### Tools
 *   [Gitpod](https://www.gitpod.io/ "Link to gitpod")
 *   [Github](https://github.com/ "Link to github")
 *   [Git](https://git-scm.com/ "Link to git")
+*   [Heroku](https://www.heroku.com/ "Link to Heroku")
+*   [Jinja](https://jinja.palletsprojects.com/en/3.0.x/ "Link to jinja literature")
+*   [Amazon AWS](https://aws.amazon.com "Link to Amazon AWS")
 *   [Tinypng](https://tinypng.com/ "Link to tinypng") 
 *   [Balsamiq Wireframes](https://balsamiq.com/wireframes/ "Link to balsamiq wireframes")
+*   [Db diagram](https://dbdiagram.io/ "Link to db diagram")
 *   [Coolors](https://coolors.co/)
 *   [Contrast Checker](https://webaim.org/resources/contrastchecker/)
-*   [W3C Css-validator](https://jigsaw.w3.org/css-validator/ "Link to the w3 css validator")
-*   [W3C Markup-validator](https://validator.w3.org/ "Link to w3c markup validator")
-*   [Python Validator](https://infoheap.com/python-lint-online/ "Link to pyhton lint validator")
 *   [Techsini](http://techsini.com/ "Link to techsini.com")
 *   [Favicon.cc](https://www.favicon.cc/ "Link to a favicon creator")
-*   [Heroku](https://www.heroku.com/ "Link to Heroku")
-*   [MongoDB Atlas](https://docs.mongodb.com/ "Link to mongoDB")
-*   [Flask](https://flask.palletsprojects.com/en/2.0.x/ "Link to Flask")
-*   [PyMongo](https://pymongo.readthedocs.io/en/stable/l "Link to pymongo literature")
-*   [Jinja](https://jinja.palletsprojects.com/en/3.0.x/ "Link to jinja literature")
+*   [Temp Mail](https://temp-mail.org/ "Link to temp-mail")
+*   [Passwordgenerator](https://passwordsgenerator.net/ "Link to passwordsgenerator")
 
 [Back to top](#table-of-content)
 
