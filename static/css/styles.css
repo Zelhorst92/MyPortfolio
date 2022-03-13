@@ -158,9 +158,11 @@ footer {
 .allauth-form-wrapper {
     background-color: rgba(25, 25, 25, 0.8);
     border: 1px solid #191919;
-    border-radius: 1rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem #191919;
     text-align: center;
     padding: 2rem;
+    min-height: 25rem;
+    margin: 7rem auto auto auto;
 }
 
 .allauth-form-inner-content input {
@@ -264,6 +266,10 @@ textarea {
 @media screen and (min-width: 576px) {
     .row {
         --bs-gutter-x: 1.5rem;
+    }
+    /* - - - Allauth - - - */
+    .allauth-form-wrapper {
+        margin: 25vh auto auto auto;
     }
 }
 
