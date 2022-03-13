@@ -143,17 +143,20 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 * As a site ower, I want to receive messages from users.
 
 ### Intention
-*   
+*   The user should be able to contact the site owner via the contact form at the bottom of the home page.
 ### Tests
-*   
+*   Send a message with the contact form.
 ### Result
-*   
+*   Test passed. Message sent and received when CONTACT_FORM_ENABLED was true. User gets error message when CONTACT_FORM_ENABLED was none. See documt below.
+
+[Contact Test](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/contact-test.pdf)
+
 ### Conclusion
-*  
+*   Test passed.
 ### Bugs
-*   
+*   None.
 ### Comments
-*   
+*   None.
 
 [Back to top](#testing-and-bugreports)
 
