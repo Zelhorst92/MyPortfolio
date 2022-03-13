@@ -85,23 +85,28 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### User Expectation
 * As a user, I want to register to the website.
 * As a user, I want to login to the website.
-* As a site ower, I want to login as an administrator.
+
 ### Intention
-*   
+*   The user could register to the site, to save its contact information for buying a service and to look back their order history on their dashboard.
 ### Tests
-*   
+1.  Register to the site.
+2.  Receive confirmation email.
+3.  Confirm Email.
+4.  Login and view dashboard.
+5.  Logout.
 ### Result
-*   
+*   All worked as intented. See pdf for screens.
+
+[Register and Login Test](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/register-and-login-test.pdf)
+
 ### Conclusion
-*   
+*   All tests passed.
 ### Bugs
-*   
+*   None.
 ### Comments
-*  
+*   None.
 
 [Back to top](#testing-and-bugreports)
-
-
 
 ##  2
 ### User Expectation
@@ -148,15 +153,11 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 ##  2
 ### User Expectation
-As a user, I want to contact the site owner.
-As a site ower, I want to receive messages from users.
+*   As a user, I want to contact the site owner.
+*   As a site ower, I want to receive messages from users.
 
 ### Intention
-* As a site ower, I want to change all the relevant information on the site
-    * About information, Name/profession etc.
-    * Skills, Add/change/delete/hide
-    * Services, Add/change/delete/hide
-    * Previous projects, Add/change/delete/hide
+*   
 ### Tests
 *   
 ### Result
@@ -167,6 +168,30 @@ As a site ower, I want to receive messages from users.
 *   
 
 [Back to top](#testing-and-bugreports)
+
+##  2
+### User Expectation
+*   As a site ower, I want to login as an administrator.
+*   As a site ower, I want to change all the relevant information on the site
+    *   About information, Name/profession etc.
+    *   Skills, Add/change/delete/hide
+    *   Services, Add/change/delete/hide
+    *   Previous projects, Add/change/delete/hide
+
+
+### Intention
+
+### Tests
+*   
+### Result
+*   
+### Bugs
+*   
+### Comments
+*   
+
+[Back to top](#testing-and-bugreports)
+
 
 # Bugreports
 
