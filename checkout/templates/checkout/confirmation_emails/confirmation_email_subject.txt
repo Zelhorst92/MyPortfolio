@@ -1,1 +1,1 @@
-Order number {{ order.order.number }}. Thank you for your purchase!
+Order number {{ order.order_number }}, bought by {{ order.full_name }}.
