@@ -3,12 +3,13 @@
 {% load pagination_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
 
 {% block content %}
 <div id="scrollspy-container" data-bs-spy="scroll" data-bs-target="#navigation-bar" data-bs-offset="0" tabindex="0">
     {% for item in about_user %}
+    <!-- Landing section -->
     <section id="landing" class="pagesection container">
         <div class="row">
             <div id="infocard" class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-4 ">
@@ -60,6 +61,7 @@
             </a>
         </div>
     </section>
+    <!-- About section -->
     <section id="about" class="pagesection container">
         <div class="row content-header">
             <h1>About me</h1>
@@ -67,11 +69,11 @@
         <div class="row content-container">
             <div class="col-12 col-md-8">
                 {% if item.about_entry_one or item.about_entry_two or item.about_entry_three %}
-                <p>{{ item.about_entry_one }}</p>
-                <p>{{ item.about_entry_two }}</p>
-                <p>{{ item.about_entry_three }}</p>
+                    <p>{{ item.about_entry_one }}</p>
+                    <p>{{ item.about_entry_two }}</p>
+                    <p>{{ item.about_entry_three }}</p>
                 {% else %}
-                <p>User has not entered any bio.</p>
+                    <p>User has not entered any bio.</p>
                 {% endif %}
             </div>
             <div class="col-12 col-md-4 d-flex justify-content-center">
@@ -87,165 +89,165 @@
         </div>
     </section>
     {% endfor %}
+    <!-- Skills section -->
     <section id="skills" class="pagesection container">
         <div class="row content-header">
             <h1>My Skills</h1>
         </div>
         <div class="row content-container">
             {% if skills %}
-            {% for skill in skills %}
-            {% if not skill.hidden %}
-            {% if  skill.image%}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ skill.image.url }}" alt="{{ skill.name }}" />
-            </div>
-            {% elif skill.image_url %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
-            </div>
-            {% else %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
-            </div>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+                {% for skill in skills %}
+                    {% if not skill.hidden %}
+                        {% if  skill.image%}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <img class="skill-image" src="{{ skill.image.url }}" alt="{{ skill.name }}" />
+                            </div>
+                        {% elif skill.image_url %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <img class="skill-image" src="{{ skill.image_url }}" alt="{{ skill.name }}" />
+                            </div>
+                        {% else %}
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <img class="skill-image" src="{{ MEDIA_URL }}noimage.png" alt="{{ skill.name }}" />
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         </div>
     </section>
+    <!-- Services for sale section -->
     <section id="services" class="pagesection container justify-content-center">
         <div class="row content-header">
             <h1>My Services</h1>
         </div>
         {% if services %}
-        <div class="row content-container">
-            {% for service in page.object_list %}
-            {% if not service.hidden %}
-            <div class="col-12 col-md-6 card-container d-flex justify-content-center">
-                <div class="card">
-                    <div class="card-header">{{ service.name }}</div>
-                    {% if service.image %}
-                    <a href="{% url 'service_details' service.id %}">
-                        <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
-                    </a>
-                    {% else %}
-                    <a href="{% url 'service_details' service.id %}">
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ service.name }}">
-                    </a>
-                    {% endif %}
-                    <div class="card-body">
-                        <p class="card-text">{{ service.description }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="justify-content-end">
-                            <span class="float-start">€{{ service.price }}</span>
-                            <a href="{% url 'service_details' service.id %}" class="btn btn-success float-end">
-                                <span>View Details</span>
-                            </a>
+            <div class="row content-container">
+                {% for service in page.object_list %}
+                    {% if not service.hidden %}
+                        <div class="col-12 col-md-6 card-container d-flex justify-content-center">
+                            <div class="card">
+                                <div class="card-header">{{ service.name }}</div>
+                                {% if service.image %}
+                                    <a href="{% url 'service_details' service.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'service_details' service.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ service.name }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body">
+                                    <p class="card-text">{{ service.description }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="justify-content-end">
+                                        <span class="float-start">€{{ service.price }}</span>
+                                        <a href="{% url 'service_details' service.id %}" class="btn btn-success float-end">
+                                            <span>View Details</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-        <div class="page-links">
-            <ul class="pagination pagination-lg justify-content-center">
-                {% if page.has_previous %}
-                <li class="page-item">
-                    <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.previous_page_number }}#services">&laquo;</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.previous_page_number }}#services">{{ page.previous_page_number }}</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="">&laquo;</a>
-                </li>
-                {% endif %}
-                <li class="page-item active">
-                    <div class="page-link">{{ page.number }}</div>
-                </li>
-                {% if page.has_next %}
-                <li class="page-item">
-                    <a class="page-link"
-                        href="{% url 'home' %}?page={{ page.next_page_number }}#services">{{ page.next_page_number }}</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#services">&raquo;</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="">&raquo;</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
+            <div class="page-links">
+                <ul class="pagination pagination-lg justify-content-center">
+                    {% if page.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link"
+                                href="{% url 'home' %}?page={{ page.previous_page_number }}#services">&laquo;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link"
+                                href="{% url 'home' %}?page={{ page.previous_page_number }}#services">{{ page.previous_page_number }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="">&laquo;</a>
+                        </li>
+                    {% endif %}
+                        <li class="page-item active">
+                            <div class="page-link">{{ page.number }}</div>
+                        </li>
+                    {% if page.has_next %}
+                        <li class="page-item">
+                            <a class="page-link"
+                                href="{% url 'home' %}?page={{ page.next_page_number }}#services">{{ page.next_page_number }}</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="{% url 'home' %}?page={{ page.next_page_number }}#services">&raquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         {% else %}
-        <div class="row">
-            <p>There are currently no services to show.</p>
-        </div>
+            <div class="row">
+                <p>There are currently no services to show.</p>
+            </div>
         {% endif %}
     </section>
+    <!-- Previous projects gallery section -->
     <section id="gallery" class="pagesection container-fluid">
         <div class="row content-header">
             <h1>My previous projects</h1>
         </div>
         {% if projects %}
-        <div id="carouselCaptions" class="carousel slide row" data-bs-ride="carousel">
-            <div class="col-1">
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions"
-                    data-bs-slide="prev">
-                    <span class="control-icon" aria-hidden="true" aria-label="previous">
-                        <i class="fas fa-angle-left"></i>
-                    </span>
-                </button>
-            </div>
-            <div class="col-10">
-                <div class="carousel-inner">
-                    {% for project in projects %}
-                    <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
-                        <h3 class="project-title">{{ forloop.counter }}. {{ project.name }}</h3>
-                        <div class="project-img-container">
-                            {% if project.image %}
-                            <img src=" {{ project.image.url }}" class="d-block project-img" alt="{{ project.name }}">
-                            {% else %}
-                            <img src=" {{ project.image_url.url }}" class="d-block project-img"
-                                alt="{{ project.name }}">
-                            {% endif %}
-                        </div>
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <div class="carousel-indicators">
-                    {% for project in projects %}
-                    <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="{{ forloop.counter0 }}"
-                        class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true"
-                        aria-label="Slide {{ forloop.counter }}">
+            <div id="carouselCaptions" class="carousel slide row" data-bs-ride="carousel">
+                <div class="col-1">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions"
+                        data-bs-slide="prev">
+                        <span class="control-icon" aria-hidden="true" aria-label="previous">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
                     </button>
-                    {% endfor %}
+                </div>
+                <div class="col-10">
+                    <div class="carousel-inner">
+                        {% for project in projects %}
+                            <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                                <h3 class="project-title">{{ forloop.counter }}. {{ project.name }}</h3>
+                                <div class="project-img-container">
+                                    {% if project.image %}
+                                        <img src=" {{ project.image.url }}" class="d-block project-img" alt="{{ project.name }}">
+                                    {% else %}
+                                        <img src=" {{ project.image_url.url }}" class="d-block project-img"
+                                            alt="{{ project.name }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-indicators">
+                        {% for project in projects %}
+                            <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="{{ forloop.counter0 }}"
+                                class="{% if forloop.counter0 == 0 %} active {% endif %}" aria-current="true"
+                                aria-label="Slide {{ forloop.counter }}">
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-1">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions"
+                        data-bs-slide="next">
+                        <span class="control-icon" aria-hidden="true" aria-label="next"><i
+                                class="fas fa-angle-right"></i></span>
+                    </button>
                 </div>
             </div>
-            <div class="col-1">
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions"
-                    data-bs-slide="next">
-                    <span class="control-icon" aria-hidden="true" aria-label="next"><i
-                            class="fas fa-angle-right"></i></span>
-                </button>
-            </div>
-        </div>
         {% else %}
         <div class="row">
             <p>There are currently no projects to show.</p>
         </div>
         {% endif %}
     </section>
-
-
+    <!-- Contact form section -->
     <section id="contact" class="pagesection container pb-5">
         <div class="row content-header">
             <h1>Contact Me</h1>
@@ -266,12 +268,11 @@
                             </span>
                         </button>
                     </div>
+                </form>
             </div>
-
-            </form>
         </div>
     </section>
+    <!-- Alternative footer -->
     <p class="text-center">© 2021 Robert L. Zelhorst - my.email@email.com - 06-12345678</p>
 </div>
-
 {% endblock %}

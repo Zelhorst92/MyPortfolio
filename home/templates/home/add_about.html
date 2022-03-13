@@ -10,12 +10,10 @@
             <hr>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12 col-lg-5 mb-5 mx-4">
             <p>Here you can add the general information of the site owner; such as the name, profession, relevant information and profile pictures. The hero image will be visible in the here landing and the about image next the the about information.</p>
         </div>
-
         <div class="col-12 col-lg-6 gx-5">
             <form method="POST" action="{% url 'add_about' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
