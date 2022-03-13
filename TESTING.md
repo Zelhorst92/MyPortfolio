@@ -5,9 +5,13 @@
     * [Information](#information)
     * [Authentication](#authentication)
     * [Purchase](#purchase)
+    * [Contact](#contact)
+    * [CRUD](#crud)
+
+    Contact
 
 * [Bugreports](#bugreports)
-    * [ConfirmationEmail](#confirmationemail)
+    * [Confirmation Email](#confirmation-email)
 
 
 https://robert-l-zelhorst-portfolio.herokuapp.com/
@@ -137,7 +141,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 [Back to top](#testing-and-bugreports)
 
-##  2
+##  Contact
 ### User Expectation
 * As a user, I want to contact the site owner.
 * As a site ower, I want to receive messages from users.
@@ -160,7 +164,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 [Back to top](#testing-and-bugreports)
 
-##  2
+##  CRUD
 ### User Expectation
 *   As a site ower, I want to login as an administrator.
 *   As a site ower, I want to change all the relevant information on the site
@@ -170,22 +174,30 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
     *   Previous projects, Add/change/delete/hide
 
 ### Intention
-
+*   The siteowner and/or its superuser should be able to alter the information on the homepage, add/edit/delete or hide the skills, services and previous projects. Only the siteowner and superuser should be able to access the site manager.
 ### Tests
-*   
+1.  See if normal users can access the admin panel/site manager.
+2.  Complete a path of addition/edition/hiding and deleting a skill/service/previous project, edit about. One path will be supported with screens, the rest will be tested and confirmed;
+    *   Skill path.
+    *   Service path.
+    *   Project path.
+    *   About edit.
 ### Result
-*   
+1.  Test passed. Normal users are unable to access the admin panel or any add/edit/delete url. See the document.
+2.  All the paths were successful with the exception of the deletion modal. It seems that the modals generated with each individual item are not unique.
+
+[CRUD Test](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/CRUD-test.pdf)
 ### Bugs
-*   
+*   Modal not unique to the id of the item that needs to be deleted. See [Wrong Modal](#wrong-modal)
 ### Comments
-*   
+*   It also seems that the ordering of the items after editing changes. This does not break anything and is therefore not a bug. But it is worth looking into as the ordering also determines in what order the items appear on the homepage. To give the siteowner more control over where goes what, the order should also be determinable. Possible with overriding the id of the items.
 
 [Back to top](#testing-and-bugreports)
 
 
 # Bugreports
 
-## ConfirmationEmail
+## Confirmation Email
 ### Bug
 *   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
 ### Fix
@@ -197,14 +209,30 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 [Back to top](#testing-and-bugreports)
 
-##
+## Wrong Modal
 ### Bug
-*   
+*   Modal not unique to the id of the item that needs to be deleted.
 ### Fix
-*   
+*   Change the id of the modal from 
+```
+<div class="modal fade" id="ConfirmModal" tabindex="-1" aria-labelledby="ConfirmModalLabel" aria-hidden="true">
+``` 
+to
+```
+<div class="modal fade" id="ConfirmModal{{skill.id}}" tabindex="-1" aria-labelledby="ConfirmModal{{skill.id}}Label" aria-hidden="true">
+```
+and the anchor target from
+```
+<a href="#ConfirmModal" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal">Delete</a>
+```
+to
+```
+<a href="#ConfirmModal{{skill.id}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal{{skill.id}}">Delete</a>
+```
+
 ### Conclusion/Result
-*   
+*   This will make the modal unique to their respective deletion button.
 ### Status
-*  
+*  Resolved.
 
 [Back to top](#testing-and-bugreports)

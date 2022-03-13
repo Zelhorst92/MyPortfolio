@@ -287,7 +287,10 @@ In the dashboard there is need for a change password option. At the moment users
 *   [Techsini](http://techsini.com/ "Link to techsini.com")
 *   [Favicon.cc](https://www.favicon.cc/ "Link to a favicon creator")
 *   [Temp Mail](https://temp-mail.org/ "Link to temp-mail")
+*   [Devicon](https://devicon.dev/ "Link to Devicon")
 *   [Passwordgenerator](https://passwordsgenerator.net/ "Link to passwordsgenerator")
+
+https://devicon.dev/
 
 [Back to top](#table-of-content)
 
