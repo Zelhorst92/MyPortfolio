@@ -5,14 +5,14 @@
 <link rel="stylesheet" href="{% static 'profiles/css/dashboard.css' %}">
 {% endblock %}
 
+<!-- The Dashboard. Here a user can update its information and see order history. -->
 {% block content %}
 <div id="dashboard" class="container pad-nav-comp">
     <div class="row dashboard-header">
         <div class="col-10 offset-1">
-        <h2 class="mb-4">Welcome to your dashboard, {{ user }}</h2>
-        <hr>
-    </div>
-        
+            <h2 class="mb-4">Welcome to your dashboard, {{ user }}</h2>
+            <hr>
+        </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 p-3">
@@ -31,31 +31,31 @@
                     </thead>
                     <tbody>
                         {% for order in orders reversed %}
-                        <tr>
-                            <td>
-                                <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                                    {{ order.order_number|truncatechars:8}}
-                                </a>
-                            </td>
-                            <td>
-                                {{order.date}}
-                            </td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    {% for item in order.lineitems.all %}
-                                        <li class="small">
-                                            {{ item.service.name }} * {{ item.quantity }}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </td>
-                            <td>
-                                &euro;{{order.net_total}}
-                            </td>
-                            <td>
-                                <a href="{% url 'order_history' order.order_number %}" class="btn btn-secondary float-end">View</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                                        {{ order.order_number|truncatechars:8}}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{order.date}}
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for item in order.lineitems.all %}
+                                            <li class="small">
+                                                {{ item.service.name }} * {{ item.quantity }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>
+                                    &euro;{{order.net_total}}
+                                </td>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}" class="btn btn-secondary float-end">View</a>
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>

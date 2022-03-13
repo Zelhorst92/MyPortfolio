@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/services.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -14,13 +14,13 @@
         <div class="col-12 col-md-6 col-lg-4 offset-lg-1">
             <div class="image-container my-5">
                 {% if service.image %}
-                <a href="{{ service.image.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
-                </a>
+                    <a href="{{ service.image.url }}" target="_blank">
+                        <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
+                    </a>
                 {% else %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
-                </a>
+                    <a href="">
+                        <img class="card-img-top img-fluid" src="/media/noimage.png" alt="{{ service.name }}">
+                    </a>
                 {% endif %}
             </div>
         </div>

@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="container pad-nav-comp">
     <div class="row mx-1">
@@ -14,12 +10,10 @@
             <hr>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12 col-lg-6 order-lg-last mb-5 mx-4">
             <p>paragraph</p>
         </div>
-
         <div class="col-12 col-lg-6 gx-5">
             <form method="POST" action="{% url 'add_project' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}

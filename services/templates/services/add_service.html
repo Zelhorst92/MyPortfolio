@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'services/css/services.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="container pad-nav-comp">
     <div class="row mx-1">
@@ -14,12 +10,10 @@
             <hr>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12 col-lg-5 mb-5 mx-4">
             <p>You can add a service to sell. It should have a name, a small description and a price. If you submit without an image or image URL. It will default to no-image. If both provided, if will default to the image.</p>
         </div>
-
         <div class="col-12 col-lg-6 gx-5">
             <form method="POST" action="{% url 'add_service' %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}

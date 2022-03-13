@@ -1,11 +1,10 @@
+/* Css spefic to the dashboard and sitemanager */
+
 .dashboard-header {
 	margin: 0 0 1rem 0;
 }
 
-.btn-admin {
-	width: 100%;
-}
-
+/* - - - Dashboard - - - */
 .dashboard-form-input {
     font-size: 1.6rem!important;
 	box-sizing: border-box;
@@ -34,4 +33,9 @@
 
 .order-history {
     max-height: 100vh;
+}
+
+/* - - - Site manager - - - */
+.btn-admin {
+	width: 100%;
 }

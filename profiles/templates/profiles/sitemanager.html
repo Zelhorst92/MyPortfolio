@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{% static 'profiles/css/dashboard.css' %}">
 {% endblock %}
 
+<!-- Site Administration page. From here all views can be acccessed to change the information on the home page. -->
 {% block content %}
 <div class="container mb-2 pad-nav-comp">
     <div class="row dashboard-header">
@@ -22,9 +23,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="ps-sm-5">
-                                About
-                            </td>
+                            <td class="ps-sm-5">About</td>
                             <td>
                                 {% if about_user %}
                                     <a href="{% url 'edit_about' %}" class="btn btn-secondary btn-admin">Edit About</a>
@@ -34,30 +33,23 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="ps-sm-5">
-                                Skills
-                            </td>
+                            <td class="ps-sm-5">Skills</td>
                             <td>
                                 <a href="{% url 'skills' %}" class="btn btn-primary btn-admin">View Skills</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ps-sm-5">
-                                Services
-                            </td>
+                            <td class="ps-sm-5"> Services</td>
                             <td>
                                 <a href="{% url 'services' %}" class="btn btn-primary btn-admin">View Services</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="ps-sm-5">
-                                Projects
-                            </td>
+                            <td class="ps-sm-5">Projects</td>
                             <td>
                                 <a href="{% url 'projects' %}" class="btn btn-primary btn-admin">View Projects</a>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
                 <a href="{% url 'home' %}" class="btn btn-primary rounded-0">
@@ -70,7 +62,4 @@
         </div>
     </div>
 </div>
-
-
-
 {% endblock %}
