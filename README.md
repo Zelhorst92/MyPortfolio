@@ -245,6 +245,12 @@ This would be the first thing I would add in the future. The principle would be 
 ### Register/Login addition
 In the dashboard there is need for a change password option. At the moment users can only change passwords via the Forgot Password functionality.
 
+### A Better Confirmation email
+The current confirmation email does what it needs to do, but its structure is very basic. This can be improved upon.
+
+### A way to control the ordering of the items in the database
+At the moment it seems that the ordering of items is based on what item is the oldest added or edited. As this has an influence on the homepage ordering of items on screen, this should be brought under control. Overiding the assigned id or introducing a SKU.
+
 [Back to top](#table-of-content)
 
 ---
