@@ -128,16 +128,22 @@ WSGI_APPLICATION = 'my_portfolio.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 if 'DEBUG' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+    if 'USE_SQLITE3' in os.environ:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
         }
-    }
+    else:
+        DATABASES = {
+            'default': dj_database_url.parse(
+                os.environ.get('DATABASE_URL'))
+        }
 else:
     DATABASES = {
         'default': dj_database_url.parse(
-            os.environ.get('HEROKU_POSTGRES_DATABASE_URL'))
+            os.environ.get('DATABASE_URL'))
     }
 
 
