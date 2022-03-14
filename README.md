@@ -1,13 +1,16 @@
 # My Portfolio!
-
+![Mockup](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/portfolio-mockup-s.png?raw=true "Colour Palette Scheme")
 # Introduction
 
 Welcome to my portfolio!
 
-...
+This is a website to show off who I am, what I can do and what I have done so far! You can buy services and contact me! Furthermore the site administrators can edit almost everything on the homepage from a selfmade administration panel!
 
+This is my fourth and last project for my study at the [Code Institute](https://codeinstitute.net/ "Link to the code institute") to become a Full Stack Web Developer. I combined the need for an ability to show off what I have created so far with an eye on what I am going to build in the future. This application has a site administration side where I can add in all new projects to come and update the page accordingly. Ofcourse is the selling of services quite fictional and intented to show of the basics of a webshop. It has been quite the learning experience and it has been a lot of fun.
 
 ~ Robert L. Zelhorst
+
+Link to live website: [My Portfolio](https://robert-l-zelhorst-portfolio.herokuapp.com/ "Link to my portfolio")
 
 # Table of Content
 - [User Experience](#user-experience)
@@ -27,11 +30,12 @@ Welcome to my portfolio!
   * [Existing Features](#existing-features)
   * [Future Features](#future-features)
 - [Technologies](#technologies)
-  * [Languages](#languages)
-  * [Libraries and Tools](#libraries-and-tools)
 - [Testing](#testing)
 - [Deployment](#deployment)
-  * []
+  * [Clone the repository](#clone-the-repository)
+  * [Run application locally](#run-application-locally)
+  * [Deploy application to Heroku](#deploy-application-to-heroku)
+  * [Setup Email](#setup-email)
 - [Credits](#credits)
   * [Code](#code)
   * [Thanks](#thanks)
@@ -239,9 +243,6 @@ From the dashboard the user can select a past order and view this. It is the sam
 
 ### Super_user & CRUD
 The site owner and those who are flagged as a super_user can modify almost all information that is present on the main page. If the user is a super_user, then a link to the admin-panel/Manage Site is present in the navigation. From here the user can add/edit/delete the about information, the skills, the services for sale and previous projects.
-
-### 
-...
 
 [Back to top](#table-of-content)
 
@@ -493,7 +494,8 @@ Go back to your heroku settings and find 'Deploy' and from there select 'Deploym
 - Pick GitHub, find your github username, select the appropriate repository and connect. Also enable automatic deployment. This will make sure that anything you push to github will also be pushed to heroku.
 - Click 'Deploy branch'. Heroku will now build the app. This might take a while, so time for tea or coffee.
 
-## Setup Email (gmail)
+## Setup Email
+### (gmail)
 - In this app the piping for a gmail return mailing service is already present. It looks like this:
 ```
 if 'DEBUG' in os.environ:
@@ -518,16 +520,38 @@ else:
 [Back to top](#table-of-content)
 
 # Credits
+## Code
+*   The [Code Institute](https://codeinstitute.net/ "Link to the code institute") where the webshop is heavily based on
 
+*   Pagination, 
+*   Devicon https://devicon.dev/
+
+https://favicon.io/favicon-converter/
 ## Aditional Sources
 
-Stamp picture = https://www.pngfind.com/mpng/iohTbwb_mail-stamp-template-postmark-png-image-postage-stamp/
-...
+
+## images
+*   [Landing background](https://codeinstitute.net/ "Link to the code institute")
+* https://ordinarycoders.com/blog/article/* build-a-django-contact-form-with-email-backend
+* Stamp picture = https://www.pngfind.com/mpng/iohTbwb_mail-stamp-template-postmark-png-image-postage-stamp/
+
 
 ## Thanks
-...
+### Teacher(s)
+Whereas we have not spoken, the lessons of the boutique ado have been very insightful and have greatly inspired this project. Therefore I want to mention and thank [Chris Z.](https://github.com/ckz8780 "githubpage of Chris Z.") and the [Code Institute](https://codeinstitute.net/ "Link to the code institute") in general for a great learning experience.
+
+### Stackoverflow community(indirectly)
+While I did not ask the question directly, a lot of forum posts did guide me toward the right direction to solve several problems. When I get more knowledgeable on the matter, I will surely try to add to aswell.
+
+### My mentor
+I would like to thank my mentor [Simen Daehlin](https://github.com/Eventyret "githubpage of Simen") for pointing me in the right direction in terms of the goals of the site. Thanks for the help my man.
+
+### My family and friends
+I would also like to thank my family and friends for their brutally honest feedback which helped a lot to view the website from the users perspective.
 
 ## Afterword
-...
+This was a great project, though but a great project. I do like Django a lot. If I had to start over, I think I would do it differently; I now see a lot of different possibilities to reach the same goal. Ie. all the adding/editing pages I think could be combined into one page instead of every app having its own template for it. If only I had more time. I slowly got to understand how it all works and there is probably a lot more to learn. I can't wait!
+
+~ Robert L. Zelhorst
 
 [Back to top](#table-of-content)
