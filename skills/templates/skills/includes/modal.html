@@ -1,11 +1,10 @@
 
 <!-- Modal for confirming deletion of a skill item -->
-<div class="modal fade" id="ConfirmModal" tabindex="-1" aria-labelledby="ConfirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="ConfirmModal{{skill.id}}" tabindex="-1" aria-labelledby="ConfirmModal{{skill.id}}Label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-title" id="ConfirmModalLabel">Delete Skill?</h2>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<h2 class="modal-title" id="ConfirmModal{{skill.id}}Label">Delete Skill?</h2>
 			</div>
 			<div class="modal-body">
 				<p>Do you really want to delete {{ skill.name }}?</p>

@@ -1,10 +1,9 @@
 <!-- Modal for confirming deletion of a project item -->
-<div class="modal fade" id="ConfirmModal" tabindex="-1" aria-labelledby="ConfirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="ConfirmModal{{ project.id }}" tabindex="-1" aria-labelledby="ConfirmModal{{ project.id }}Label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-title" id="ConfirmModalLabel">Delete Project?</h2>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<h2 class="modal-title" id="ConfirmModal{{ project.id }}Label">Delete Project?</h2>
 			</div>
 			<div class="modal-body">
 				<p>Do you really want to delete {{ project.name }}?</p>

@@ -46,7 +46,7 @@
                                 </td>
                                 <td class="py-3 text-end">
                                     <a href="{% url 'edit_skill' skill.id %}" class="btn btn-secondary">Edit</a>
-                                    <a href="#ConfirmModal" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal">Delete</a>
+                                    <a href="#ConfirmModal{{skill.id}}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmModal{{skill.id}}">Delete</a>
                                 </td>
                             </tr>
                             <!-- Include Confirmation Modal -->
