@@ -365,6 +365,7 @@ This is done in a seperate file:
 import os
 
 os.environ["DEBUG"] = "True"
+os.environ["USE_POSTGRES"] = ""  #Toggle using the postgres database. Should be empty at first.
 os.environ["SECRET_KEY"] = "SECRET_KEY"
 os.environ["DEFAULT_FROM_EMAIL"] = "DEFAULT_FROM_EMAIL"
 
@@ -379,6 +380,7 @@ os.environ["STRIPE_PUBLIC_KEY"] = ""
 os.environ["STRIPE_SECRET_KEY"] = ""
 os.environ["STRIPE_WH_SECRET"] = ""
 ```
+- The **USE_POSTGRES** is toggler for when you have set up the heroku postgres database. It should for now be empty.
 
 - The **SECRET_KEY** you'll have to provide yourself. It can be anything, but the longer the key, the safer it is.
 
@@ -409,12 +411,9 @@ python3 manage.py runserver
 - On the mainpage, select 'New' and pick 'create new app'
 - Chose app-name and region.
 - After creation, select 'Resources', go to 'find more add-ons' and from there find 'Heroku Postgres' and install this.
-- After that is done, go back to the overview and select 'settings', go to 'Reveal config vars'. Here you will enter everything from the env.py file with the exception of **DEBUG** that should be empty. the Heroku Postgress url and the AWS variables. It will look like this:
+- After that is done, go back to the overview and select 'settings', go to 'Reveal config vars'. Here you will enter everything from the env.py file with the exception of **DEBUG** and **USE_POSTGRES**, the AWS variables. It will look like this:
 
 ```
-DEBUG = ""  #this should be empty!! Unless if you know what you are doing!
-USE_SQLITE3 = ""  #Toggle using the Sqlite3 database. Should be empty at first.
-
 SECRET_KEY = "SECRET_KEY"
 DEFAULT_FROM_EMAIL = "DEFAULT_FROM_EMAIL"
 
@@ -440,22 +439,23 @@ STRIPE_SECRET_KEY = "STRIPE_SECRET_KEY"
 STRIPE_WH_SECRET = "STRIPE_WH_SECRET"
 ```
 
-- To summarize; **DEBUG** and **USE_SQLITE3** should both be empty for production! You could opt at first to not put them in your config vars at all, to prevent confusion. With the USE_SQLITE3 you can toggle between the sqlite3 database or the postgres database. Leave empty to default to postgres. This will allow you to run debug with the postgres database if necessary.
-- You will find the DATABASE_URL already in there, this is your Heroku Postgres url. Copy this.
-- Go into settings.py and find the following:
+- To summarize; **DEBUG** and **USE_POSTGRES** should both not be in the heroku config vars!
+- You will find the DATABASE_URL already in there, this is your Heroku Postgres url, which was put there automatically when you installed postgres.
+- Go into your env.py and set USE_POSTGRES to true. If you look at the code below, setting it to true will link your delevopment envirement to the postgres database.
 ```
-if 'DEBUG' in os.environ:
-    if 'USE_SQLITE3' in os.environ:
+if os.environ.get("DEBUG"):
+    if os.environ.get("USE_POSTGRES"):
+        DATABASES = {
+            'default': dj_database_url.parse(
+                os.environ.get('DATABASE_URL'))
+        }
+    else:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
                 'NAME': BASE_DIR / 'db.sqlite3',
             }
-        }
-    else:
-        DATABASES = {
-            'default': dj_database_url.parse(
-                os.environ.get('DATABASE_URL'))
+
         }
 else:
     DATABASES = {
@@ -463,12 +463,7 @@ else:
             os.environ.get('DATABASE_URL'))
     }
 ```
-Comment it out and replace it with:
-```
-DATABASES = {
-    'default': dj_database_url.parse('Put your heroku DATABASE_URL here'))
-}
-```
+
 - Now go to your CLI and migrate with the following command:
 ```
 python3 manage.py migrate
@@ -483,13 +478,13 @@ python3 manage.py runserver
 ```
 - Now go to your app, it should be running. Go to localapplink/admin/ and make sure your superuser is verified and primary. Close your app again.
 
-- Change the DATABASE_URL logic back to what it was before. (couple of steps back)
+- Change USE_POSTGRES back to empty.
 
 - Go into the settings.py file and find ALLOWED_HOSTS; paste your full heroku app URL in here. It should look like this, but with your app url:
 ```
 ALLOWED_HOSTS = ['robert-l-zelhorst-portfolio.herokuapp.com', 'localhost']
 ```
-- Make sure the DISABLE_COLLECTSTATIC = 1 is in your config vars in heroku. If not, you could do it via your CLI with the following command:
+- Make sure the DISABLE_COLLECTSTATIC = 1 is in your config vars in heroku. If not, you could do it via your CLI with the following command (USE_POSTGRES does not need to be set for this):
 ```
 heroku config:set DISABLE_COLLECTSTATIC=1
 ```

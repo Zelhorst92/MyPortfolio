@@ -127,25 +127,25 @@ WSGI_APPLICATION = 'my_portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if 'DEBUG' in os.environ:
-    if 'USE_SQLITE3' in os.environ:
+if os.environ.get("DEBUG"):
+    if os.environ.get("USE_POSTGRES"):
+        DATABASES = {
+            'default': dj_database_url.parse(
+                os.environ.get('DATABASE_URL'))
+        }
+    else:
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
                 'NAME': BASE_DIR / 'db.sqlite3',
             }
-        }
-    else:
-        DATABASES = {
-            'default': dj_database_url.parse(
-                os.environ.get('DATABASE_URL'))
+
         }
 else:
     DATABASES = {
         'default': dj_database_url.parse(
             os.environ.get('DATABASE_URL'))
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -189,7 +189,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if 'USE_AWS' in os.environ:
+
+if os.environ.get("USE_AWS"):
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
@@ -242,7 +243,7 @@ STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
 
 STRIPE_WH_SECRET = os.environ.get("STRIPE_WH_SECRET", "")
 
-if 'DEBUG' in os.environ:
+if os.environ.get("DEBUG"):
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 else:
