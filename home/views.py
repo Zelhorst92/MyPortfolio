@@ -51,7 +51,10 @@ def index(request):
                     Are all fields filled in correctly?')
                 return redirect(reverse('home'))
         else:
-            messages.error(request, 'The siteowner does not allow messages to be sent at this time')
+            messages.error(
+                request,
+                'The siteowner does not allow messages to be sent at this time'
+                )
             return redirect(reverse('home'))
     else:
         form = ContactForm()
