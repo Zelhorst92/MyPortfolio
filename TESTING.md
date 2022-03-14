@@ -137,7 +137,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### Bugs
 *   Confirmation email has a problem with showing the order. 
 ### Comments
-*   None.
+*   Style of the confirmationmail could be better. As this is not webpage breaking, it does hamper user experience a little bit.
 
 [Back to top](#testing-and-bugreports)
 
@@ -151,7 +151,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### Tests
 *   Send a message with the contact form.
 ### Result
-*   Test passed. Message sent and received when CONTACT_FORM_ENABLED was true. User gets error message when CONTACT_FORM_ENABLED was none. See documt below.
+*   Test passed. Message sent and received when CONTACT_FORM_ENABLED was true. User gets error message when CONTACT_FORM_ENABLED was none. See document below.
 
 [Contact Test](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/contact-test.pdf)
 
@@ -201,11 +201,20 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 ### Bug
 *   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
 ### Fix
-*   
+*   Change from
+```
+{{ order.original_cart }}
+```
+to
+```
+{% for item in order.lineitems.all %}
+    {{ item.quantity }} * {{ item.service.name }} for €{{ item.service.price }}.
+{% endfor %}
+```
 ### Conclusion/Result
-*   
+*   Wrong call in earlier statement. The order.lineitems.all works.
 ### Status
-*   Unresolved.
+*   Resolved.
 
 [Back to top](#testing-and-bugreports)
 
