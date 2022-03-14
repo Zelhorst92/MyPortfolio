@@ -23,7 +23,6 @@ Welcome to my portfolio!
     * [Fonts](#fonts)
     * [Colours](#colours)
   * [Database Structure](#database-structure)
-  * [Logic Flowchart](#logic-flowchart)
 - [Features](#features)
   * [Existing Features](#existing-features)
   * [Future Features](#future-features)
@@ -296,8 +295,6 @@ At the moment it seems that the ordering of items is based on what item is the o
 *   [Devicon](https://devicon.dev/ "Link to Devicon")
 *   [Passwordgenerator](https://passwordsgenerator.net/ "Link to passwordsgenerator")
 
-https://devicon.dev/
-
 [Back to top](#table-of-content)
 
 ---
@@ -305,7 +302,7 @@ https://devicon.dev/
 # Testing
 This is done in a seperate file:
 
-[TESTING.md](# "Link to tests and bugs file")
+[TESTING.md](https://github.com/Zelhorst92/MyPortfolio/blob/main/TESTING.md "Link to tests and bugs file")
 
 ---
 
@@ -329,7 +326,7 @@ This is done in a seperate file:
 #### Download the ZIP
 - You can also download the whole repository in a zip file and use the IDE software you want.
 
-## Prepare the Repository
+## Run application locally
 ### Install requirements
 The webapplication relies on several modules and libraries to function. You can find these in the requirements.txt. If you are using an IDE which support [pip](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) you can use the following command:
 
@@ -337,118 +334,168 @@ The webapplication relies on several modules and libraries to function. You can 
   pip3 install -r requirements.txt
   ```
 
-If you are not using or installing pip, find the requirements.txt and install the required modules via any other means. The application will not work without.
+If you are not using or installing pip, find the requirements.txt and install the required modules via any other means. The application will not work without the required modules.
 
 ### Create env file
 In your IDE, create a file containing your environmental variables called env.py at root level. This is because env.py contains private information such as your secret key and is therefore not added to the repository from the get go. It needs to contain the following:
 
-  ```
-  import os
+```
+import os
 
-  os.environ.setdefault("IP", "0.0.0.0")
-  os.environ.setdefault("PORT", "5000")
-  os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY")
-  os.environ.setdefault("MONGO_URI", "YOUR_MONGODB_URI")
-  os.environ.setdefault("MONGO_DBNAME", "YOUR_DATABASE_NAME")
-  os.environ.setdefault("DEBUG", "1")
-  ```
+os.environ["DEBUG"] = "True"
+os.environ["SECRET_KEY"] = "SECRET_KEY"
+os.environ["DEFAULT_FROM_EMAIL"] = "DEFAULT_FROM_EMAIL"
 
-As you can see, the **SECRET_KEY**, **MONGO_URI** and **MONGO_DBNAME** are placeholders. You have to provide those yourself. The SECRET_KEY can be anything, but the longer the key, the safer it is. The MONGO_URI and DATABASE_NAME will made when you set up the database. You should add the env.py to your .gitignore file, so that others have no access to it.
+"""Site own variables"""
+os.environ["CONTACT_FORM_ENABLED"] = "True"
+os.environ["COMBINATION_DISCOUNT_PERCENTAGE"] = "10"
+os.environ["VAT_PERCENTAGE"] = "20"
 
-### Create or Update Procfile and requirements.txt
-To run the application on for example Heroku, you need an up to date requirements.txt and procfile. Both are included but if you added anything, you need to update them. You can do that with the following commands in your IDE terminal:
-- For your requirements.txt:
+"""Stripe"""
+os.environ["STRIPE_CURRENCY"] = ""
+os.environ["STRIPE_PUBLIC_KEY"] = ""
+os.environ["STRIPE_SECRET_KEY"] = ""
+os.environ["STRIPE_WH_SECRET"] = ""
+```
 
-  ```
-  pip3 freeze --local > requirements.txt
-  ```
-- For your procfile:
+The **SECRET_KEY** you'll have to provide yourself. It can be anything, but the longer the key, the safer it is.
 
-  ```
-  echo web: python app.py > Procfile
-  ```
+The **CONTACT_FORM_ENABLED** sets the contact form at the bottom to enabled. Leaving it empty makes in non-functional.
 
-- For this application the procfile should contain the following line:
-    ```
-    web: python app.py
-    ```
-- If you have more .py files, the procfile should reflect that.
+The **COMBINATION_DISCOUNT_PERCENTAGE** and **VAT_PERCENTAGE** are variables used in the calculations in the shopping cart and checkout functionalities. Leaving them empty makes them default to 0. See settings.py.
 
-## Prepare the Database
-### MongoDB
-- Log in or sign-up to [MongoDB](https://www.mongodb.com/).
-- Under deployment and databases, create a new cluster. Green button on the right.
-- Within the cluster, go to collections and create a new Database.
-  - Call this recipe_manager.
-  - This is your databasename, use this in your env.py.
-- Then in the new database recipe_manager you want to create 3 collections; categories, recipes and users.
-  - See [Database Structure](#database-structure) on how to structure them. There should be 3.
-    - keep in mind that the _id is genenated by mongoDB itself and does not have to be included.
-### Mongo_URI
-- To find your mongo_URI link for in your env.py file, go back to main page of the cluster you made earlier.
-- Click on the Connect button, on the right side of your clusters name.
-- Select 'Connect to your application.
-- Select the version of python you are using and copy the link provided.
-  - Use this link in your env.py
-  - Yes, within the double quotations.
+For the **STRIPE** variables you should read the documention of [Stripe](https://stripe.com/docs). It is necessary to set this up to make use of the checkout functionality.
 
-### Set up Database User
-- To set up a user that can read and write to your database go to Database Access, on the left.
-- Add a new database user.
+### Setting it up
+After you have installed all the requirements and set up all the variables in your env.py and added your env.py to your .gitignore file, you can migrate the database models with the following command:
 
-### Set up network access
-- Go to Network Access, on the left.
-- Add 0.0.0.0/0 to the IP Adress list.
+```
+python3 manage.py migrate
+```
+When this is done, you will have to create a superuser with the command:
+```
+python3 manage.py createsuperuser
+```
+When this is done, you can run the app locally with the command:
+```
+python3 manage.py runserver
+```
 
-### Create index
-- The application works but search along a text index. You will have to create this.
-- In your preffered IDE, go to your terminal and run:
-  ```
-  python3
-  ```
-- Then the following:
-  ```
-  from app import mongo
-  
-  mongo.db.recipes.create_index([("recipe_name", "text"), ("recipe_category", "text"), ("recipe_description", "text")])
-  ```
-- This creates an index along the recipe_name, recipe_category and recipe_description which are used to search for recipes.
-
-## Run Application locally
-- If you have installed all the requirements, set up the database and made the env.py file, the application is ready the be run locally.
-- run the following command in your IDE terminal:
-
-  ```
-  python3 app.py. 
-  ```
 
 ## Deploy application to Heroku
 - Log in or sign-up to [Heroku](https://dashboard.heroku.com/).
 - On the mainpage, select 'New' and pick 'create new app'
 - Chose app-name and region.
-- After creation, select 'Deploy' and from there select 'Deployment method'.
-- Pick GitHub, find your github username, select the appropriate repository and connect.
-- Going back up to navigation and go to 'Settings'.
-- Here go to Config Vars and click 'Reveal Config Vars'.
-  - Here you enter in the exact same data as you did in your env.py, with the exeption of the debug line.
-  - No DEBUG.
-- Without the debug it should look this:
+- After creation, select 'Resources', go to 'find more add-ons' and from there find 'Heroku Postgres' and install this.
+- After that is done, go back to the overview and select 'settings', go to 'Reveal config vars'. Here you will enter everything from the env.py file with the exception of **DEBUG** that should be empty. the Heroku Postgress url and the AWS variables. It will look like this:
 
-  ```
-  IP = 0.0.0.0
-  PORT = 5000
-  SECRET_KEY = YOUR_SECRET_KEY
-  MONGO_URI = YOUR_MONGODB_URI
-  MONGO_DBNAME = DATABASE_NAME
-  ```
-  - No DEBUG here.
+```
+DEBUG = ""  #this should be empty!! Unless if you know what you are doing!
+USE_SQLITE3 = ""  #Toggle using the Sqlite3 database. Should be empty at first.
 
-- Go back to the 'Deploy' page.
-- Click on 'Enable automatic deployment'.
-- Click on 'Deploy branch'.
-  - Heroku will now build the application. This might take a while.
-- When the building is complete, you can now click 'view app' to open the application.
-- Because the heroku app is now linked to github, the changes you push to GitHub are automatically pushed the heroku aswell.
+SECRET_KEY = "SECRET_KEY"
+DEFAULT_FROM_EMAIL = "DEFAULT_FROM_EMAIL"
+
+COMBINATION_DISCOUNT_PERCENTAGE = "10"
+CONTACT_FORM_ENABLED = "True"
+VAT_PERCENTAGE = "20"
+
+DATABASE_URL = "YOUR RECENTLY INSTALLED POSTGRES URL"
+DISABLE_COLLECTSTATIC = 1
+
+EMAIL_HOST_PASS = "EMAIL_HOST_PASS"
+EMAIL_HOST_USER = "EMAIL_HOST_USER"
+
+USE_AWS = "True"
+AWS_ACCESS_KEY_ID = "AWS_ACCESS_KEY_ID"
+AWS_S3_REGION_NAME = "AWS_S3_REGION_NAME"
+AWS_SECRET_ACCESS_KEY = "AWS_SECRET_ACCESS_KEY"
+AWS_STORAGE_BUCKET_NAME = "AWS_STORAGE_BUCKET_NAME"
+
+STRIPE_CURRENCY = "STRIPE_CURRENCY"
+STRIPE_PUBLIC_KEY = "STRIPE_PUBLIC_KEY"
+STRIPE_SECRET_KEY = "STRIPE_SECRET_KEY"
+STRIPE_WH_SECRET = "STRIPE_WH_SECRET"
+```
+
+- To summarize; **DEBUG** and **USE_SQLITE3** should both be empty for production! You could opt at first to not put them in your config vars at all, to prevent confusion. With the USE_SQLITE3 you can toggle between the sqlite3 database or the postgres database. Leave empty to default to postgres. This will allow you to run debug with the postgres database if necessary.
+- You will find the DATABASE_URL already in there, this is your Heroku Postgres url. Copy this.
+- Go into settings.py and find the following:
+```
+if 'DEBUG' in os.environ:
+    if 'USE_SQLITE3' in os.environ:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+    else:
+        DATABASES = {
+            'default': dj_database_url.parse(
+                os.environ.get('DATABASE_URL'))
+        }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get('DATABASE_URL'))
+    }
+```
+Comment it out and replace it with:
+```
+DATABASES = {
+    'default': dj_database_url.parse('Put your heroku DATABASE_URL here'))
+}
+```
+- Now go to your CLI and migrate with the following command:
+```
+python3 manage.py migrate
+```
+When this is done, you will have to create a superuser with the command:
+```
+python3 manage.py createsuperuser
+```
+- Now run your app locally with:
+```
+python3 manage.py runserver
+```
+- Now go to your app, it should be running. Go to localapplink/admin/ and make sure your superuser is verified and primary. Close your app again.
+
+- Change the DATABASE_URL logic back to what it was before. (couple of steps back)
+
+- Go into the settings.py file and find ALLOWED_HOSTS; paste your full heroku app URL in here. It should look like this, but then with your app url:
+```
+ALLOWED_HOSTS = ['robert-l-zelhorst-portfolio.herokuapp.com', 'localhost']
+```
+Make sure the DISABLE_COLLECTSTATIC = 1 is in your config vars in heroku. If not you could do it via your CLI with the following command:
+```
+heroku config:set DISABLE_COLLECTSTATIC=1
+```
+Go back to your heroku settings and find 'Deploy' and from there select 'Deployment method'.
+- Pick GitHub, find your github username, select the appropriate repository and connect. Also enable automatic deployment. This will make sure that anything you push to github will also be pushed to heroku.
+- Click 'Deploy branch'. Heroku will now build the app. This might take a while, so time for tea or coffee.
+
+## Setup Email (gmail)
+- In this app the piping for a gmail return mailing service is already present. It looks like this:
+```
+if 'DEBUG' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+```
+- The EMAIL_HOST and EMAIL_PORT might vary between different providers.
+- If you have set up an gmail account, go to security and verify 2 step verification.
+- Then below 2 step verification you will find App-passwords, go there and go to 'app select', pick 'email', go to select device, pick 'other' and call it 'django'. You will now get a 4 times 4 password. Copy this.
+- Go back to your config vars in heroku and find the EMAIL_HOST_PASS and EMAIL_HOST_EMAIL variables.
+- The pass is the password, the host_email your gmail account.
+- And that is now ready to go.
 
 [Back to top](#table-of-content)
 
