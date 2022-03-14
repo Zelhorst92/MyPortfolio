@@ -1,5 +1,5 @@
 # Testing and Bugreports
-
+This file contains the testing done on the website [Robert L. Zelhorst's Portfolio](https://robert-l-zelhorst-portfolio.herokuapp.com/).
 * [Testing](#testing)
     * [Navigation](#navigation)
     * [Information](#information)
@@ -8,16 +8,11 @@
     * [Contact](#contact)
     * [CRUD](#crud)
 
-    Contact
-
 * [Bugreports](#bugreports)
-    * [Confirmation Email](#confirmation-email)
-
+    * [Order Confirmation Email](#order-confirmation-email)
+    * [Wrong Modal](#wrong-modal)
 
 https://robert-l-zelhorst-portfolio.herokuapp.com/
-
-
-
 
 
 # Testing
@@ -131,11 +126,11 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 [Purchase Path Test Pdf](https://github.com/Zelhorst92/MyPortfolio/blob/main/readme-images/purchase-path-test.pdf)
 
-*   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
+*   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order items.
 ### Conclusion
 *   Test successful.
 ### Bugs
-*   Confirmation email has a problem with showing the order. 
+*   Confirmation email has a problem with showing the order. [Confirmation Email](#order-confirmation-email)
 ### Comments
 *   Style of the confirmationmail could be better. As this is not webpage breaking, it does hamper user experience a little bit.
 
@@ -197,7 +192,7 @@ https://robert-l-zelhorst-portfolio.herokuapp.com/
 
 # Bugreports
 
-## Confirmation Email
+## Order Confirmation Email
 ### Bug
 *   The confirmation email shows `{&quot;1&quot;: 1}` where it should show the order.
 ### Fix
