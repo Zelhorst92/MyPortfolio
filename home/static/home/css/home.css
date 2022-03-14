@@ -35,6 +35,7 @@
     box-shadow: 0.5rem 0.5rem 0.5rem #191919;
     text-align: center;
     min-height: 25rem;
+    max-width: 60rem;
     margin: 7rem auto auto auto;
 }
 
