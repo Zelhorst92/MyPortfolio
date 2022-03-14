@@ -129,12 +129,30 @@ As per Bootstrap order, from small to large. To make the wireframes I have used 
 
 #### Mobile Wireframes
 * [Mobile Landing Page Wireframe](/readme-images/wireframes/mobile-landing-page.png)
+* [Mobile Item Details Wireframe](/readme-images/wireframes/mobile-item-details.png)
+* [Mobile Cart Wireframe](/readme-images/wireframes/mobile-cart.png)
+* [Mobile Checkout Wireframe](/readme-images/wireframes/mobile-checkout.png)
+* [Mobile Items List Wireframe](/readme-images/wireframes/mobile-items-list.png)
+* [Mobile Admin Panel Wireframe](/readme-images/wireframes/mobile-admin-panel.png)
+* [Mobile Add/Edit Item Wireframe](/readme-images/wireframes/mobile-add-edit-item.png)
 
 #### Tablet Wireframes
 * [Tablet Landing Page Wireframe](/readme-images/wireframes/tablet-landing-page.png)
+* [Tablet Item Details Wireframe](/readme-images/wireframes/tablet-item-details.png)
+* [Tablet Cart Wireframe](/readme-images/wireframes/tablet-cart.png)
+* [Tablet Checkout Wireframe](/readme-images/wireframes/tablet-checkout.png)
+* [Tablet Items List Wireframe](/readme-images/wireframes/tablet-items-list.png)
+* [Tablet Admin Panel Wireframe](/readme-images/wireframes/tablet-admin-panel.png)
+* [Tablet Add/Edit Item Wireframe](/readme-images/wireframes/tablet-add-edit-item.png)
 
 #### Desktop Wireframes
 * [Desktop Landing Page Wireframe](/readme-images/wireframes/desktop-landing-page.png)
+* [Desktop Item Details Wireframe](/readme-images/wireframes/desktop-item-details.png)
+* [Desktop Cart Wireframe](/readme-images/wireframes/desktop-cart.png)
+* [Desktop Checkout Wireframe](/readme-images/wireframes/desktop-checkout.png)
+* [Desktop Items List Wireframe](/readme-images/wireframes/desktop-items-list.png)
+* [Desktop Admin Panel Wireframe](/readme-images/wireframes/desktop-admin-panel.png)
+* [Desktop Add/Edit Item Wireframe](/readme-images/wireframes/desktop-add-edit-item.png)
 
 #### Other Wireframes
 
