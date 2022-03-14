@@ -63,7 +63,7 @@ Link to live website: [My Portfolio](https://robert-l-zelhorst-portfolio.herokua
 
 ## User/Siteowner Stories
 As a user, I want;
-* a website that is easy and intuitively to use.
+*   a website that is easy and intuitively to use.
 * to see what the website is about at first glance.
 * a website that works on all screen sizes.
 * to be able to traverse to relevant social media.
@@ -76,7 +76,6 @@ As a user, I want;
         * etc.
     * Public personal information.
 * to contact the site owner.
-
 * to register to the website.
 * to login to the website.
 * to buy products ~~/donate to~~ from the site owner.
@@ -85,10 +84,8 @@ As a user, I want;
     * View a summary before proceeding to buy any product. (checkout)
     * View a successfull order summary. (checkout success)
 * to look back at older orders.
-
 * ~~I want to read the blog.~~
 * ~~I want to comment on the blog.~~
-
 As a site ower, I want;
 * to see all the relevant information on the site.
 * to login as an administrator.
@@ -247,6 +244,9 @@ The site owner and those who are flagged as a super_user can modify almost all i
 [Back to top](#table-of-content)
 
 ## Future Features
+### The Blog
+The initial intention was to also have a blog on the homepage. But because of time constraint (understanding everything took a lot longer then I anticipated, not to mention the debugging) it has not made it to the final product. But I still intent to include it at some point.
+
 ### Gallery links
 It would be nice to have a direction button to the previous projects websites and/or github links directly from the gallery, so that the users can have a more detailed look of these websites.
 
@@ -268,6 +268,9 @@ The current confirmation email does what it needs to do, but its structure is ve
 
 ### A way to control the ordering of the items in the database
 At the moment it seems that the ordering of items is based on what item is the oldest added or edited. As this has an influence on the homepage ordering of items on screen, this should be brought under control. Overiding the assigned id or introducing a SKU.
+
+### Fix the pagenation issue
+At the moment when you use the pagenation to navigate through the services, it reloads the page. Because it is, essentially, a new page. The page does scroll down immediately but it is still a little bit annoying. A small script could be written to enhance this part of the user experience.
 
 [Back to top](#table-of-content)
 
@@ -347,16 +350,16 @@ This is done in a seperate file:
 
 ## Run application locally
 ### Install requirements
-The webapplication relies on several modules and libraries to function. You can find these in the requirements.txt. If you are using an IDE which support [pip](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) you can use the following command:
+- The webapplication relies on several modules and libraries to function. You can find these in the requirements.txt. If you are using an IDE which support [pip](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) you can use the following command:
 
   ```
   pip3 install -r requirements.txt
   ```
 
-If you are not using or installing pip, find the requirements.txt and install the required modules via any other means. The application will not work without the required modules.
+- If you are not using or installing pip, find the requirements.txt and install the required modules via any other means. The application will not work without the required modules.
 
 ### Create env file
-In your IDE, create a file containing your environmental variables called env.py at root level. This is because env.py contains private information such as your secret key and is therefore not added to the repository from the get go. It needs to contain the following:
+- In your IDE, create a file containing your environmental variables called env.py at root level. This is because env.py contains private information such as your secret key and is therefore not added to the repository from the get go. It needs to contain the following:
 
 ```
 import os
@@ -377,25 +380,25 @@ os.environ["STRIPE_SECRET_KEY"] = ""
 os.environ["STRIPE_WH_SECRET"] = ""
 ```
 
-The **SECRET_KEY** you'll have to provide yourself. It can be anything, but the longer the key, the safer it is.
+- The **SECRET_KEY** you'll have to provide yourself. It can be anything, but the longer the key, the safer it is.
 
-The **CONTACT_FORM_ENABLED** sets the contact form at the bottom to enabled. Leaving it empty makes in non-functional.
+- The **CONTACT_FORM_ENABLED** sets the contact form at the bottom to enabled. Leaving it empty makes in non-functional.
 
-The **COMBINATION_DISCOUNT_PERCENTAGE** and **VAT_PERCENTAGE** are variables used in the calculations in the shopping cart and checkout functionalities. Leaving them empty makes them default to 0. See settings.py.
+- The **COMBINATION_DISCOUNT_PERCENTAGE** and **VAT_PERCENTAGE** are variables used in the calculations in the shopping cart and checkout functionalities. Leaving them empty makes them default to 0. See settings.py.
 
-For the **STRIPE** variables you should read the documention of [Stripe](https://stripe.com/docs). It is necessary to set this up to make use of the checkout functionality.
+- For the **STRIPE** variables you should read the documention of [Stripe](https://stripe.com/docs). It is necessary to set this up to make use of the checkout functionality.
 
 ### Setting it up
-After you have installed all the requirements and set up all the variables in your env.py and added your env.py to your .gitignore file, you can migrate the database models with the following command:
+- After you have installed all the requirements and set up all the variables in your env.py and added your env.py to your .gitignore file, you can migrate the database models with the following command:
 
 ```
 python3 manage.py migrate
 ```
-When this is done, you will have to create a superuser with the command:
+- When this is done, you will have to create a superuser with the command:
 ```
 python3 manage.py createsuperuser
 ```
-When this is done, you can run the app locally with the command:
+- When this is done, you can run the app locally with the command:
 ```
 python3 manage.py runserver
 ```
@@ -470,7 +473,7 @@ DATABASES = {
 ```
 python3 manage.py migrate
 ```
-When this is done, you will have to create a superuser with the command:
+- When this is done, you will have to create a superuser with the command:
 ```
 python3 manage.py createsuperuser
 ```
@@ -482,17 +485,18 @@ python3 manage.py runserver
 
 - Change the DATABASE_URL logic back to what it was before. (couple of steps back)
 
-- Go into the settings.py file and find ALLOWED_HOSTS; paste your full heroku app URL in here. It should look like this, but then with your app url:
+- Go into the settings.py file and find ALLOWED_HOSTS; paste your full heroku app URL in here. It should look like this, but with your app url:
 ```
 ALLOWED_HOSTS = ['robert-l-zelhorst-portfolio.herokuapp.com', 'localhost']
 ```
-Make sure the DISABLE_COLLECTSTATIC = 1 is in your config vars in heroku. If not you could do it via your CLI with the following command:
+- Make sure the DISABLE_COLLECTSTATIC = 1 is in your config vars in heroku. If not, you could do it via your CLI with the following command:
 ```
 heroku config:set DISABLE_COLLECTSTATIC=1
 ```
-Go back to your heroku settings and find 'Deploy' and from there select 'Deployment method'.
+- Go back to your heroku settings and find 'Deploy' and from there select 'Deployment method'.
 - Pick GitHub, find your github username, select the appropriate repository and connect. Also enable automatic deployment. This will make sure that anything you push to github will also be pushed to heroku.
 - Click 'Deploy branch'. Heroku will now build the app. This might take a while, so time for tea or coffee.
+- When it is done you can go to your app by clicking in the right upper corner on 'Open App'.
 
 ## Setup Email
 ### (gmail)
@@ -521,20 +525,14 @@ else:
 
 # Credits
 ## Code
-*   The [Code Institute](https://codeinstitute.net/ "Link to the code institute") where the webshop is heavily based on
+*   The [Code Institute](https://codeinstitute.net/ "Link to the code institute") whose lessons were instrumental.
+*   For the pagenation was this [video](https://www.youtube.com/watch?v=wmYSKVWOOTM "Link to youtube video about pagination") very informative and helped me alot. Also this [documention](https://pypi.org/project/django-pagination-bootstrap/ "Link to pagination documentation") was very helpful.
+*   For the contact form, the people at [ordinarycoders](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend "Link to contact form tutorial") have a good tutorial on it.
 
-*   Pagination, 
-*   Devicon https://devicon.dev/
 
-https://favicon.io/favicon-converter/
 ## Aditional Sources
-
-
-## images
-*   [Landing background](https://codeinstitute.net/ "Link to the code institute")
-* https://ordinarycoders.com/blog/article/* build-a-django-contact-form-with-email-backend
-* Stamp picture = https://www.pngfind.com/mpng/iohTbwb_mail-stamp-template-postmark-png-image-postage-stamp/
-
+* [Landing background](https://unsplash.com/photos/aNPR4p4vjVk "Link to unsplash")
+* [Stamp picture](https://www.pngfind.com/mpng/iohTbwb_mail-stamp-template-postmark-png-image-postage-stamp/ "Link to pngfind")
 
 ## Thanks
 ### Teacher(s)
