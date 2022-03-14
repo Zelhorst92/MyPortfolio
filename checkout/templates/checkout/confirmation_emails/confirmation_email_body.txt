@@ -7,9 +7,11 @@ Order: {{ order.order_number }}
 Date: {{ order.date }}
 
 You have bought the following:
-{{ order.original_cart }}
+{% for item in order.lineitems.all %}
+    {{ item.quantity }} * {{ item.service.name }} for €{{ item.service.price }}.
+{% endfor %}
 
-At the price of:
+At the total price of:
 Order Total: € {{ order.order_total }}
 Combination Discount({{ combination_discount_percentage }}%): € {{ order.discount }}
 VAT:({{ vat_percentage }}%): € {{ order.vat }}
