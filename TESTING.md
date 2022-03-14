@@ -215,7 +215,7 @@ to
 
 ## Wrong Modal
 ### Bug
-*   Modal not unique to the id of the item that needs to be deleted.
+*   Modal not unique to the id of the item that needs to be deleted. This effects all modals; skills, services and projects.
 ### Fix
 *   Change the id of the modal from 
 ```
